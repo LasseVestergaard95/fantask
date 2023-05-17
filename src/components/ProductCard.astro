@@ -7,12 +7,12 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
 
 
 <div class="product_card">
-    <div class="cover_container">
+    <a href="" class="cover_container">
         <img src={`/imgs/${img}.jpg`} class="cover">
         <button class="favorit">
             <img src="favoritter_sort_hjerte.svg" alt="">
         </button>
-    </div>
+    </a>
 
     <div class="info">
         <div>
@@ -78,6 +78,7 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
         aspect-ratio: 2/3;
         width: 240px;
         position: relative;
+        cursor: pointer;
     }
 
     .cover {
