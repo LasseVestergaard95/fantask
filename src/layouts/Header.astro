@@ -43,6 +43,10 @@
         <nav>
             <ul class="user_nav">
                 <li>
+                    <lottie-player class="burgermenu" src="menuV2.json"  background="transparent"  speed="1.6"></lottie-player>
+    
+                </li>
+                <li>
                     <a href="">
                         <img src="header_search.svg" alt="">
                     </a>
@@ -54,13 +58,13 @@
                 </li>
                 <li>
                     <a href="">
-                        <img src="header_kurv.svg" alt="">
+                        <img src="header_shopping_cart.svg" alt="">
                     </a>
                 </li>
             </ul>
         </nav>
     </div>
-    <div class="header_banner">
+    <div class="top_banner">
         <ul class="scrolling_banner">
             <li>
                 Fri fragt ved køb over 500 kr.
@@ -98,20 +102,41 @@
     </div>
 </header>
 
+
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<script>
+    const nav = document.querySelector('.burgermenu');
+    let clicked = false;
+    nav.addEventListener('click', () => {
+        if (clicked) {
+            nav.setDirection(-1);
+            nav.play();
+            clicked = false;
+        } else {
+            nav.setDirection(1);
+            nav.play();
+            clicked = true;
+        }
+    });
+
+</script>
+
+
+
 <style>
 
+    header {
+        overflow: hidden;
+    }
     .top_header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: var(--dark-blue);
-        height: 112px;
+        height: 5rem;
         padding-inline: 2rem;
-    }
-
-
-    ul {
-        display: flex;
     }
 
     li {
@@ -124,8 +149,10 @@
     }
 
     .main_nav {
+        display: none;
         width: 100%;
         justify-content: space-between;
+        white-space: nowrap;
     }
 
     .main_nav li {
@@ -134,38 +161,39 @@
     }
 
     .user_nav {
+        display: flex;
         width: 100%;
-        justify-content: flex-end;
         align-items: baseline;
-        margin-bottom: 1rem;
     }
 
     .user_nav li {
-        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .user_nav img {
+        width: 1.5rem;
     }
 
 
     .fantask_logo img {
-        width: 85%;
+        width: 8rem;
     }
 
-
-
-    .header_banner {
+    .top_banner {
         background-color: var(--top-banner);
         overflow: hidden;
         white-space: nowrap;
+        width: 100%;
     }
 
     .scrolling_banner {
         display: inline-block;
-        align-items: center;
         padding-block: 0.8rem;
         padding-left: 100%;
         animation: scroll 40s linear infinite;
     }
 
-    .header_banner li {
+    .scrolling_banner li {
         color: var(--white);
         font-size: 16px;
         display: inline;
@@ -174,11 +202,35 @@
     }
     @keyframes scroll {
         0% {
-            transform: translateX(0);
-        }
-        100% {
             transform: translateX(-50%);
         }
+        100% {
+            transform: translateX(-100%);
+        }
     }
+
+
+
+
+    .burgermenu {
+        transform: translateY(0.2rem);
+    }
+
+    @media (min-width: 1250px) {
+        .burgermenu {
+            display: none;
+        }
+
+        .main_nav {
+            display: flex;
+        }
+
+        .fantask_logo img {
+            width: 16rem;
+        }
+
+        .top_header {
+            height: 112px;
+        }
 
 </style>
