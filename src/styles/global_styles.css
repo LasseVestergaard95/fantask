@@ -1,13 +1,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave:wght@100;200;300;400;500;600;700;800&display=swap');
 
 :root{
   --dark-blue: #030D32;
   --top-banner: #10306D;
+  --blue: #20458D;
   --light-blue: #312782;
   --white: #fefefe;
   --black: #0e0e0e;
+  
 
   --main-font: 'Inter', sans-serif;
   --secondary-font: 'Knewave';
@@ -26,5 +28,7 @@ img {
 body{
   font-family: var(--main-font);
   line-height: 1.5;
+  background: linear-gradient(45deg, var(--blue) 0%, var(--top-banner) 160%);
+
 }
 

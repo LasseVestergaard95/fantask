@@ -200,6 +200,11 @@
 
 <style>
 
+    header {
+        position: sticky;
+        top: 0;
+    }
+
     .top_header {
         display: flex;
         justify-content: space-between;
@@ -267,6 +272,7 @@
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
+        opacity: 0.9;
     }
 
     .scrolling_banner {
@@ -278,7 +284,7 @@
 
     .scrolling_banner li {
         color: var(--white);
-        font-size: 16px;
+        font-size: 14px;
         display: inline;
         margin-right: 10rem;
     }
@@ -296,6 +302,11 @@
     }
 
     @media (min-width: 1200px) {
+       
+        .scrolling_banner li {
+            font-size: 16px;
+        }
+       
         .burgermenu {
             display: none;
         }
@@ -337,7 +348,7 @@
         padding: 3rem;
         z-index: 1;
         border: 1px solid var(--black);
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.506);
+        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
     }
 
     .bøger_li .submenu {
