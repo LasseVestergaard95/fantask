@@ -1,0 +1,158 @@
+---
+
+---
+<div class="product_card">
+    <a href=""></a>
+    <div class="cover">
+        <button class="favorit">
+            <img src="favoritter_sort_hjerte.svg" alt="">
+        </button>
+    </div>
+    <div class="info">
+        <div>
+            <h2 class="titel">
+                <a href="">Lodger</a>
+            </h2>
+            
+             <div class="forfatter">
+                <img src="forfatter.svg" alt="">
+                <a href="">David Lapham</a>
+            </div >
+        </div>
+
+        <div class="tags">
+            <a href="" class="primary">Tegneserie</a>
+            <a href="" class="secondary">Trade Paperback</a>
+        </div>
+        <div>
+            <div class="pris">
+                <p><span>165</span>,00 kr.</p>
+            </div>
+            <button class="køb">
+                <img src="shoppingcart.svg" alt="">
+                Læg i Kurv
+            </button>
+        </div>
+
+        
+    </div>
+</div>
+
+<style>
+
+    h2 {
+        font-weight: 600;
+        font-size: 20px;
+    }
+    a {
+        text-decoration: none;
+        color: var(--black);
+    }
+    .product_card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem 0;
+        border: 1px solid rgba(3, 13, 50, 0.35);
+        border-radius: 5px;
+        font-size: 16px;
+        width: 240px;
+    }
+
+    .cover {
+        background-image: url("imgs/lodger_1.jpg");
+        background-size: cover;
+        background-position: center;
+        aspect-ratio: 2/3;
+        width: 240px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .info {
+        padding: 0.9rem;
+        width: 240px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .favorit {
+        aspect-ratio: 1/1;
+        padding: 0.5rem;
+        background-color: var(--white);
+        border-radius: 50%;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0.8rem;
+        cursor: pointer;
+        border: 1px solid rgba(3, 13, 50, 0.35);
+    }
+
+    .forfatter {
+        display: flex;
+        align-items: center;
+        margin: 0.5rem 0;
+    }
+
+    .forfatter img {
+        aspect-ratio: 1/1;
+        width: 1.2rem;
+        margin-right: 0.25rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tags a {
+        background-color: none;
+        color: var(--black);
+        border: 1px solid var(--black);
+        padding: 0.2rem 0.7rem;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .tags a.primary {
+        background-color: var(--dark-blue);
+        color: var(--white);
+        border: none;
+    }
+
+    .pris {
+        font-weight: 500;
+        font-size: 20px;
+        margin-top: 0.5rem;
+    }
+
+    .køb {
+        background-color: var(--dark-blue);
+        color: var(--white);
+        border: none;
+        padding: 0.8rem 1rem;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 20px;
+        margin-top: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .køb img {
+        aspect-ratio: 1/1;
+        width: 1.2rem;
+    }
+
+</style>

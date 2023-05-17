@@ -1,17 +1,73 @@
 ---
+import ProductCard from "./ProductCard.astro";
 
 ---
+<section>
+    <div class="shelf">
+        <h1>Ugens udvalgte manga</h1>
+        <p>Hvad vi læser i butikken for tiden </p>
+        <div class="flex_row">
+            <ProductCard /> 
+            <ProductCard /> 
+            <ProductCard /> 
+            <ProductCard /> 
+        </div>
+        <div class="button_frame">
+                <a href="">Se alt i Manga</a>
+        </div>
 
-<div class="shelf">
+    </div>
+</section>
 
-</div>
 
 <style>
+
+    a {
+        color: var(--white);
+        text-decoration: none;
+    }
     .shelf {
         margin: 0 auto;
-        height: 300px;
-        max-width: 1010px;
-        /* background-color: darkmagenta; */
+        max-width: 1020px;
+        padding-inline: 20px
+    }
+
+    .flex_row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+        margin: 0 auto;
+        width: fit-content
 
     }
+    .button_frame {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        background-color: var(--dark-blue);
+        border: none;
+        border-radius: 5px;
+        padding: 0.2rem 0.7rem;
+        text-decoration: none;
+        width: fit-content;
+        font-size: 16px;
+    }
+
+    p {
+        margin-block: 0.4rem;
+    }
+
+    @media screen and (min-width: 1200px) {
+        
+        .shelf {
+            padding-inline: 0px;
+        }
+        
+        .flex_row {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
+    }
+
 </style>
