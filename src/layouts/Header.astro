@@ -14,20 +14,93 @@
                 <li>
                     <a href="">Nyheder</a>
                 </li>
-                <li>
+                <li class="tegneserier_li">
                     <a href="">Tegneserier</a>
+                    <div class="submenu">
+                        <div class="bubble">
+                            <ul>Browse
+                                <li>
+                                    <a href="">Titler A-Z</a>
+                                </li>
+                                <li>
+                                    <a href="">Forfattere</a>
+                                </li>
+                                <li>
+                                    <a href="">Serier</a>
+                                </li>
+                            </ul>
+                            <ul>Genrer
+                                <li>
+                                    <a href="">Amerikanske blade</a>
+                                </li>
+                                <li>
+                                    <a href="">Manga</a>
+                                </li>
+                                <li>
+                                    <a href="">Danske album</a>
+                                </li>
+                                <li>
+                                    <a href="">Danske blade</a>
+                                </li>
+                                <li>
+                                    <a href="">Hardcover</a>
+                                </li>
+                                <li>
+                                    <a href="">Trade paperbacks</a>
+                                </li>
+                                <li>
+                                    <a href="">Hentai</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pointer"></div>
+                    </div>
                 </li>
-                <li>
+                <li class="bøger_li">
                     <a href="">Bøger</a>
+                    <div class="submenu">
+                        <div class="bubble">
+                            <ul>Browse
+                                <li>
+                                    <a href="">Titler A-Z</a>
+                                </li>
+                                <li>
+                                    <a href="">Forfattere</a>
+                                </li>
+                                <li>
+                                    <a href="">Serier</a>
+                                </li>
+                            </ul>
+                            <ul>Genrer
+                                <li>
+                                    <a href="">Adventure</a>
+                                </li>
+                                <li>
+                                    <a href="">Fantasy</a>
+                                </li>
+                                <li>
+                                    <a href="">Horror</a>
+                                </li>
+                                <li>
+                                    <a href="">Science Fiction</a>
+                                </li>
+                                <li>
+                                    <a href="">Krimi</a>
+                                </li>
+                                <li>
+                                    <a href="">Young Adult</a>
+                                </li>
+                                <li>
+                                    <a href="">Non-fiction</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pointer"></div>
+                    </div>
+
                 </li>
                 <li>
-                    <a href="">Spil</a>
-                </li>
-                <li>
-                    <a href="">Merch</a>
-                </li>
-                <li>
-                    <a href="">Film</a>
+                    <a href="">Hobby</a>
                 </li>
                 <li>
                     <a href="">Gavekort</a>
@@ -127,9 +200,6 @@
 
 <style>
 
-    header {
-        overflow: hidden;
-    }
     .top_header {
         display: flex;
         justify-content: space-between;
@@ -155,9 +225,18 @@
         white-space: nowrap;
     }
 
-    .main_nav li {
-        margin-right: 2rem;
+    .main_nav > li {
+        margin-right: 1rem;
         font-size: 16px;
+        z-index: 1;
+        padding: 1rem;
+        transition: text-shadow 0.3s ease-in-out;
+        
+        position: relative;
+    }
+
+    .main_nav > li:hover {
+        text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
     }
 
     .user_nav {
@@ -168,16 +247,19 @@
 
     .user_nav li {
         margin-right: 1rem;
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .user_nav li:hover {
+        filter: drop-shadow(0px 0px 20px rgb(255, 255, 255, 0.5));
     }
 
     .user_nav img {
         width: 1.5rem;
     }
 
-
     .fantask_logo img {
         width: 8rem;
-
     }
 
     .top_banner {
@@ -190,8 +272,8 @@
     .scrolling_banner {
         display: inline-block;
         padding-block: 0.6rem;
-        padding-left: 100%;
         animation: scroll 40s linear infinite;
+        width: fit-content;
     }
 
     .scrolling_banner li {
@@ -202,21 +284,18 @@
     }
     @keyframes scroll {
         0% {
-            transform: translateX(-50%);
+            transform: translateX(0%);
         }
         100% {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
         }
     }
-
-
-
 
     .burgermenu {
         transform: translateY(0.24rem) translateX(0.18rem);
     }
 
-    @media (min-width: 1250px) {
+    @media (min-width: 1200px) {
         .burgermenu {
             display: none;
         }
@@ -233,5 +312,83 @@
         .top_header {
             height: 112px;
         }
+
+
+        @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    li:hover .submenu {
+        display: block;
+        animation: fade 0.3s ease-in-out;
+    }
+
+    .submenu {
+        display: none;
+        position: absolute;
+        width: fit-content;
+        border-radius: 15px;
+        background-color: var(--white);
+        padding: 3rem;
+        z-index: 1;
+        border: 1px solid var(--black);
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.506);
+    }
+
+    .bøger_li .submenu {
+        transform: translateX(-43.5%) translateY(7%);
+    }
+
+    .tegneserier_li .submenu {
+        transform: translateX(-37%) translateY(7%);
+    }
+
+    .submenu:hover {
+        display: block;
+    }
+
+    .submenu ul {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .submenu ul a {
+        font-weight: 400;
+        color: var(--black);
+    }
+
+    .submenu li {
+        font-size: 16px;
+        margin-top: 0.1rem;
+    }
+
+    .submenu li:first-of-type {
+        margin-top: 0.2rem;
+    }
+
+    .pointer {
+        width: 7rem;
+        height: 7rem;
+        position: absolute;
+        background-color: var(--white);
+        transform: translateX(-50%) translateY(-50%);
+        clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
+        inset: (0% 45% 0% 45% round 10px);
+        border-radius: 5px;
+        top: -0.5rem;
+        left: 50%;
+        z-index: -1;
+    }
+    .bubble {
+        display: flex;
+        gap: 3rem;
+    }
+
+
 
 </style>
