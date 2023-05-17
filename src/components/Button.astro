@@ -1,0 +1,33 @@
+---
+
+---
+
+<a href="" class={Astro.props.type}>
+    <slot />
+</a>
+
+<style>
+    a {
+        background-color: none;
+        color: var(--black);
+        border: 1px solid var(--black);
+        padding: 0.2rem 0.7rem;
+        border-radius: 5px;
+        font-size: 16px;
+        text-decoration: none;
+        color: var(--black);
+    }
+
+    a.primary {
+        background-color: var(--dark-blue);
+        color: var(--white);
+        border: none;
+    }
+
+    a.secondary {
+        background-color: var(--white);
+        color: var(--black);
+        border: 1px solid var(--black);
+    }
+
+</style>

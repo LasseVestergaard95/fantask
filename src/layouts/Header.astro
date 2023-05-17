@@ -137,44 +137,44 @@
             </ul>
         </nav>
     </div>
-    <div class="top_banner">
-        <ul class="scrolling_banner">
-            <li>
-                Fri fragt ved køb over 500 kr.
-            </li>
-            <li>|</li>
-            <li>
-                30 dages returret
-            </li>
-            <li>|</li>
-            <li>
-                100% dansk ejet
-            </li>
-            <li>|</li>
-            <li>
-                Vi elsker tegneserier!
-            </li>
-            <li>|</li>
-            <li>
-                Fri fragt ved køb over 500 kr.
-            </li>
-            <li>|</li>
-            <li>
-                30 dages returret
-            </li>
-            <li>|</li>
-            <li>
-                100% dansk ejet
-            </li>
-            <li>|</li>
-            <li>
-                Vi elsker tegneserier!
-            </li>
-            <li>|</li>
-        </ul>
-    </div>
-</header>
 
+</header>
+<div class="top_banner">
+    <ul class="scrolling_banner">
+        <li>
+            Fri fragt ved køb over 500 kr.
+        </li>
+        <li>|</li>
+        <li>
+            30 dages returret
+        </li>
+        <li>|</li>
+        <li>
+            100% dansk ejet
+        </li>
+        <li>|</li>
+        <li>
+            Vi er helt tosset med tegneserier
+        </li>
+        <li>|</li>
+        <li>
+            Fri fragt ved køb over 500 kr.
+        </li>
+        <li>|</li>
+        <li>
+            30 dages returret
+        </li>
+        <li>|</li>
+        <li>
+            100% dansk ejet
+        </li>
+        <li>|</li>
+        <li>
+            Vi er helt tosset med tegneserier
+        </li>
+        <li>|</li>
+    </ul>
+</div>
 
 
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -202,6 +202,7 @@
     header {
         position: sticky;
         top: 0;
+        z-index: 9999;
     }
 
     .top_header {
@@ -273,6 +274,9 @@
         width: 100%;
         opacity: 0.9;
         box-shadow: 0px 5px 14px 0px #275ec424;
+        z-index: -9999;
+        position: sticky;
+        top: 5rem;
     }
 
     .scrolling_banner {
@@ -322,6 +326,10 @@
 
         .top_header {
             height: 112px;
+        }
+
+        .top_banner {
+            top: 7rem;
         }
 
 
@@ -394,6 +402,7 @@
         top: -0.5rem;
         left: 50%;
         z-index: -1;
+        padding-inline: 6rem;
     }
     .bubble {
         display: flex;

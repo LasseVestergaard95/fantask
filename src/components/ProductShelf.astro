@@ -1,19 +1,40 @@
 ---
+import Button from "./Button.astro";
 import ProductCard from "./ProductCard.astro";
 
 ---
 <section>
     <div class="shelf">
-        <h1>Ugens udvalgte manga</h1>
-        <p>Hvad vi læser i butikken for tiden </p>
-        <div class="flex_row">
-            <ProductCard /> 
-            <ProductCard /> 
-            <ProductCard /> 
-            <ProductCard /> 
+        <div class="text">
+            <h1>Ugens udvalgte manga</h1>
+            <p>Hvad vi læser i butikken for tiden </p>
         </div>
+        <div class="flex_row_container">
+            <div class="flex_row">
+
+                <ProductCard 
+                    titel="Lodgers"
+                    forfatter="David Lapham"
+                    img="lodger_1"
+                    pris="165"
+                    type="Tegneserie"
+                    format="Trade Paperback"
+                /> 
+
+                <ProductCard 
+                titel="Lodgers sfn lksadnf lksndfl nlklænl sdfsjdklj skladjflk"
+                forfatter="David Lapham"
+                img="arsene_lupin_gentleman_thief"
+                pris="165"
+                type="Tegneserie"
+                format="Trade Paperback"
+            /> 
+
+            </div>
+        </div>
+
         <div class="button_frame">
-                <a href="">Se alt i Manga</a>
+            <Button type="secondary">Se alt i Manga</Button>
         </div>
 
     </div>
@@ -22,52 +43,37 @@ import ProductCard from "./ProductCard.astro";
 
 <style>
 
-    a {
-        color: var(--white);
-        text-decoration: none;
-    }
     .shelf {
         margin: 0 auto;
-        max-width: 1020px;
-        padding-inline: 20px
+        max-width: fit-content;
+    }
+
+    .text {
+        padding-inline: 2rem;
+    }
+
+    .flex_row_container {
+        overflow: scroll;
     }
 
     .flex_row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
         gap: 1rem;
-        margin: 0 auto;
-        width: fit-content
-
+        margin-inline: 2rem;
     }
+    
+    
     .button_frame {
         display: flex;
         justify-content: center;
-        margin: 0 auto;
-        background-color: var(--dark-blue);
-        border: none;
-        border-radius: 5px;
-        padding: 0.2rem 0.7rem;
-        text-decoration: none;
-        width: fit-content;
-        font-size: 16px;
     }
 
-    p {
-        margin-block: 0.4rem;
-    }
 
     @media screen and (min-width: 1200px) {
         
-        .shelf {
-            padding-inline: 0px;
-        }
-        
-        .flex_row {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr;
-        }
+    
     }
 
 </style>
