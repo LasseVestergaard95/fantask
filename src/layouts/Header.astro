@@ -252,11 +252,15 @@
 
     .user_nav li {
         margin-right: 1rem;
-        transition: filter 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     .user_nav li:hover {
         filter: drop-shadow(0px 0px 20px rgb(255, 255, 255, 0.5));
+    }
+
+    .user_nav:has(li:hover) li:not(:hover) {
+        opacity: 0.5;
     }
 
     .user_nav img {
@@ -340,73 +344,76 @@
         100% {
             opacity: 1;
         }
-    }
+        }
 
-    li:hover .submenu {
-        display: block;
-        animation: fade 0.3s ease-in-out;
-    }
+        li:hover .submenu {
+            opacity: 1;
+            pointer-events: all;
+        }
 
-    .submenu {
-        display: none;
-        position: absolute;
-        width: fit-content;
-        border-radius: 15px;
-        background-color: var(--white);
-        padding: 3rem;
-        z-index: 1;
-        border: 1px solid var(--black);
-        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
-    }
+        .submenu {
+            position: absolute;
+            width: fit-content;
+            opacity: 0;
+            border-radius: 15px;
+            background-color: var(--white);
+            padding: 3rem;
+            z-index: 1;
+            border: 1px solid var(--black);
+            box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
+            pointer-events: none;
+            transition: opacity 0.2s ease-in-out;
+        }
 
-    .bøger_li .submenu {
-        transform: translateX(-43.5%) translateY(7%);
-    }
+        .bøger_li .submenu {
+            transform: translateX(-43.5%) translateY(7%);
+        }
 
-    .tegneserier_li .submenu {
-        transform: translateX(-37%) translateY(7%);
-    }
+        .tegneserier_li .submenu {
+            transform: translateX(-38%) translateY(7%);
+        }
 
-    .submenu:hover {
-        display: block;
-    }
+        .submenu:hover {
+            display: block;
+        }
 
-    .submenu ul {
-        font-weight: 600;
-        font-size: 20px;
-    }
+        .submenu ul {
+            font-weight: 600;
+            font-size: 20px;
+        }
 
-    .submenu ul a {
-        font-weight: 400;
-        color: var(--black);
-    }
+        .submenu ul a {
+            font-weight: 400;
+            color: var(--black);
+        }
 
-    .submenu li {
-        font-size: 16px;
-        margin-top: 0.1rem;
-    }
+        .submenu li {
+            font-size: 16px;
+            margin-top: 0.1rem;
+        }
 
-    .submenu li:first-of-type {
-        margin-top: 0.2rem;
-    }
+        .submenu li:first-of-type {
+            margin-top: 0.2rem;
+        }
 
-    .pointer {
-        width: 7rem;
-        height: 7rem;
-        position: absolute;
-        background-color: var(--white);
-        transform: translateX(-50%) translateY(-50%);
-        clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
-        inset: (0% 45% 0% 45% round 10px);
-        border-radius: 5px;
-        top: -0.5rem;
-        left: 50%;
-        z-index: -1;
-        padding-inline: 6rem;
-    }
-    .bubble {
-        display: flex;
-        gap: 3rem;
+        .pointer {
+            width: 7rem;
+            height: 7rem;
+            position: absolute;
+            background-color: var(--white);
+            transform: translateX(-50%) translateY(-50%);
+            clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
+            inset: (0% 45% 0% 45% round 10px);
+            border-radius: 5px;
+            top: -0.5rem;
+            left: 50%;
+            z-index: -1;
+            padding-inline: 6rem;
+        }
+        .bubble {
+            display: flex;
+            gap: 3rem;
+        }
     }
 
 
