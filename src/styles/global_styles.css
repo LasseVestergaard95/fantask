@@ -23,3 +23,8 @@ img {
   display: block;
 }
 
+body{
+  font-family: var(--main-font);
+  line-height: 1.5;
+}
+

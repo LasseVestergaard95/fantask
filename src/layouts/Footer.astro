@@ -1,0 +1,69 @@
+---
+
+---
+
+<footer>
+    <div class="fantask">
+        <h2>Fantask A/S</h2>
+        <p>Sankt Peders Stræde 18</p>
+        <p>1453 København K</p>
+        <p>Telefon: 33 11 85 38</p>
+        <p>Mail: fantask@fantask.dk</p>
+        <p>Se butikken indefra her</p>
+        <p>Læs Fantasks historie her</p>
+    </div>
+    <div class="åbningstider">
+        <h2>Åbningstider</h2>
+        <p>Mandag - Torsdag: 11-18</p>
+        <p>Fredag: 11-18:30</p>
+        <p>Lørdag: 11-15</p>
+    </div>
+    <div class="find_os">
+        <h2>Find os</h2>
+        <img src="imgs/map.jpg" alt="">
+    </div>
+    <div class="medier">
+        <h2>Medier</h2>
+        <a href=""><img src="instagram.svg" alt="">
+        <span>Instagram</span></a>
+    </div>
+</footer>
+
+<style>
+    *{
+        background-color: var(--dark-blue);
+        color: var(--white);
+    }
+
+    footer{
+        padding-block: 2rem;
+        padding-inline: 2rem;
+    }
+ footer div{
+    margin-bottom: 3rem;
+ }
+
+ h2{
+    margin-bottom: 1.5rem;
+ }
+ /* Her tilføjer jeg margin bottom til hver anden p element (even)  */
+ .fantask p:nth-of-type(even){
+    margin-bottom: 1rem;
+ }
+ .åbningstider p{
+    margin-bottom: 0.8rem;
+ }
+ .find_os img{
+    width: 80%;
+ }
+a{
+ display: flex;
+ align-items: center;
+ gap: 1rem;
+}
+a img{
+    max-width: 1.5rem;
+
+}
+
+</style>
