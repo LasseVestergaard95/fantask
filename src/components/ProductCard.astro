@@ -3,7 +3,7 @@ import Button from "./Button.astro";
 const {titel, forfatter, type, format, pris, img, sprog, genre} = Astro.props;
 
 // new variable tags is type, format, sprog, genre as an array
-const tags = [type, format, sprog, genre];
+const tags = [type, format, genre, sprog];
 
 ---
 
@@ -30,7 +30,7 @@ const tags = [type, format, sprog, genre];
         <div class="tags">
             {
                 tags.map(tag => tag && 
-                    <Button type={tag === type ? "primary" : "secondary"}>{tag}</Button>
+                    <Button type={tag === type ? "primary" : "secondary"} link={tag}>{tag}</Button>
                 )
             }
         </div>
@@ -127,7 +127,7 @@ const tags = [type, format, sprog, genre];
 
     .info {
         padding: 0.9rem;
-        height: 21rem;
+        height: 19rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -186,7 +186,7 @@ const tags = [type, format, sprog, genre];
         }
 
         .info {
-            height: 22rem;
+            height: 19rem;
         }
     }
 

@@ -45,7 +45,7 @@ const filteredData = data.filter(item => produkter.includes(item.id.toString()))
         </div>
     </div>
     <div class="button_frame">
-        <Button type="secondary">Se alt i {Astro.props.kategori}</Button>
+        <Button type="secondary" link={Astro.props.kategori}>Se alt i {Astro.props.kategori}</Button>
     </div>
 </section>
 
