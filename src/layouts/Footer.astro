@@ -76,11 +76,9 @@
     align-items: center;
     gap: 1rem;
   }
-  a img {
-    max-width: 1.5rem;
-  }
   .medier img {
     width: 50px;
+    max-width: 1.5rem;
   }
 
   .grid {
@@ -90,20 +88,28 @@
   }
   @media (min-width: 700px) {
     footer {
-      display: flex;
-      gap: 4rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-inline: auto;
+      gap: 2rem;
+      justify-items: center;
     }
 
     .grid {
       display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
+      flex-direction: row;
+
     }
     .find_os img {
       width: 100%;
-      min-width: 20rem;
+    }
+  }
+  @media (min-width: 1000px) {
+    footer {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .grid{
+      flex-direction: column;
     }
   }
 </style>
