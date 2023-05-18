@@ -3,8 +3,9 @@
 
 <section class="newsletter">
   <div class="img_left"></div>
+  <div class="text-field">
   <h2>Klar til at dykke ned i en verden af tegneserier, manga og meget mere?</h2>
-  <p>Vær den første til at høre om nye udgivelser, specielle tilbud og spændende events. Gå ikke glip af noget - Tilmed dig vores nyhedsbrev og bliv en del af Fantasks fællesskab!</p>
+  <p>Vær den første til at høre om nye udgivelser, specielle tilbud og spændende events. Gå ikke glip af noget - Tilmed dig vores nyhedsbrev og bliv en del af Fantasks fællesskab!</p></div>
   <form action="">
     <div class="form-fields">
       <input type="text" name="name" placeholder="Navn..." />
@@ -29,9 +30,13 @@
   h2 {
     color: var(--white);
     margin-bottom: 1rem;
-    max-width: 65ch;
+    max-width: 67ch;
   }
-
+.text-field{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
   form {
     display: flex;
     flex-direction: column;
@@ -80,5 +85,20 @@
     top: 170px;
     right: -45px;
     transform: rotate(-70deg);
+  }
+
+  @media (min-width: 768px){
+.text-field{
+  text-align: center;
+}
+p{
+  max-width: 55ch;
+}
+
+.img_left{
+  width: 25%;
+  top: -120px;
+  left: -10px;
+}
   }
 </style>
