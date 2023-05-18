@@ -75,8 +75,8 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
     }
 
     .cover_container {
-        aspect-ratio: 2/3;
-        width: 240px;
+        aspect-ratio: auto;
+        height: auto;
         position: relative;
         cursor: pointer;
     }
@@ -123,8 +123,7 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
 
     .info {
         padding: 0.9rem;
-        width: 240px;
-        height: 320px;
+        height: 19rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -175,6 +174,13 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
     .køb img {
         aspect-ratio: 1/1;
         width: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+        .product_card {
+            width: 200px;
+            height: 600px;
+        }
     }
 
 </style>
