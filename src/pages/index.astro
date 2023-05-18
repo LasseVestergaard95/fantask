@@ -17,6 +17,12 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
+const activeData = data.filter((shelf) => shelf.aktiv === true);
+
+const firstShelf = activeData[0];
+const restOfShelves = activeData.slice(1);
+
+
 ---
 
 
@@ -24,20 +30,23 @@ const data = await response.json();
     <ForsideHero />
     <BackgroundPages />
     <div class="indhold">
+        <ProductShelf
+            titel={firstShelf.titel}
+            beskrivelse={firstShelf.beskrivelse}
+            produkter={firstShelf.produkter}
+            kategori={firstShelf.kategori}
+        />
+        <SamlemaerkeBanner />
         {
-            data.map((item) => (
+            restOfShelves.length > 0 && restOfShelves.map((shelf) => (
                 <ProductShelf
-                    titel={item.titel}
-                    beskrivelse={item.beskrivelse}
-                    produkter={item.produkter}
-                    kategori={item.kategori}
+                    titel={shelf.titel}
+                    beskrivelse={shelf.beskrivelse}
+                    produkter={shelf.produkter}
+                    kategori={shelf.kategori}
                 />
             ))
         }
-        <SamlemaerkeBanner />
-
-
-
         <NewsletterBanner />
     </div>
 
