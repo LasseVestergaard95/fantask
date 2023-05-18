@@ -2,6 +2,24 @@
 import Button from "./Button.astro";
 import ProductCard from "./ProductCard.astro";
 
+
+const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
+const options = {
+    headers: {
+        apikey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+    }
+}
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+
+const firstFour = data.slice(0, 4);
+
+console.log(firstFour);
+
+
 ---
 <section>
     <div class="shelf">
@@ -11,41 +29,19 @@ import ProductCard from "./ProductCard.astro";
         </div>
         <div class="flex_row_container">
             <div class="flex_row">
-                <ProductCard 
-                    titel="Lodgers"
-                    forfatter="David Lapham"
-                    img="lodger_1"
-                    pris="165"
-                    type="Tegneserie"
-                    format="Trade Paperback"
-                /> 
 
-                <ProductCard 
-                    titel="Arsène Lupin: Gentleman Thief"
-                    forfatter="Maurice Leblanc"
-                    img="arsene_lupin_gentleman_thief"
-                    pris="220"
-                    type="Tegneserie"
-                    format="Hardcover"
-                /> 
-
-                <ProductCard 
-                    titel="Lodgers"
-                    forfatter="David Lapham"
-                    img="lodger_1"
-                    pris="165"
-                    type="Tegneserie"
-                    format="Trade Paperback"
-                /> 
-
-                <ProductCard 
-                    titel="Arsène Lupin: Gentleman Thief"
-                    forfatter="Maurice Leblanc"
-                    img="arsene_lupin_gentleman_thief"
-                    pris="220"
-                    type="Tegneserie"
-                    format="Hardcover"
-                /> 
+                {
+                    firstFour.map{(product) => {
+                        <ProductCard 
+                            titel={product.titel}
+                            forfatter={product.forfatter}
+                            img={product.img}
+                            pris={product.pris}
+                            type={product.type}
+                            format={product.format}
+                        />
+                    }}
+                }
 
             </div>
         </div>
