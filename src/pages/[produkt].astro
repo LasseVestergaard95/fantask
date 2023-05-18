@@ -35,7 +35,7 @@ const tags = [product.type, product.format, product.genre, product.sprog];
 const volume = [product.serie, product.nr]
 ---
 
-<MainLayout titel={product.titel}>
+<MainLayout titel={volume[0] ? `${volume[0]}, Vol. ${volume[1]}` : product.titel}>
     <BackgroundPages />
 
     <div class="indhold">
