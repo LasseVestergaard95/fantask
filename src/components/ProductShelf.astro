@@ -37,15 +37,14 @@ const filteredData = data.filter(item => produkter.includes(item.id.toString()))
                             pris={product.pris}
                             type={product.type}
                             format={product.format}
+                            sprog={product.sprog}
                         />
                     })
                 }
         </div>
-
-        <div class="button_frame">
-            <Button type="secondary">Se alt i manga</Button>
-        </div>
-
+    </div>
+    <div class="button_frame">
+        <Button type="secondary">Se alt i manga</Button>
     </div>
 </section>
 
@@ -85,6 +84,8 @@ const filteredData = data.filter(item => produkter.includes(item.id.toString()))
     .button_frame {
         display: flex;
         justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 
 
@@ -96,7 +97,6 @@ const filteredData = data.filter(item => produkter.includes(item.id.toString()))
         .flex_row_container {
             padding-inline: 0rem;
         }
-    
     }
 
 </style>

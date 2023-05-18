@@ -1,6 +1,6 @@
 ---
 import Button from "./Button.astro";
-const {titel , forfatter, type, format, pris, img} = Astro.props;
+const {titel, forfatter, type, format, pris, img, sprog} = Astro.props;
 
 
 ---
@@ -29,6 +29,7 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
         <div class="tags">
             <Button type="primary">{type}</Button>
             <Button type="secondary">{format}</Button>
+            <Button type="secondary">{sprog}</Button>
         </div>
         <div>
             <div class="pris">
@@ -180,6 +181,10 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
         .product_card {
             width: 200px;
             height: 600px;
+        }
+
+        .info {
+            height: 22rem;
         }
     }
 
