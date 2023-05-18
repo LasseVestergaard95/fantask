@@ -1,0 +1,184 @@
+---
+import BackgroundPages from "../components/BackgroundPages.astro";
+import Button from "../components/Button.astro";
+import ForsideHero from "../components/ForsideHero.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+
+
+
+export async function getStaticPaths() {
+
+    const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
+    const options = {
+    headers: {
+        apikey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+    }
+    }
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    const paths = data.map((product) => ({
+        params: { produkt: product.serie + product.nr + product.titel },
+        props: { product },
+    }));
+
+    return paths;
+}
+
+const { product } = Astro.props;
+
+const tags = [product.type, product.format, product.genre, product.sprog];
+---
+
+<MainLayout>
+    <BackgroundPages />
+
+    <div class="indhold">
+        <div class="produkt">
+
+            <img src=`/imgs/${product.img}.jpg` alt="" class="cover">
+
+            <div class="info">
+                <h1>{product.titel}</h1>
+                <div class="alle_titler">
+                    <img src="alle_titler.svg" alt="">
+                    <a href="">Se alle titler i samme serie</a>
+                </div>
+
+                <div class="forfatter">
+                    <img src="forfatter.svg" alt="">
+                    <a href="">{product.forfatter}</a>
+                </div>
+
+                <div class="tags">
+                    {
+                        tags.map(tag => tag && 
+                            <Button type={tag === product.type ? "primary" : "secondary"} link={tag}>{tag}</Button>
+                        )
+                    }
+                </div>
+                <div class="salg">
+                    <div class="pris">
+                        <h2><span>{product.pris}</span>,00 kr.</h2>
+                    </div>
+                    <button class="køb">
+                        <img src="shoppingcart.svg" alt="">
+                        Læg i Kurv
+                    </button>
+                </div>
+                <div class="beskrivelse">
+                    <h2>Beskrivelse</h2>
+                    <p>{product.beskrivelse}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</MainLayout>
+
+<style>
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .produkt {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1020px;
+        margin: 0 auto;
+    }
+
+
+    .cover {
+        width: 300px;
+        height: 100%;
+        object-fit: cover;
+        place-self: flex-start;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    .info {
+        padding-left: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 3rem;
+    }
+
+    .alle_titler {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    .alle_titler img {
+        aspect-ratio: 1/1;
+        width: 1.3rem;
+        margin-right: 0.25rem;
+    }
+
+    .forfatter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    .forfatter img {
+        aspect-ratio: 1/1;
+        width: 1.3rem;
+        margin-right: 0.25rem;
+        margin-left: -0.1rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    .salg {
+        margin: 1rem 0;
+    }
+
+    .pris h2, .pris span {
+        font-size: 32px;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+        
+    
+
+    .køb {
+        background-color: var(--dark-blue);
+        color: var(--white);
+        border: none;
+        padding: 0.8rem 1rem;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+
+    .køb img {
+        aspect-ratio: 1/1;
+        width: 1.2rem;
+    }
+
+    .beskrivelse {
+        margin: 2rem 0;
+    }
+
+</style>

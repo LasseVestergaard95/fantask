@@ -1,6 +1,6 @@
 ---
 import Button from "./Button.astro";
-const {titel, forfatter, type, format, pris, img, sprog, genre} = Astro.props;
+const {titel, forfatter, type, format, pris, img, sprog, genre, serie, nr} = Astro.props;
 
 // new variable tags is type, format, sprog, genre as an array
 const tags = [type, format, genre, sprog];
@@ -8,7 +8,7 @@ const tags = [type, format, genre, sprog];
 ---
 
 <div class="product_card">
-    <a href={titel} class="cover_container">
+    <a href=`${serie + nr + titel}` class="cover_container">
         <img src={`/imgs/${img}.jpg`} class="cover">
         <button class="favorit">
             <img src="favoritter_sort_hjerte.svg" alt="">

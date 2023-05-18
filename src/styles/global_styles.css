@@ -48,3 +48,10 @@ p {
   font-size: 16px;
   font-weight: 400;
 }
+
+.indhold {
+  background-color: var(--white);
+  min-height: fit-content;
+  padding-block-start: 2rem;
+  z-index: 0;
+}
