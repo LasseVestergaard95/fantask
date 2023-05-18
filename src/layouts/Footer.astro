@@ -75,7 +75,7 @@
   }
   .find_os img {
     width: 80%;
-    min-width: 20rem;
+
   }
   a {
     display: flex;
@@ -100,14 +100,24 @@
       gap: 2rem;
       justify-items: center;
     }
+    footer div {
+    margin-bottom: initial;
+  }
 
     .grid {
       display: flex;
       flex-direction: row;
+      column-gap: 3rem;
 
     }
     .find_os img {
       width: 100%;
+    }
+    .medier{
+      grid-column: span 3;
+    }
+    .medier h2{
+      text-align: center;
     }
   }
   @media (min-width: 1000px) {
@@ -117,6 +127,11 @@
     .grid{
       flex-direction: column;
     }
-
+.medier{
+  grid-area: initial;
+}
+.medier h2{
+      text-align: initial;
+    }
   }
 </style>
