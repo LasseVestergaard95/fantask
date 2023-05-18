@@ -53,6 +53,10 @@
   footer {
     padding-block: 2rem;
     padding-inline: 2rem;
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
+
   }
   footer div {
     margin-bottom: 3rem;
@@ -60,6 +64,7 @@
 
   h2 {
     margin-bottom: 1.5rem;
+    font-weight: 500;
   }
   /* Her tilføjer jeg margin bottom til hver anden p element (even)  */
   .fantask p:nth-of-type(even) {
@@ -70,6 +75,7 @@
   }
   .find_os img {
     width: 80%;
+    min-width: 20rem;
   }
   a {
     display: flex;
@@ -86,7 +92,7 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 1rem;
   }
-  @media (min-width: 700px) {
+  @media (min-width: 768px) {
     footer {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -111,5 +117,6 @@
     .grid{
       flex-direction: column;
     }
+
   }
 </style>

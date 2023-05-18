@@ -14,20 +14,93 @@
                 <li>
                     <a href="">Nyheder</a>
                 </li>
-                <li>
+                <li class="tegneserier_li">
                     <a href="">Tegneserier</a>
+                    <div class="submenu">
+                        <div class="bubble">
+                            <ul>Browse
+                                <li>
+                                    <a href="">Titler A-Z</a>
+                                </li>
+                                <li>
+                                    <a href="">Forfattere</a>
+                                </li>
+                                <li>
+                                    <a href="">Serier</a>
+                                </li>
+                            </ul>
+                            <ul>Genrer
+                                <li>
+                                    <a href="">Amerikanske blade</a>
+                                </li>
+                                <li>
+                                    <a href="">Manga</a>
+                                </li>
+                                <li>
+                                    <a href="">Danske album</a>
+                                </li>
+                                <li>
+                                    <a href="">Danske blade</a>
+                                </li>
+                                <li>
+                                    <a href="">Hardcover</a>
+                                </li>
+                                <li>
+                                    <a href="">Trade paperbacks</a>
+                                </li>
+                                <li>
+                                    <a href="">Hentai</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pointer"></div>
+                    </div>
                 </li>
-                <li>
+                <li class="bøger_li">
                     <a href="">Bøger</a>
+                    <div class="submenu">
+                        <div class="bubble">
+                            <ul>Browse
+                                <li>
+                                    <a href="">Titler A-Z</a>
+                                </li>
+                                <li>
+                                    <a href="">Forfattere</a>
+                                </li>
+                                <li>
+                                    <a href="">Serier</a>
+                                </li>
+                            </ul>
+                            <ul>Genrer
+                                <li>
+                                    <a href="">Adventure</a>
+                                </li>
+                                <li>
+                                    <a href="">Fantasy</a>
+                                </li>
+                                <li>
+                                    <a href="">Horror</a>
+                                </li>
+                                <li>
+                                    <a href="">Science Fiction</a>
+                                </li>
+                                <li>
+                                    <a href="">Krimi</a>
+                                </li>
+                                <li>
+                                    <a href="">Young Adult</a>
+                                </li>
+                                <li>
+                                    <a href="">Non-fiction</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pointer"></div>
+                    </div>
+
                 </li>
                 <li>
-                    <a href="">Spil</a>
-                </li>
-                <li>
-                    <a href="">Merch</a>
-                </li>
-                <li>
-                    <a href="">Film</a>
+                    <a href="">Hobby</a>
                 </li>
                 <li>
                     <a href="">Gavekort</a>
@@ -43,14 +116,25 @@
         <nav>
             <ul class="user_nav">
                 <li>
-                    <lottie-player class="burgermenu" src="menuV2.json"  background="transparent"  speed="1.6"></lottie-player>
+                    <lottie-player class="burgermenu" src="menuV2.json"  background="transparent"  speed="1.7"></lottie-player>
     
                 </li>
+
+                <!-- <li>
+                    <div class="searchbar_container">
+                        <form action="" class="search_form">
+                            <input type="text" class="searchbar_input">
+                        </form>
+
+                    </div>
+                </li> -->
+
                 <li>
-                    <a href="">
+                    <button class="search">
                         <img src="header_search.svg" alt="">
-                    </a>
+                    </button>
                 </li>
+
                 <li>
                     <a href="">
                         <img src="header_favoritter_hvidt_hjerte.svg" alt="">
@@ -64,44 +148,44 @@
             </ul>
         </nav>
     </div>
-    <div class="top_banner">
-        <ul class="scrolling_banner">
-            <li>
-                Fri fragt ved køb over 500 kr.
-            </li>
-            <li>|</li>
-            <li>
-                30 dages returret
-            </li>
-            <li>|</li>
-            <li>
-                100% dansk ejet
-            </li>
-            <li>|</li>
-            <li>
-                Vi elsker tegneserier!
-            </li>
-            <li>|</li>
-            <li>
-                Fri fragt ved køb over 500 kr.
-            </li>
-            <li>|</li>
-            <li>
-                30 dages returret
-            </li>
-            <li>|</li>
-            <li>
-                100% dansk ejet
-            </li>
-            <li>|</li>
-            <li>
-                Vi elsker tegneserier!
-            </li>
-            <li>|</li>
-        </ul>
-    </div>
-</header>
 
+</header>
+<div class="top_banner">
+    <ul class="scrolling_banner">
+        <li>
+            Fri fragt ved køb over 500 kr.
+        </li>
+        <li>|</li>
+        <li>
+            30 dages returret
+        </li>
+        <li>|</li>
+        <li>
+            Du er Fantaskisk!
+        </li>
+        <li>|</li>
+        <li>
+            Vi er helt tosset med tegneserier
+        </li>
+        <li>|</li>
+        <li>
+            Fri fragt ved køb over 500 kr.
+        </li>
+        <li>|</li>
+        <li>
+            30 dages returret
+        </li>
+        <li>|</li>
+        <li>
+            Du er Fantaskisk!
+        </li>
+        <li>|</li>
+        <li>
+            Vi er helt tosset med tegneserier
+        </li>
+        <li>|</li>
+    </ul>
+</div>
 
 
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -121,15 +205,55 @@
         }
     });
 
+    // const search = document.querySelector('.search');
+    // const searchbar = document.querySelector('.searchbar_container');
+    // const main_nav = document.querySelector('.main_nav');
+    // const searchBarInput = document.querySelector('.searchbar_input'); // Assuming the input element has a class 'searchbar_input'
+    // const searchForm = document.querySelector('.search_form'); // Assuming the form has a class 'search_form'
+
+    // search.addEventListener('click', function(e) {
+    //     e.stopPropagation();
+
+    //     if (searchbar.classList.contains('searchbar_visible')) {
+    //         // Submit the form when the searchbar is visible and the search button is clicked
+    //         // searchForm.submit();
+    //     } else {
+    //         main_nav.classList.add('hide');
+    //         searchbar.classList.add('searchbar_visible');
+    //         searchBarInput.focus();
+    //     }
+    // });
+
+    // searchbar.addEventListener('click', function(e) {
+    //     e.stopPropagation(); // Prevent the click event from bubbling up to the document
+    // });
+
+    // document.addEventListener('click', function(e) {
+    //     if (searchbar.classList.contains('searchbar_visible')) {
+    //         searchbar.classList.remove('searchbar_visible');
+    //         main_nav.classList.remove('hide');
+    //     }
+    // });
+
+
+
 </script>
 
 
 
 <style>
 
-    header {
-        overflow: hidden;
+    .hide {
+        opacity: 0;
+        pointer-events: none;
     }
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+    }
+
     .top_header {
         display: flex;
         justify-content: space-between;
@@ -153,12 +277,30 @@
         width: 100%;
         justify-content: space-between;
         white-space: nowrap;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
-    .main_nav li {
-        margin-right: 2rem;
+    .main_nav > li {
+        margin-right: 1rem;
         font-size: 16px;
+        z-index: 1;
+        padding: 1rem;
+        transition: text-shadow 0.3s ease-in-out, opacity 0.2s ease-in-out;
+        position: relative;
+        font-weight: medium;
     }
+
+    /* .main_nav > li:hover {
+        text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    } */
+    
+    .main_nav:has(li:hover) > li:not(:hover) {
+        opacity: 0.5;
+    }
+
 
     .user_nav {
         display: flex;
@@ -168,16 +310,23 @@
 
     .user_nav li {
         margin-right: 1rem;
+        /* transition: all 0.3s ease-in-out; */
     }
+
+    /* .user_nav li:hover {
+        filter: drop-shadow(0px 0px 20px rgb(255, 255, 255, 0.5));
+    } */
+
+    /* .user_nav:has(li:hover) li:not(:hover) {
+        opacity: 0.5;
+    } */
 
     .user_nav img {
         width: 1.5rem;
     }
 
-
     .fantask_logo img {
         width: 8rem;
-
     }
 
     .top_banner {
@@ -185,38 +334,56 @@
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
+        opacity: 0.9;
+        box-shadow: 0px 5px 14px 0px #275ec424;
+        z-index: -9999;
+        position: sticky;
+        top: 5rem;
     }
 
     .scrolling_banner {
         display: inline-block;
         padding-block: 0.6rem;
-        padding-left: 100%;
         animation: scroll 40s linear infinite;
+        width: fit-content;
     }
 
     .scrolling_banner li {
         color: var(--white);
-        font-size: 16px;
+        font-size: 14px;
         display: inline;
         margin-right: 10rem;
     }
     @keyframes scroll {
         0% {
-            transform: translateX(-50%);
+            transform: translateX(0%);
         }
         100% {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
         }
     }
-
-
-
 
     .burgermenu {
         transform: translateY(0.24rem) translateX(0.18rem);
+        cursor: pointer;
     }
 
-    @media (min-width: 1250px) {
+    .search {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+    .searchbar_container {
+        display: none;
+    }
+
+    @media (min-width: 1200px) {
+       
+        .scrolling_banner li {
+            font-size: 16px;
+        }
+       
         .burgermenu {
             display: none;
         }
@@ -233,5 +400,128 @@
         .top_header {
             height: 112px;
         }
+
+        .top_banner {
+            top: 7rem;
+        }
+
+
+        /* @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        } */
+
+        li:hover .submenu {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .submenu {
+            position: absolute;
+            width: fit-content;
+            opacity: 0;
+            border-radius: 15px;
+            background-color: var(--white);
+            padding: 3rem;
+            z-index: 1;
+            border: 1px solid var(--black);
+            box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
+            pointer-events: none;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .bøger_li .submenu {
+            transform: translateX(-43.5%) translateY(7%);
+        }
+
+        .tegneserier_li .submenu {
+            transform: translateX(-38%) translateY(7%);
+        }
+
+        .submenu:hover {
+            display: block;
+        }
+
+        .submenu ul {
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .submenu ul a {
+            font-weight: 400;
+            color: var(--black);
+        }
+
+        .submenu li {
+            font-size: 16px;
+            margin-top: 0.1rem;
+            opacity: 1;
+        }
+
+        .submenu li:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        .pointer {
+            width: 7rem;
+            height: 7rem;
+            position: absolute;
+            background-color: var(--white);
+            transform: translateX(-50%) translateY(-50%);
+            clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
+            inset: (0% 45% 0% 45% round 10px);
+            border-radius: 5px;
+            top: -0.5rem;
+            left: 50%;
+            z-index: -1;
+            padding-inline: 6rem;
+        }
+        .bubble {
+            display: flex;
+            gap: 3rem;
+        }
+
+
+
+        .searchbar_container {  
+            display: none;
+            align-items: center;
+            width: 0%;
+            overflow: hidden;
+            opacity: 0;
+            transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-0.3rem);
+        }
+
+        .searchbar_visible {
+            display: flex;
+            opacity: 1;
+            width: 100%;
+        }
+
+        .searchbar_input {
+            height: 2rem;
+            border: none;
+            border-bottom: 1px solid var(--white);
+            background: none;
+            padding-inline: 0.4rem;
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        .searchbar_input:focus {
+            outline: none;
+        }
+
+    }
 
 </style>

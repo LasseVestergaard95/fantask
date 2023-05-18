@@ -1,0 +1,110 @@
+---
+import Button from "./Button.astro";
+import ProductCard from "./ProductCard.astro";
+
+---
+<section>
+    <div class="shelf">
+        <div class="text">
+            <h1>Ugens udvalgte manga</h1>
+            <p>Hvad vi læser i butikken for tiden </p>
+        </div>
+        <div class="flex_row_container">
+            <div class="flex_row">
+                <ProductCard 
+                    titel="Lodgers"
+                    forfatter="David Lapham"
+                    img="lodger_1"
+                    pris="165"
+                    type="Tegneserie"
+                    format="Trade Paperback"
+                /> 
+
+                <ProductCard 
+                    titel="Arsène Lupin: Gentleman Thief"
+                    forfatter="Maurice Leblanc"
+                    img="arsene_lupin_gentleman_thief"
+                    pris="220"
+                    type="Tegneserie"
+                    format="Hardcover"
+                /> 
+
+                <ProductCard 
+                    titel="Lodgers"
+                    forfatter="David Lapham"
+                    img="lodger_1"
+                    pris="165"
+                    type="Tegneserie"
+                    format="Trade Paperback"
+                /> 
+
+                <ProductCard 
+                    titel="Arsène Lupin: Gentleman Thief"
+                    forfatter="Maurice Leblanc"
+                    img="arsene_lupin_gentleman_thief"
+                    pris="220"
+                    type="Tegneserie"
+                    format="Hardcover"
+                /> 
+
+            </div>
+        </div>
+
+        <div class="button_frame">
+            <Button type="secondary">Se alt i manga</Button>
+        </div>
+
+    </div>
+</section>
+
+
+<style>
+
+    section {
+        overflow: hidden;
+    }
+
+    .shelf {
+        margin: 0 auto;
+        width: 1020px;
+    }
+
+    .text {
+        padding-inline: 2rem;
+    }
+
+    .flex_row_container {
+        overflow: scroll;
+        padding-inline: 2rem;
+        width: 100vw;
+        scroll-behavior: smooth;
+
+    }
+
+    .flex_row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1rem;
+        width: fit-content; 
+
+    }
+    
+    .button_frame {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    @media screen and (min-width: 1200px) {
+        .text {
+            padding-inline: 0rem;
+        }
+
+        .flex_row_container {
+            padding-inline: 0rem;
+        }
+    
+    }
+
+</style>

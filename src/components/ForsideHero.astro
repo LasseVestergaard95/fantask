@@ -1,0 +1,106 @@
+---
+
+---
+
+<div class="hero">
+    <h1>
+        Danmarks originale <br>
+        tegneseriebutik!
+    </h1>
+    <img src="fantask_logo_tekst.svg" alt="Fantask Logo">
+    <div class="info">
+        <div class="adresse">
+            <a href="https://www.google.com/maps/place/Fantask/@55.6791191,12.5679275,18.97z/data=!4m6!3m5!1s0x4652530e4a01675d:0xb3eced8677910bac!8m2!3d55.679113!4d12.568559!16s%2Fg%2F121pkgjd
+            ">
+                <p>
+                    Sankt Peders Stræde 18 <br>
+                    1453 København K
+                </p>
+            </a>
+        </div>
+        <div class="tider">
+            <p>Mandag-torsdag: 11-18</p>
+            <p>Fredag: 11-18:30</p>
+            <p>Lørdag: 11-15</p> 
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+    .hero {
+        position: sticky;
+        top: 18%;
+        z-index: -999999;
+        margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        text-align: center;
+        color: var(--white);
+        font-family: var(--secondary-font);
+        line-height: 1.2;
+        font-weight: 400;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 160px;
+        margin-top: 3rem;
+    }
+
+    .info {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    a, p {
+        color: var(--white);
+        text-decoration: none;
+        font-family: var(--main-font);
+        font-size: 14px;
+        font-weight: medium;
+        line-height: 1.5;
+
+    }
+
+
+
+    .adresse p {
+        text-align: right;
+    }
+
+    @media screen and (min-width: 768px) {
+       .hero {
+            top: 21%;
+            margin-bottom: 2rem;
+       }
+       
+        .hero h1 {
+            font-size: 72px;
+        }
+
+        img {
+            max-width: 200px;
+        }
+
+        a, p {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .hero {
+            top: 18%;
+        }
+    }
+
+</style>
