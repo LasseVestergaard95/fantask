@@ -3,12 +3,32 @@ import BackgroundPages from "../components/BackgroundPages.astro";
 import ForsideHero from "../components/ForsideHero.astro";
 import ProductShelf from "../components/ProductShelf.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/forside?";
+const options = {
+    headers: {
+        apikey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+    }
+}
+
+const response = await fetch(url, options);
+const data = await response.json();
+
 ---
 <MainLayout>
     <ForsideHero />
     <BackgroundPages />
     <div class="indhold">
-        <ProductShelf/>
+        {
+            data.map((item) => (
+                <ProductShelf
+                    titel={item.titel}
+                    beskrivelse={item.beskrivelse}
+                    produkter={item.produkter}
+                />
+            ))
+        }
     </div>
 
 </MainLayout>

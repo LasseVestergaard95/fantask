@@ -14,25 +14,23 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
+const { produkter } = Astro.props;
 
-const firstFour = data.slice(0, 4);
-
-console.log(firstFour);
-
+const filteredData = data.filter(item => produkter.includes(item.id.toString()));
 
 ---
 <section>
     <div class="shelf">
         <div class="text">
-            <h1>Ugens udvalgte manga</h1>
-            <p>Hvad vi læser i butikken for tiden </p>
+            <h1>{Astro.props.titel}</h1>
+            <p>{Astro.props.beskrivelse}</p>
         </div>
         <div class="flex_row_container">
             <div class="flex_row">
 
                 {
-                    firstFour.map{(product) => {
-                        <ProductCard 
+                    filteredData.map((product) => {
+                        return <ProductCard 
                             titel={product.titel}
                             forfatter={product.forfatter}
                             img={product.img}
@@ -40,10 +38,8 @@ console.log(firstFour);
                             type={product.type}
                             format={product.format}
                         />
-                    }}
+                    })
                 }
-
-            </div>
         </div>
 
         <div class="button_frame">
