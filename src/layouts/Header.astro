@@ -116,14 +116,25 @@
         <nav>
             <ul class="user_nav">
                 <li>
-                    <lottie-player class="burgermenu" src="menuV2.json"  background="transparent"  speed="1.6"></lottie-player>
+                    <lottie-player class="burgermenu" src="menuV2.json"  background="transparent"  speed="1.7"></lottie-player>
     
                 </li>
+
                 <li>
-                    <a href="">
-                        <img src="header_search.svg" alt="">
-                    </a>
+                    <div class="searchbar_container">
+                        <form action="" class="search_form">
+                            <input type="text" class="searchbar_input">
+                        </form>
+
+                    </div>
                 </li>
+
+                <li>
+                    <button class="search">
+                        <img src="header_search.svg" alt="">
+                    </button>
+                </li>
+
                 <li>
                     <a href="">
                         <img src="header_favoritter_hvidt_hjerte.svg" alt="">
@@ -194,11 +205,49 @@
         }
     });
 
+    // const search = document.querySelector('.search');
+    // const searchbar = document.querySelector('.searchbar_container');
+    // const main_nav = document.querySelector('.main_nav');
+    // const searchBarInput = document.querySelector('.searchbar_input'); // Assuming the input element has a class 'searchbar_input'
+    // const searchForm = document.querySelector('.search_form'); // Assuming the form has a class 'search_form'
+
+    // search.addEventListener('click', function(e) {
+    //     e.stopPropagation();
+
+    //     if (searchbar.classList.contains('searchbar_visible')) {
+    //         // Submit the form when the searchbar is visible and the search button is clicked
+    //         // searchForm.submit();
+    //     } else {
+    //         main_nav.classList.add('hide');
+    //         searchbar.classList.add('searchbar_visible');
+    //         searchBarInput.focus();
+    //     }
+    // });
+
+    // searchbar.addEventListener('click', function(e) {
+    //     e.stopPropagation(); // Prevent the click event from bubbling up to the document
+    // });
+
+    // document.addEventListener('click', function(e) {
+    //     if (searchbar.classList.contains('searchbar_visible')) {
+    //         searchbar.classList.remove('searchbar_visible');
+    //         main_nav.classList.remove('hide');
+    //     }
+    // });
+
+
+
 </script>
 
 
 
 <style>
+
+    .hide {
+        opacity: 0;
+        pointer-events: none;
+    }
+
     header {
         position: sticky;
         top: 0;
@@ -228,6 +277,10 @@
         width: 100%;
         justify-content: space-between;
         white-space: nowrap;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     .main_nav > li {
@@ -235,14 +288,19 @@
         font-size: 16px;
         z-index: 1;
         padding: 1rem;
-        transition: text-shadow 0.3s ease-in-out;
-        
+        transition: text-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
         position: relative;
+        font-weight: medium;
     }
 
-    .main_nav > li:hover {
+    /* .main_nav > li:hover {
         text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    } */
+    
+    .main_nav:has(li:hover) > li:not(:hover) {
+        opacity: 0.5;
     }
+
 
     .user_nav {
         display: flex;
@@ -255,13 +313,13 @@
         transition: all 0.3s ease-in-out;
     }
 
-    .user_nav li:hover {
+    /* .user_nav li:hover {
         filter: drop-shadow(0px 0px 20px rgb(255, 255, 255, 0.5));
-    }
+    } */
 
-    .user_nav:has(li:hover) li:not(:hover) {
+    /* .user_nav:has(li:hover) li:not(:hover) {
         opacity: 0.5;
-    }
+    } */
 
     .user_nav img {
         width: 1.5rem;
@@ -307,6 +365,17 @@
 
     .burgermenu {
         transform: translateY(0.24rem) translateX(0.18rem);
+        cursor: pointer;
+    }
+
+    .search {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+    .searchbar_container {
+        display: none;
     }
 
     @media (min-width: 1200px) {
@@ -390,6 +459,7 @@
         .submenu li {
             font-size: 16px;
             margin-top: 0.1rem;
+            opacity: 1;
         }
 
         .submenu li:first-of-type {
@@ -414,8 +484,42 @@
             display: flex;
             gap: 3rem;
         }
+
+        .searchbar_container {  
+            display: none;
+            align-items: center;
+            width: 0%;
+            overflow: hidden;
+            opacity: 0;
+            transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-0.3rem);
+        }
+
+        .searchbar_visible {
+            display: flex;
+            opacity: 1;
+            width: 100%;
+        }
+
+        .searchbar_input {
+            height: 2rem;
+            border: none;
+            border-bottom: 1px solid var(--white);
+            background: none;
+            padding-inline: 0.4rem;
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        .searchbar_input:focus {
+            outline: none;
+        }
+
     }
-
-
 
 </style>
