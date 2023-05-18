@@ -1,0 +1,38 @@
+---
+const {titel, beskrivelse, img} = Astro.props;
+---
+
+<a href={titel} class="guide">
+    <img src="fantask_guide_top_banner.svg" alt="" class="banner">
+    <img src={`/${img}.jpg`} alt="" class="cover">
+</a>
+
+<style>
+    .guide {
+        width: 240px;
+        border-radius: 5px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    .guide img {
+        width: 100%;
+    }
+
+    .banner {
+        object-fit: cover;
+        z-index: 1;
+    }
+    .guide .cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease-out;
+        z-index: 0;
+    }
+
+    .guide .cover:hover {
+        transform: scale(1.03);
+    }
+
+</style>

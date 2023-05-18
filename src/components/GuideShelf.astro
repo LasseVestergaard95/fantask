@@ -1,9 +1,8 @@
 ---
-import Button from "./Button.astro";
-import ProductCard from "./ProductCard.astro";
+import Button from './Button.astro'
+import GuideCard from './GuideCard.astro';
 
-
-const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
+const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/guides?";
 const options = {
     headers: {
         apikey:
@@ -14,46 +13,37 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { produkter } = Astro.props;
-
-const filteredData = data.filter(item => produkter.includes(item.id.toString()));
-
 ---
+
 <section>
     <div class="shelf">
         <div class="text">
-            <h1>{Astro.props.titel}</h1>
-            <p>{Astro.props.beskrivelse}</p>
+            <h1>Fantask Starter Guides</h1>
+            <p>Er du også i tvivl om hvor du skal starte når det kommer til manga, tegneserier og figurer? <br>
+                Bare rolig, vi har sammensat disse guides så du nemt kan få overblikket.</p>
         </div>
         <div class="flex_row_container">
             <div class="flex_row">
                 {
-                    filteredData.map((product) => {
-                        return <ProductCard 
-                            titel={product.titel}
-                            forfatter={product.forfatter}
-                            img={product.img}
-                            pris={product.pris}
-                            type={product.type}
-                            format={product.format}
-                            sprog={product.sprog}
-                            genre={product.genre}
+                    data.map((guide) => (
+                        <GuideCard 
+                            titel={guide.titel} 
+                            img={guide.img}
                         />
-                    })
+                    ))
                 }
+            </div>
         </div>
     </div>
     <div class="button_frame">
-        <Button type="secondary" link={Astro.props.kategori}>Se alt i {Astro.props.kategori}</Button>
+        <Button type="secondary" link="guides">Se alle vores guides</Button>
     </div>
 </section>
 
-
 <style>
-
     section {
         overflow: hidden;
-        margin-bottom: 3rem;
+        margin-block: 3rem;
     }
 
     .shelf {
@@ -70,7 +60,7 @@ const filteredData = data.filter(item => produkter.includes(item.id.toString()))
         padding-inline: 2rem;
         width: 100vw;
         scroll-behavior: smooth;
-
+        margin-block: 1rem;
     }
 
     .flex_row {

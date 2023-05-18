@@ -1,6 +1,7 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
 import ForsideHero from "../components/ForsideHero.astro";
+import GuideShelf from "../components/GuideShelf.astro";
 import NewsletterBanner from "../components/NewsletterBanner.astro";
 import ProductShelf from "../components/ProductShelf.astro";
 import SamlemaerkeBanner from "../components/SamlemaerkeBanner.astro";
@@ -37,6 +38,7 @@ const restOfShelves = activeData.slice(1);
             kategori={firstShelf.kategori}
         />
         <SamlemaerkeBanner />
+        <GuideShelf />
         {
             restOfShelves.length > 0 && restOfShelves.map((shelf) => (
                 <ProductShelf
@@ -58,8 +60,8 @@ const restOfShelves = activeData.slice(1);
 <style>
     .indhold {
         background-color: var(--white);
-        min-height: 1000px;
-        padding-top: 2rem;
+        min-height: fit-content;
+        padding-block: 2rem;
         z-index: 0;
     }
 </style>
