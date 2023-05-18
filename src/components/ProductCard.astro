@@ -32,7 +32,7 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
         </div>
         <div>
             <div class="pris">
-                <p><span>{pris}</span>,00 kr.</p>
+                <h2><span>{pris}</span>,00 kr.</h2>
             </div>
             <button class="køb">
                 <img src="shoppingcart.svg" alt="">
@@ -149,7 +149,7 @@ const {titel , forfatter, type, format, pris, img} = Astro.props;
         gap: 0.5rem;
     }
 
-    .pris {
+    .pris{
         font-weight: 500;
         font-size: 20px;
         margin-top: 0.5rem;

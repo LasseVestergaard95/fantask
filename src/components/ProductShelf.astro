@@ -22,13 +22,31 @@ import ProductCard from "./ProductCard.astro";
                 /> 
 
                 <ProductCard 
+                    titel="Arsène Lupin: Gentleman Thief"
+                    forfatter="Maurice Leblanc"
+                    img="arsene_lupin_gentleman_thief"
+                    pris="220"
+                    type="Tegneserie"
+                    format="Hardcover"
+                /> 
+
+                <ProductCard 
+                    titel="Lodgers"
+                    forfatter="David Lapham"
+                    img="lodger_1"
+                    pris="165"
+                    type="Tegneserie"
+                    format="Trade Paperback"
+                /> 
+
+            <ProductCard 
                 titel="Arsène Lupin: Gentleman Thief"
-                forfatter="Maurice Leblanc"
-                img="arsene_lupin_gentleman_thief"
-                pris="220"
-                type="Tegneserie"
-                format="Hardcover"
-            /> 
+                    forfatter="Maurice Leblanc"
+                    img="arsene_lupin_gentleman_thief"
+                    pris="220"
+                    type="Tegneserie"
+                    format="Hardcover"
+                /> 
 
             </div>
         </div>
@@ -43,9 +61,13 @@ import ProductCard from "./ProductCard.astro";
 
 <style>
 
+    section {
+        overflow: hidden;
+    }
+
     .shelf {
         margin: 0 auto;
-        max-width: 1020px;
+        width: 1020px;
     }
 
     .text {
@@ -54,14 +76,22 @@ import ProductCard from "./ProductCard.astro";
 
     .flex_row_container {
         overflow: scroll;
+        padding-inline: 2rem;
+        width: 100vw;
+        scroll-behavior: smooth;
+        
     }
 
     .flex_row {
-        display: grid;
+        /* display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
+        grid-template-rows: 1fr; */
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
         gap: 1rem;
-        margin-inline: 2rem;
+        width: fit-content;
+
     }
     
     
@@ -72,7 +102,16 @@ import ProductCard from "./ProductCard.astro";
 
 
     @media screen and (min-width: 1200px) {
-        
+        .text {
+            padding-inline: 0rem;
+        }
+
+        .flex_row_container {
+            padding-inline: 0rem;
+        }
+
+
+
     
     }
 
