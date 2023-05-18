@@ -1,4 +1,19 @@
 ---
+const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/scrolling_banner?";
+const options = {
+    headers: {
+        apikey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+    }
+}
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+console.log(data);
+
+
+
 
 ---
 
@@ -152,38 +167,24 @@
 </header>
 <div class="top_banner">
     <ul class="scrolling_banner">
-        <li>
-            Fri fragt ved køb over 500 kr.
-        </li>
-        <li>|</li>
-        <li>
-            30 dages returret
-        </li>
-        <li>|</li>
-        <li>
-            Du er Fantaskisk!
-        </li>
-        <li>|</li>
-        <li>
-            Vi er helt tosset med tegneserier
-        </li>
-        <li>|</li>
-        <li>
-            Fri fragt ved køb over 500 kr.
-        </li>
-        <li>|</li>
-        <li>
-            30 dages returret
-        </li>
-        <li>|</li>
-        <li>
-            Du er Fantaskisk!
-        </li>
-        <li>|</li>
-        <li>
-            Vi er helt tosset med tegneserier
-        </li>
-        <li>|</li>
+
+        {
+            data.map((item) => {
+                return (
+                    <li>{item.text}</li>
+                    <li>|</li>
+                )
+            })
+        }
+        {
+            data.map((item) => {
+                return (
+                    <li>{item.text}</li>
+                    <li>|</li>
+                )
+            })
+        }
+
     </ul>
 </div>
 
