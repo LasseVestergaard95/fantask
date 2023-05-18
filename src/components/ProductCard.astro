@@ -1,10 +1,11 @@
 ---
 import Button from "./Button.astro";
-const {titel, forfatter, type, format, pris, img, sprog} = Astro.props;
+const {titel, forfatter, type, format, pris, img, sprog, genre} = Astro.props;
 
+// new variable tags is type, format, sprog, genre as an array
+const tags = [type, format, sprog, genre];
 
 ---
-
 
 <div class="product_card">
     <a href="" class="cover_container">
@@ -27,9 +28,11 @@ const {titel, forfatter, type, format, pris, img, sprog} = Astro.props;
         </div>
 
         <div class="tags">
-            <Button type="primary">{type}</Button>
-            <Button type="secondary">{format}</Button>
-            <Button type="secondary">{sprog}</Button>
+            {
+                tags.map(tag => tag && 
+                    <Button type={tag === type ? "primary" : "secondary"}>{tag}</Button>
+                )
+            }
         </div>
         <div>
             <div class="pris">
@@ -124,7 +127,7 @@ const {titel, forfatter, type, format, pris, img, sprog} = Astro.props;
 
     .info {
         padding: 0.9rem;
-        height: 19rem;
+        height: 21rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -180,7 +183,6 @@ const {titel, forfatter, type, format, pris, img, sprog} = Astro.props;
     @media (max-width: 768px) {
         .product_card {
             width: 200px;
-            height: 600px;
         }
 
         .info {
