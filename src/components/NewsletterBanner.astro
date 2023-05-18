@@ -1,0 +1,84 @@
+---
+---
+
+<section class="newsletter">
+  <div class="img_left"></div>
+  <h2>Klar til at dykke ned i en verden af tegneserier, manga og meget mere?</h2>
+  <p>Vær den første til at høre om nye udgivelser, specielle tilbud og spændende events. Gå ikke glip af noget - Tilmed dig vores nyhedsbrev og bliv en del af Fantasks fællesskab!</p>
+  <form action="">
+    <div class="form-fields">
+      <input type="text" name="name" placeholder="Navn..." />
+      <input type="email" name="email" placeholder="E-mail..." />
+    </div>
+    <input type="submit" value="Tilmeld" />
+  </form>
+  <div class="img_right"></div>
+</section>
+
+<style>
+  .newsletter {
+    background-color: var(--blue);
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: fit-content;
+  }
+
+  p,
+  h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    max-width: 65ch;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  input {
+    width: 17rem;
+    border: solid 1px;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+
+  input[type="submit"] {
+    background-color: transparent;
+    color: var(--white);
+    width: fit-content;
+    margin-block: 1rem;
+    padding-inline: 1rem;
+  }
+
+  .img_left {
+    background-image: url("drage.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    width: 40%;
+    aspect-ratio: 1/2;
+    top: 170px;
+    left: -50px;
+  }
+  .img_right {
+    background-image: url("drage.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    width: 40%;
+    aspect-ratio: 1/2;
+    top: 170px;
+    right: -45px;
+    transform: rotate(-70deg);
+  }
+</style>
