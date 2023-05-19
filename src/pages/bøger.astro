@@ -8,7 +8,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     <BackgroundPages/>
     <div class="indhold">
         <div class="head">
-            <h1>Tegneserier</h1>
+            <h1>Bøger</h1>
             <div class="filtrer">
                 <form>
                     <select name="sorter" id="sorter" class="sorter">
@@ -23,12 +23,12 @@ import MainLayout from "../layouts/MainLayout.astro";
                             <div class="bubble">
                                 <ul>Format
                                     <li>
-                                        <input type="checkbox" id="Trade Paperback"></input>
-                                        <label for="Trade Paperback">Trade Paperback</label>
-                                    </li>
-                                    <li>
                                         <input type="checkbox" id="Hardcover"></input>
                                         <label for="Hardcover">Hardcover</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Paperback"></input>
+                                        <label for="Paperback">Paperback</label>
                                     </li>
                                 </ul>
                                 <ul>Sprog
@@ -48,7 +48,7 @@ import MainLayout from "../layouts/MainLayout.astro";
             </div>
         </div>
 
-        <ProductGrid type="Tegneserie"/>
+        <ProductGrid type="Bog"/>
     </div>
 </MainLayout>
 

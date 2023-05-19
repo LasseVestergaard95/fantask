@@ -125,11 +125,12 @@ const tags = [type, format, genre, sprog];
 
     .info {
         padding: 0.9rem;
-        height: 19rem;
+        height: 20rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         border-top: 1px solid rgba(3, 13, 50, 0.35);
+        width: 100%;
     }
 
     .forfatter {
@@ -180,11 +181,24 @@ const tags = [type, format, genre, sprog];
 
     @media (max-width: 768px) {
         .product_card {
-            width: 200px;
+            width: 170px;
         }
 
         .info {
-            height: 19rem;
+            height: 16rem;
+            padding: 0.45rem;
+        }
+
+        .køb {
+            font-size: 16px;
+        }
+
+        .tags {
+            flex-wrap: nowrap;
+            overflow: scroll;
+            /* no scrollbar */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     }
 
