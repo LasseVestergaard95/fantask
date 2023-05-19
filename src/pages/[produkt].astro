@@ -1,5 +1,6 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Button from "../components/Button.astro";
 import Tag from "../components/Tag.astro";
 import MainLayout from "../layouts/MainLayout.astro";
@@ -42,6 +43,11 @@ const volume = [product.serie, product.nr]
 <MainLayout titel={product.titel}>
     <BackgroundPages />
     <div class="indhold">
+        <Breadcrumbs 
+            type={product.type === "Tegneserie" ? "tegneserier" : "bøger"}
+            genre={product.genre}
+            side={product.titel}
+        />
         <div class="produkt">
 
             <!-- Vis produktets billede -->
@@ -273,8 +279,8 @@ const volume = [product.serie, product.nr]
     }
 
     /* Styling for afsnit i beskrivelsessektion */
-    .beskrivelse p {
-        margin-bottom: 0.5rem;
+    .beskrivelse p:first-of-type {
+        margin-bottom: 2rem;
     }
 
     /* Responsivt layout til skærme under 768px */

@@ -18,6 +18,7 @@ const { produkter } = Astro.props;
 
 // if produkter isnt empty, filter data
 const filteredData = data.filter((item) => produkter.includes(item.id.toString()));
+
 ---
 
 <section>
@@ -39,7 +40,7 @@ const filteredData = data.filter((item) => produkter.includes(item.id.toString()
     </div>
   </div>
   <div class="button_frame">
-    <Button type="primary" link={Astro.props.kategori}>Se alt i {Astro.props.kategori}</Button>
+    <Button type="primary" link="tegneserier">Se alt i {Astro.props.kategori}</Button>
   </div>
 </section>
 

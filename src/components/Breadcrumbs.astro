@@ -1,0 +1,53 @@
+---
+
+---
+
+<!-- breadcrumbs html -->
+
+<div>
+    <ul class="breadcrumbs">
+        <li><a href="/">Forside</a></li>
+        <li>&gt;</li>
+        <li><a href={Astro.props.type}>{Astro.props.type}</a></li>
+        <li>&gt;</li>
+        <li><a href={Astro.props.type}>{Astro.props.genre}</a></li>
+        <li>&gt;</li>
+        <li class="active">{Astro.props.side}</li>
+    </ul>
+</div>
+
+<style>
+    .breadcrumbs {
+        list-style: none;
+        width: 1020px;
+        margin: 0 auto;
+        padding-inline: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .breadcrumbs li {
+        display: inline-block;
+        margin-right: 10px;
+        text-transform: capitalize;
+        cursor: default;
+    }
+
+    .breadcrumbs li a {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .breadcrumbs li.active {
+        color: #999;
+    }
+
+    .breadcrumbs li.active::after {
+        content: ">";
+        margin-left: 10px;
+    }
+
+    .breadcrumbs li:last-child.active::after {
+        content: "";
+    }
+</style>
