@@ -2,14 +2,12 @@
 import Button from "./Button.astro";
 import ProductCard from "./ProductCard.astro";
 
-
 const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
 const options = {
-    headers: {
-        apikey:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
-    }
-}
+  headers: {
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE",
+  },
+};
 
 const response = await fetch(url, options);
 const data = await response.json();
@@ -17,91 +15,77 @@ const data = await response.json();
 const { produkter } = Astro.props;
 
 // if produkter isnt empty, filter data
-const filteredData = data.filter(item => produkter.includes(item.id.toString()));
-
+const filteredData = data.filter((item) => produkter.includes(item.id.toString()));
 ---
+
 <section>
-    <div class="shelf">
-        <div class="text">
-            <h1>{Astro.props.titel}</h1>
-            <p>{Astro.props.beskrivelse}</p>
-        </div>
-        <div class="flex_row_container">
-            <div class="flex_row">
-                {
-                    filteredData.map((product) => {
-                        return <ProductCard 
-                            titel={product.titel}
-                            forfatter={product.forfatter}
-                            img={product.img}
-                            pris={product.pris}
-                            type={product.type}
-                            format={product.format}
-                            sprog={product.sprog}
-                            genre={product.genre}
-                            serie={product.serie}
-                            nr={product.nr}
-                        />
-                    })
-                }
-        </div></div>
+  <div class="shelf">
+    <div class="text">
+      <h1>{Astro.props.titel}</h1>
+      <p>{Astro.props.beskrivelse}</p>
     </div>
-    <div class="button_frame">
-        <Button type="primary" link={Astro.props.kategori}>Se alt i {Astro.props.kategori}</Button>
+    <div class="flex_row_container">
+      <div class="flex_row">
+        {
+          filteredData.map((product) => {
+            return (
+              <ProductCard titel={product.titel} forfatter={product.forfatter} img={product.img} pris={product.pris} type={product.type} format={product.format} sprog={product.sprog} genre={product.genre} serie={product.serie} nr={product.nr} />
+            );
+          })
+        }
+      </div>
     </div>
+  </div>
+  <div class="button_frame">
+    <Button type="primary" link={Astro.props.kategori}>Se alt i {Astro.props.kategori}</Button>
+  </div>
 </section>
 
-
 <style>
+  section {
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+  .shelf {
+    margin: 0 auto;
+    width: 1020px;
+  }
 
-    section {
-        overflow: hidden;
-        margin-bottom: 3rem;
-    }
-    .shelf {
-        margin: 0 auto;
-        width: 1020px;
-    }
+  .text {
+    padding-inline: 2rem;
+  }
 
+  .flex_row_container {
+    overflow: scroll;
+    padding-inline: 2rem;
+    width: 100vw;
+    max-width: fit-content;
+    scroll-behavior: smooth;
+  }
+
+  .flex_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: fit-content;
+  }
+
+  .button_frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* margin-inline: auto; */
+  }
+
+  @media screen and (min-width: 1200px) {
     .text {
-        padding-inline: 2rem;
+      padding-inline: 0rem;
     }
 
     .flex_row_container {
-        overflow: scroll;
-        padding-inline: 2rem;
-        width: 100vw;
-        max-width: fit-content;
-        scroll-behavior: smooth;
-
+      padding-inline: 0rem;
     }
-
-    .flex_row {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 1rem;
-        width: fit-content; 
-
-    }
-    
-    .button_frame {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        /* margin-inline: auto; */
-    }
-
-
-    @media screen and (min-width: 1200px) {
-        .text {
-            padding-inline: 0rem;
-        }
-
-        .flex_row_container {
-            padding-inline: 0rem;
-        }
-    }
-
+  }
 </style>
