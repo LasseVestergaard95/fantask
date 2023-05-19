@@ -21,13 +21,12 @@ const filteredData = data.filter(item => produkter.includes(item.id.toString()))
 
 ---
 <section>
-    <div class="shelf">
+    <div class="product_grid">
         <div class="text">
             <h1>{Astro.props.titel}</h1>
             <p>{Astro.props.beskrivelse}</p>
         </div>
-        <div class="flex_row_container">
-            <div class="flex_row">
+            <div class="grid">
                 {
                     filteredData.map((product) => {
                         return <ProductCard 
@@ -51,55 +50,6 @@ const filteredData = data.filter(item => produkter.includes(item.id.toString()))
     </div>
 </section>
 
-
 <style>
-
-    section {
-        overflow: hidden;
-        margin-bottom: 3rem;
-    }
-    .shelf {
-        margin: 0 auto;
-        width: 1020px;
-    }
-
-    .text {
-        padding-inline: 2rem;
-    }
-
-    .flex_row_container {
-        overflow: scroll;
-        padding-inline: 2rem;
-        width: 100vw;
-        scroll-behavior: smooth;
-
-    }
-
-    .flex_row {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 1rem;
-        width: fit-content; 
-
-    }
     
-    .button_frame {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-
-
-    @media screen and (min-width: 1200px) {
-        .text {
-            padding-inline: 0rem;
-        }
-
-        .flex_row_container {
-            padding-inline: 0rem;
-        }
-    }
-
 </style>
