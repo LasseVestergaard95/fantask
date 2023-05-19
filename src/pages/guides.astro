@@ -17,7 +17,7 @@ const data = await response.json();
 
 ---
 
-<MainLayout>
+<MainLayout titel="Fantask Guides">
     <BackgroundPages />
     <div class="indhold">
         <section>
@@ -36,7 +36,7 @@ const data = await response.json();
                                 />
                                 <div class="info">
                                     <p>{guide.subtitle}</p>
-                                    <a href="">Læs mere</a>
+                                    <a href="">Læs Guiden</a>
                                 </div>
                             </div>
                         ))
@@ -50,7 +50,7 @@ const data = await response.json();
                                 />
                                 <div class="info">
                                     <p>{guide.subtitle}</p>
-                                    <a href="">Læs mere</a>
+                                    <a href="">Læs Guiden</a>
                                 </div>
                             </div>
                         ))
@@ -64,7 +64,7 @@ const data = await response.json();
                                 />
                                 <div class="info">
                                     <p>{guide.subtitle}</p>
-                                    <a href="">Læs mere</a>
+                                    <a href="">Læs Guiden</a>
                                 </div>
                             </div>
                         ))
@@ -114,6 +114,9 @@ const data = await response.json();
         transform: translateY(-5px);
         z-index: 99999999;
         height: 10rem;
+    }
+
+    .info p {
     }
 
     .info a {
