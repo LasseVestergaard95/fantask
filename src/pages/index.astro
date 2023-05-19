@@ -39,16 +39,14 @@ const restOfShelves = activeData.slice(1);
         />
         <SamlemaerkeBanner />
         <GuideShelf />
-        {
-            restOfShelves.length > 0 && restOfShelves.map((shelf) => (
-                <ProductShelf
-                    titel={shelf.titel}
-                    beskrivelse={shelf.beskrivelse}
-                    produkter={shelf.produkter}
-                    kategori={shelf.kategori}
-                />
-            ))
-        }
+        {restOfShelves.length > 0 && restOfShelves.map((shelf) => (
+            <ProductShelf
+                titel={shelf.titel}
+                beskrivelse={shelf.beskrivelse}
+                produkter={shelf.produkter}
+                kategori={shelf.kategori}
+            />
+        ))}
         <NewsletterBanner />
     </div>
 
