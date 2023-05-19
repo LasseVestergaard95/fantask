@@ -10,8 +10,12 @@
         <li>&gt;</li>
         <li><a href={Astro.props.type}>{Astro.props.type}</a></li>
         <li>&gt;</li>
-        <li><a href={Astro.props.type}>{Astro.props.genre}</a></li>
-        <li>&gt;</li>
+        {
+            // if genre is not empty then show genre link
+            Astro.props.genre !== "" ? <li><a href={Astro.props.type}>{Astro.props.genre}</a></li> <li>&gt;</li> : null
+
+        }
+
         <li class="active">{Astro.props.side}</li>
     </ul>
 </div>
@@ -23,6 +27,9 @@
         margin: 0 auto;
         padding-inline: 2rem;
         margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
     }
 
     .breadcrumbs li {
@@ -49,5 +56,12 @@
 
     .breadcrumbs li:last-child.active::after {
         content: "";
+    }
+
+    @media screen and (max-width: 1020px) {
+        .breadcrumbs {
+            width: 100%;
+            padding-inline: 2rem
+        }
     }
 </style>
