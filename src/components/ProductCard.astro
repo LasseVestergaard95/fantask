@@ -1,8 +1,9 @@
 ---
 import Button from "./Button.astro";
+import Tag from "./Tag.astro";
 const {titel, forfatter, type, format, pris, img, sprog, genre, serie, nr} = Astro.props;
 
-const tags = [type, format, genre, sprog];
+const tags = [format, genre, sprog];
 
 ---
 
@@ -29,9 +30,12 @@ const tags = [type, format, genre, sprog];
         </div>
 
         <div class="tags">
-            {tags.map(tag => tag && 
-                    <Button type={tag === type ? "primary" : "secondary"} link={tag}>{tag}</Button>
-                )}
+            <Button type="primary" link={type === "Tegneserie" ? "/tegneserier" : "/bøger"}>{type}</Button>
+            {tags.map(tag => {
+                if (tag) {
+                    return <Tag>{tag}</Tag>
+                }
+            })}
         </div>
         <div>
             <div class="pris">

@@ -42,7 +42,7 @@ import MainLayout from "../layouts/MainLayout.astro";
                                     </li>
                                 </ul>
                             </div>
-                            <div class="pointer"></div>
+                            <!-- <div class="pointer"></div> -->
                         </div>
                 </div>
             </div>
@@ -90,9 +90,14 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     .filter_knap {
         cursor: pointer;
-        border: 1px solid var(--black);
+        color: var(--white);
+        background-color: var(--dark-blue);
         border-radius: 5px;
         padding: 0.2rem 0.7rem;
+    }
+
+    .filter_knap * {
+        color: var(--black);
     }
     .filter_knap:hover .submenu {
             opacity: 1;
@@ -100,7 +105,8 @@ import MainLayout from "../layouts/MainLayout.astro";
         }
     
     .sorter {
-        border: 1px solid var(--black);
+        color: var(--white);
+        background-color: var(--dark-blue);
         border-radius: 5px;
         padding: 0.32rem 0.7rem;
         font-size: 16px;
@@ -112,21 +118,13 @@ import MainLayout from "../layouts/MainLayout.astro";
             opacity: 0;
             border-radius: 15px;
             background-color: var(--white);
-            padding: 3rem;
+            padding: 2rem;
             z-index: 1;
             border: 1px solid var(--black);
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
             pointer-events: none;
             transition: opacity 0.2s ease-in-out;
-            transform: translateX(-42%) translateY(5%);
-        }
-
-    .bøger_li .submenu {
-            transform: translateX(-43.5%) translateY(7%);
-        }
-
-    .tegneserier_li .submenu {
-            transform: translateX(-38%) translateY(7%);
+            transform: translateX(-37%) translateY(0%);
         }
 
     .submenu:hover {
@@ -153,7 +151,7 @@ import MainLayout from "../layouts/MainLayout.astro";
             margin-top: 0.2rem;
         }
 
-    .pointer {
+    /* .pointer {
         width: 7rem;
         height: 7rem;
         position: absolute;
@@ -166,7 +164,7 @@ import MainLayout from "../layouts/MainLayout.astro";
         left: 50%;
         z-index: -1;
         padding-inline: 6rem;
-        }
+        } */
         .bubble {
             display: flex;
             flex-direction: column;

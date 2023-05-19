@@ -2,12 +2,12 @@
 
 ---
 
-<a href=`${Astro.props.link}` class={Astro.props.type}>
+<p>
     <slot />
-</a>
+</p>
 
 <style>
-    a {
+    p {
         background-color: none;
         color: var(--black);
         border: 1px solid var(--black);
@@ -17,18 +17,7 @@
         text-decoration: none;
         color: var(--black);
         white-space: nowrap;
-    }
-
-    a.primary {
-        background-color: var(--dark-blue);
-        color: var(--white);
-        border: none;
-    }
-
-    a.secondary {
-        background-color: var(--white);
-        color: var(--black);
-        border: 1px solid var(--black);
+        cursor: default
     }
 
 </style>

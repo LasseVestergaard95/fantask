@@ -4,19 +4,17 @@ import GuideCard from "../components/GuideCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/guides?";
+const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+
 const options = {
     headers: {
-        apikey:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+        apikey: apikey
     }
 }
 
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { guides } = Astro.props;
-
-console.log(guides);
 ---
 
 <MainLayout>
@@ -29,6 +27,34 @@ console.log(guides);
                     Bare rolig, vi har sammensat disse guides så du nemt kan få overblikket.</p>
             </div>
             <div class="flex">
+                    {
+                        data.map((guide) => (
+                            <div class="guide">
+                                <GuideCard 
+                                titel={guide.titel} 
+                                img={guide.img}
+                                />
+                                <div class="info">
+                                    <p>{guide.subtitle}</p>
+                                    <a href="">Læs mere</a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                    {
+                        data.map((guide) => (
+                            <div class="guide">
+                                <GuideCard 
+                                titel={guide.titel} 
+                                img={guide.img}
+                                />
+                                <div class="info">
+                                    <p>{guide.subtitle}</p>
+                                    <a href="">Læs mere</a>
+                                </div>
+                            </div>
+                        ))
+                    }
                     {
                         data.map((guide) => (
                             <div class="guide">

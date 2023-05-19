@@ -1,71 +1,95 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
 import Button from "../components/Button.astro";
+import Tag from "../components/Tag.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
+// Funktionen henter statiske stier baseret på data fra en API
 export async function getStaticPaths() {
-
+    // URL'en til API'en, hvor data hentes fra
     const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
-    const options = {
-        headers: {
-            apikey:
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
-        }
+const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+
+const options = {
+    headers: {
+        apikey: apikey
     }
+}
 
-    const response = await fetch(url, options);
-    const data = await response.json();
+const response = await fetch(url, options);
+const data = await response.json();
 
+    // Opret et array af stier baseret på produktdata
     const paths = data.map((product) => ({
         params: { produkt: product.serie + product.nr + product.titel },
         props: { product },
     }));
 
+    // Returner de genererede stier
     return paths;
 }
 
+// Hent produktet fra Astro-props
 const { product } = Astro.props;
 
-const tags = [product.type, product.format, product.genre, product.sprog];
+// Opret arrays for tags og volumen baseret på produktdata
+const tags = [product.format, product.genre, product.sprog];
 const volume = [product.serie, product.nr]
 
 ---
+
 
 <MainLayout titel={product.titel}>
     <BackgroundPages />
     <div class="indhold">
         <div class="produkt">
+
+            <!-- Vis produktets billede -->
             <img src=`/imgs/${product.img}.jpg` alt={product.img} class="cover">
+
             <div class="info">
                 <div>
+                    <!-- Vis produktets serie og nr, hvis det ikke er en Manga -->
                     {volume[0] && product.genre !== "Manga" ? <h2 class="volume">{volume[0]}, nr. {volume[1]}</h2> : null}
+
                     <div class="titel_favorit_container">
+                        <!-- Vis produktets titel -->
                         <h1 class="titel">
+                            <!-- Vis serie og volumen for Manga, titel for alt andet -->
                             {product.genre === "Manga" ?<span class="volume">{volume[0]}, Vol. {volume[1]}</span>: null}
                             {product.titel}
                         </h1>
+
+                        <!-- Tilføj favoritknappen -->
                         <button class="favorit">
                             <img src="favoritter_sort_hjerte.svg" alt="">
                         </button>
                     </div>
 
+                    <!-- Vis link til alle titler i samme serie -->
                     <div class="alle_titler">
                         <img src="alle_titler.svg" alt="">
                         <a href="">Se alle titler i samme serie</a>
                     </div>
     
+                    <!-- Vis forfatterens navn -->
                     <div class="forfatter">
                         <img src="forfatter.svg" alt="">
                         <a href="">{product.forfatter}</a>
                     </div>
                 </div>
+
+                <!-- Vis tags som knapper -->
                 <div class="tags">
-                    {
-                        tags.map(tag => tag && 
-                            <Button type={tag === product.type ? "primary" : "secondary"} link={tag}>{tag}</Button>
-                        )
-                    }
+                    <Button type="primary" link={product.type === "Tegneserie" ? "/tegneserier" : "/bøger"}>{product.type}</Button>
+                    {tags.map(tag => {
+                        if (tag) {
+                            return <Tag>{tag}</Tag>
+                        }
+                    })}
                 </div>
+
+                <!-- Vis produktets pris og tilføj til kurv knap -->
                 <div class="salg">
                     <div class="pris">
                         <h2><span>{product.pris}</span>,00 kr.</h2>
@@ -75,6 +99,8 @@ const volume = [product.serie, product.nr]
                         Læg i Kurv
                     </button>
                 </div>
+
+                <!-- Vis produktets beskrivelse og udgivelsesinformation -->
                 <div class="beskrivelse">
                     <h2>Beskrivelse</h2>
                     <p>{product.beskrivelse}</p>
@@ -82,20 +108,20 @@ const volume = [product.serie, product.nr]
                 </div>
             </div>
         </div>
-        <div>
-        </div>
     </div>
-
 </MainLayout>
+
 
 
 <style>
 
+    /* Styling for links */
     a {
         text-decoration: none;
         color: inherit;
     }
 
+    /* Styling for produktcontainer */
     .produkt {
         display: flex;
         flex-direction: row;
@@ -107,6 +133,7 @@ const volume = [product.serie, product.nr]
     }
 
 
+    /* Styling for produktets coverbillede */
     .cover {
         width: 300px;
         height: 100%;
@@ -115,6 +142,7 @@ const volume = [product.serie, product.nr]
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
     }
 
+    /* Styling for produktets information */
     .info {
         padding-left: 3rem;
         display: flex;
@@ -123,6 +151,7 @@ const volume = [product.serie, product.nr]
         margin-bottom: 3rem;
     }
 
+    /* Styling for containeren med produktets titel og favoritknap */
     .titel_favorit_container {
         display: flex;
         flex-direction: row;
@@ -131,12 +160,14 @@ const volume = [product.serie, product.nr]
         gap: 1rem;
     }
 
+    /* Styling for produktets titel */
     .titel {
         font-size: 32px;
         font-weight: 500;
         margin-bottom: -0.3rem;
     }
 
+    /* Styling for favoritknap */
     .favorit {
         aspect-ratio: 1/1;
         background-color: var(--white);
@@ -150,40 +181,37 @@ const volume = [product.serie, product.nr]
         border: 1px solid var(--black);
     }
 
+    /* Styling for favoritikonet */
     .favorit img {
         aspect-ratio: 1/1;
         width: 50%;
         transform: translateY(0.8px)
     }
 
+    /* Styling for containeren med link til alle titler i samme serie */
     .alle_titler {
         display: flex;
         flex-direction: row;
         align-items: center;
         margin: 1rem 0;
-        /* border: 1px solid var(--dark-blue);
-        width: fit-content;
-        padding: 0.2rem 0.7rem;
-        border-radius: 5px; */
     }
 
+    /* Styling for ikonet til alle titler i samme serie */
     .alle_titler img {
         aspect-ratio: 1/1;
         width: 1.3rem;
         margin-right: 0.25rem;
     }
 
+    /* Styling for containeren med forfatterinformation */
     .forfatter {
         display: flex;
         flex-direction: row;
         align-items: center;
         margin: 1rem 0;
-        /* border: 1px solid var(--dark-blue);
-        width: fit-content;
-        padding: 0.2rem 0.7rem;
-        border-radius: 5px; */
     }
 
+    /* Styling for ikonet til forfatter */
     .forfatter img {
         aspect-ratio: 1/1;
         width: 1.3rem;
@@ -191,6 +219,7 @@ const volume = [product.serie, product.nr]
         margin-left: -0.1rem;
     }
 
+    /* Styling for tags-container */
     .tags {
         display: flex;
         flex-wrap: wrap;
@@ -198,16 +227,19 @@ const volume = [product.serie, product.nr]
         margin: 1rem 0;
     }
 
+    /* Styling for salgssektion */
     .salg {
         margin: 1rem 0;
     }
 
+    /* Styling for prisen */
     .pris h2, .pris span {
         font-size: 32px;
         font-weight: 500;
         margin-bottom: 0.5rem;
     }
 
+    /* Styling for køb-knap */
     .køb {
         background-color: var(--dark-blue);
         color: var(--white);
@@ -223,31 +255,37 @@ const volume = [product.serie, product.nr]
         cursor: pointer;
     }
 
+    /* Styling for ikonet på køb-knap */
     .køb img {
         aspect-ratio: 1/1;
         width: 1.2rem;
     }
 
+    /* Styling for beskrivelsessektion */
     .beskrivelse {
         margin: 2rem 0;
         max-width: 34rem;
     }
 
+    /* Styling for overskrift i beskrivelsessektion */
     .beskrivelse h2 {
         margin-bottom: 0.5rem;
     }
 
+    /* Styling for afsnit i beskrivelsessektion */
     .beskrivelse p {
         margin-bottom: 0.5rem;
     }
 
+    /* Responsivt layout til skærme under 768px */
     @media screen and (max-width: 768px) {
+        /* Ændr layoutet til enkelt kolonne for produktcontaineren */
         .produkt {
             flex-direction: column;
             align-items: center;
-
         }
 
+        /* Ændr størrelsen på coverbilledet */
         .cover {
             width: 70%;
             height: auto;
@@ -255,9 +293,11 @@ const volume = [product.serie, product.nr]
             margin-inline: auto;
         }
 
+        /* Fjern venstremargin på infokolonnen */
         .info {
             padding-left: 0;
         }
     }
 
 </style>
+
