@@ -58,4 +58,14 @@ const filteredData = data.filter(item => type.includes(item.type.toString()));
         justify-content: flex-start;
         gap: 1rem;
     }
+
+    @media screen and (max-width: 1200px) {
+
+        section {
+            padding-inline: 0rem;
+        }
+        .flex {
+            justify-content: center;
+        }
+    }
 </style>

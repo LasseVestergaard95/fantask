@@ -1,12 +1,111 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
+import GuideCard from "../components/GuideCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
+const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/guides?";
+const options = {
+    headers: {
+        apikey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+    }
+}
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+const { guides } = Astro.props;
+
+console.log(guides);
 ---
 
 <MainLayout>
     <BackgroundPages />
     <div class="indhold">
-        
+        <section>
+            <div class="text">
+                <h1>Fantask Guides</h1>
+                <p>Er du også i tvivl om hvor du skal starte når det kommer til manga, tegneserier og figurer? <br>
+                    Bare rolig, vi har sammensat disse guides så du nemt kan få overblikket.</p>
+            </div>
+            <div class="flex">
+                    {
+                        data.map((guide) => (
+                            <div class="guide">
+                                <GuideCard 
+                                titel={guide.titel} 
+                                img={guide.img}
+                                />
+                                <div class="info">
+                                    <p>{guide.subtitle}</p>
+                                    <a href={guide.titel}>Læs mere</a>
+                                </div>
+                            </div>
+                        ))
+                    }
+            </div>
+        </section>
     </div>
 </MainLayout>
+
+<style>
+    section {
+        padding-inline: 2rem;
+        margin-inline: auto;
+        max-width: 1020px;
+    }
+
+    .text {
+        margin: 0 auto;
+        margin-block: 2rem;
+    }
+
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-inline: auto;
+        gap: 1rem;
+
+    }
+
+    .guide {
+        width: 240px;
+    }
+
+    .info {
+        display: flex;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid var(--black);
+        width: fit-content;
+        padding: 1rem;
+        gap: 1rem;
+        border-end-end-radius: 5px;
+        border-end-start-radius: 5px;
+        transform: translateY(-5px);
+        z-index: 99999999;
+        height: 10rem;
+    }
+
+    .info a {
+        background-color: var(--dark-blue);
+        color: var(--white);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 1200px) {
+
+        section {
+            padding-inline: 0rem;
+        }
+        .flex {
+
+        }
+    }
+</style>
