@@ -33,7 +33,6 @@ const volume = [product.serie, product.nr]
 
 <MainLayout titel={product.titel}>
     <BackgroundPages />
-
     <div class="indhold">
         <div class="produkt">
             <img src=`/imgs/${product.img}.jpg` alt="" class="cover">
@@ -60,8 +59,6 @@ const volume = [product.serie, product.nr]
                         <a href="">{product.forfatter}</a>
                     </div>
                 </div>
-
-
                 <div class="tags">
                     {
                         tags.map(tag => tag && 
@@ -90,6 +87,8 @@ const volume = [product.serie, product.nr]
     </div>
 
 </MainLayout>
+
+
 <style>
 
     a {

@@ -2,7 +2,6 @@
 import Button from "./Button.astro";
 import ProductCard from "./ProductCard.astro";
 
-
 const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
 const options = {
     headers: {
@@ -14,10 +13,10 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { produkter } = Astro.props;
+const { type } = Astro.props;
 
 // if produkter isnt empty, filter data
-const filteredData = data.filter(item => produkter.includes(item.id.toString()));
+const filteredData = data.filter(item => type.includes(item.type.toString()));
 
 ---
 <section>
