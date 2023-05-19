@@ -31,21 +31,23 @@
     color: var(--white);
     margin-bottom: 1rem;
     max-width: 67ch;
+    z-index: 2;
   }
 .text-field{
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  /* align-items: center; */
 }
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
   }
   .form-fields {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     gap: 0.8rem;
   }
   input {
@@ -73,6 +75,7 @@
     aspect-ratio: 1/2;
     top: 170px;
     left: -50px;
+    display: none;
   }
   .img_right {
     background-image: url("drage.svg");
@@ -80,13 +83,20 @@
     background-size: contain;
     background-position: center;
     position: absolute;
-    width: 40%;
-    aspect-ratio: 1/2;
-    top: 170px;
-    right: -45px;
-    transform: rotate(-70deg);
-  }
+    width: 200%;
+    aspect-ratio: 1/1;
+    bottom: -130%;
+    left: 10%;
+    z-index: 0;
+    transform: rotate(-15deg);
 
+
+  }
+  @media (min-width: 600px){
+    .img_right{
+      bottom:-190%;
+    }
+  }
   @media (min-width: 768px){
 .text-field{
   text-align: center;
