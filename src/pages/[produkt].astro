@@ -35,7 +35,7 @@ const volume = [product.serie, product.nr]
     <BackgroundPages />
     <div class="indhold">
         <div class="produkt">
-            <img src=`/imgs/${product.img}.jpg` alt="" class="cover">
+            <img src=`/imgs/${product.img}.jpg` alt={product.img} class="cover">
             <div class="info">
                 <div>
                     {volume[0] && product.genre !== "Manga" ? <h2 class="volume">{volume[0]}, nr. {volume[1]}</h2> : null}

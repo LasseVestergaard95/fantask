@@ -38,7 +38,7 @@ console.log(guides);
                                 />
                                 <div class="info">
                                     <p>{guide.subtitle}</p>
-                                    <a href={guide.titel}>Læs mere</a>
+                                    <a href="">Læs mere</a>
                                 </div>
                             </div>
                         ))
@@ -65,8 +65,8 @@ console.log(guides);
         flex-wrap: wrap;
         justify-content: space-between;
         margin-inline: auto;
-        gap: 1rem;
-
+        gap: 2rem;
+        max-width: 800px;
     }
 
     .guide {
@@ -79,7 +79,7 @@ console.log(guides);
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        border: 1px solid var(--black);
+        border: 1px solid rgba(3, 13, 50, 0.35);
         width: fit-content;
         padding: 1rem;
         gap: 1rem;
@@ -97,15 +97,17 @@ console.log(guides);
         padding: 0.5rem 1rem;
         width: 100%;
         text-align: center;
+        border-radius: 5px;
     }
 
     @media screen and (max-width: 1200px) {
 
         section {
-            padding-inline: 0rem;
+            padding-inline: 2rem;
         }
-        .flex {
 
+        .flex {
+            justify-content: center;
         }
     }
 </style>
