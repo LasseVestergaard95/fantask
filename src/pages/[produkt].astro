@@ -6,35 +6,30 @@ import Tag from "../components/Tag.astro";
 import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
-// Funktionen henter statiske stier baseret på data fra en API
 export async function getStaticPaths() {
-    // URL'en til API'en, hvor data hentes fra
+
     const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
-const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+    const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
 
-const options = {
-    headers: {
-        apikey: apikey
+    const options = {
+        headers: {
+            apikey: apikey
+        }
     }
-}
 
-const response = await fetch(url, options);
-const data = await response.json();
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-    // Opret et array af stier baseret på produktdata
     const paths = data.map((product) => ({
         params: { produkt: product.serie + product.nr + product.titel },
         props: { product },
     }));
 
-    // Returner de genererede stier
     return paths;
 }
 
-// Hent produktet fra Astro-props
 const { product } = Astro.props;
 
-// Opret arrays for tags og volumen baseret på produktdata
 const tags = [product.format, product.genre, product.sprog];
 const volume = [product.serie, product.nr]
 
@@ -44,14 +39,15 @@ const volume = [product.serie, product.nr]
 <MainLayout titel={product.titel}>
     <BackgroundPages />
     <Indhold>
+
         <Breadcrumbs 
             type={product.type === "Tegneserie" ? "tegneserier" : "bøger"}
             genre={product.genre}
             side={product.titel}
         />
+
         <div class="produkt">
 
-            <!-- Vis produktets billede -->
             <img src=`/imgs/${product.img}.jpg` alt={product.img} class="cover">
 
             <div class="info">
@@ -60,33 +56,29 @@ const volume = [product.serie, product.nr]
                     {volume[0] && product.genre !== "Manga" ? <h2 class="volume">{volume[0]}, nr. {volume[1]}</h2> : null}
 
                     <div class="titel_favorit_container">
-                        <!-- Vis produktets titel -->
+
                         <h1 class="titel">
                             <!-- Vis serie og volumen for Manga, titel for alt andet -->
                             {product.genre === "Manga" ?<span class="volume">{volume[0]}, Vol. {volume[1]}</span>: null}
                             {product.titel}
                         </h1>
 
-                        <!-- Tilføj favoritknappen -->
                         <button class="favorit">
                             <img src="favoritter_sort_hjerte.svg" alt="">
                         </button>
                     </div>
 
-                    <!-- Vis link til alle titler i samme serie -->
                     <div class="alle_titler">
                         <img src="alle_titler.svg" alt="">
                         <a href="">Se alle titler i samme serie</a>
                     </div>
     
-                    <!-- Vis forfatterens navn -->
                     <div class="forfatter">
                         <img src="forfatter.svg" alt="">
                         <a href="">{product.forfatter}</a>
                     </div>
                 </div>
 
-                <!-- Vis tags som knapper -->
                 <div class="tags">
                     <Button type="primary" link={product.type === "Tegneserie" ? "/tegneserier" : "/bøger"}>{product.type}</Button>
                     {tags.map(tag => {
@@ -96,7 +88,6 @@ const volume = [product.serie, product.nr]
                     })}
                 </div>
 
-                <!-- Vis produktets pris og tilføj til kurv knap -->
                 <div class="salg">
                     <div class="pris">
                         <h2><span>{product.pris}</span>,00 kr.</h2>
@@ -107,12 +98,12 @@ const volume = [product.serie, product.nr]
                     </button>
                 </div>
 
-                <!-- Vis produktets beskrivelse og udgivelsesinformation -->
                 <div class="beskrivelse">
                     <h2>Beskrivelse</h2>
                     <p>{product.beskrivelse}</p>
                     <p>Udgivet af {product.udgiver}, {product.udgivelsesår}</p>
                 </div>
+
             </div>
         </div>
     </Indhold>
