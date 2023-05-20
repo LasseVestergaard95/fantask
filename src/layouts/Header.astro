@@ -19,7 +19,7 @@ const data = await response.json();
                 <img src="fantask_header_logo.svg" alt="">
             </a>
         </div>
-        <nav>
+        <nav class="main_nav_container">
             <ul class="main_nav">
                 <li>
                     <a href="/">Nyheder</a>
@@ -127,18 +127,7 @@ const data = await response.json();
             <ul class="user_nav">
                 <li>
                     <lottie-player class="burgermenu" src="menuV2.json"  background="transparent"  speed="1.7"></lottie-player>
-    
                 </li>
-
-                <!-- <li>
-                    <div class="searchbar_container">
-                        <form action="" class="search_form">
-                            <input type="text" class="searchbar_input">
-                        </form>
-
-                    </div>
-                </li> -->
-
                 <li>
                     <button class="search">
                         <img src="header_search.svg" alt="">
@@ -188,49 +177,35 @@ const data = await response.json();
 
 <script>
     const nav = document.querySelector('.burgermenu');
+    const navLinks = document.querySelector('.main_nav');
     let clicked = false;
     nav.addEventListener('click', () => {
         if (clicked) {
             nav.setDirection(-1);
             nav.play();
             clicked = false;
+            navLinks.animate([
+                { opacity: 1, pointerEvents: 'all', scale: 1},
+                { opacity: 0, pointerEvents: 'none', scale: 0}
+            ], {
+                duration: 500,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            });
         } else {
             nav.setDirection(1);
             nav.play();
             clicked = true;
+            navLinks.animate([
+                { opacity: 0, pointerEvents: 'none', scale: 0},
+                { opacity: 1, pointerEvents: 'all', scale: 1}
+            ], {
+                duration: 500,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            });
         }
     });
-
-    // const search = document.querySelector('.search');
-    // const searchbar = document.querySelector('.searchbar_container');
-    // const main_nav = document.querySelector('.main_nav');
-    // const searchBarInput = document.querySelector('.searchbar_input'); // Assuming the input element has a class 'searchbar_input'
-    // const searchForm = document.querySelector('.search_form'); // Assuming the form has a class 'search_form'
-
-    // search.addEventListener('click', function(e) {
-    //     e.stopPropagation();
-
-    //     if (searchbar.classList.contains('searchbar_visible')) {
-    //         // Submit the form when the searchbar is visible and the search button is clicked
-    //         // searchForm.submit();
-    //     } else {
-    //         main_nav.classList.add('hide');
-    //         searchbar.classList.add('searchbar_visible');
-    //         searchBarInput.focus();
-    //     }
-    // });
-
-    // searchbar.addEventListener('click', function(e) {
-    //     e.stopPropagation(); // Prevent the click event from bubbling up to the document
-    // });
-
-    // document.addEventListener('click', function(e) {
-    //     if (searchbar.classList.contains('searchbar_visible')) {
-    //         searchbar.classList.remove('searchbar_visible');
-    //         main_nav.classList.remove('hide');
-    //     }
-    // });
-
 
 
 </script>
@@ -264,19 +239,37 @@ const data = await response.json();
     }
 
     a {
-        color: var(--white);
+        color: var(--black);
         text-decoration: none;
     }
 
+    .main_nav_container {
+
+    }
+
     .main_nav {
-        display: none;
-        width: 100%;
-        justify-content: space-between;
+        display: flex;
+        opacity: 0;
+        transform: scale(0);
+        pointer-events: none;
+        height: fit-content;
+        max-height: 90vh;
+        overflow: scroll;
+        top: 50%;
+        right: 20%;
+        position: absolute;
         white-space: nowrap;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: var(--white);
+        color: var(--black);
+        border-radius: 15px;
+        border-top-right-radius: 0;
+        border: 1px solid var(--black);
+        transform: translateX(-50%);
+        padding: 1rem;
+        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
+        transform-origin: top center;
     }
 
     .main_nav > li {
@@ -287,11 +280,12 @@ const data = await response.json();
         transition: text-shadow 0.3s ease-in-out, opacity 0.2s ease-in-out;
         position: relative;
         font-weight: medium;
+        height: fit-content;
     }
 
-    /* .main_nav > li:hover {
-        text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
-    } */
+    .submenu {
+        display: none;
+    }
     
     .main_nav:has(li:hover) > li:not(:hover) {
         opacity: 0.5;
@@ -306,16 +300,7 @@ const data = await response.json();
 
     .user_nav li {
         margin-right: 1rem;
-        /* transition: all 0.3s ease-in-out; */
     }
-
-    /* .user_nav li:hover {
-        filter: drop-shadow(0px 0px 20px rgb(255, 255, 255, 0.5));
-    } */
-
-    /* .user_nav:has(li:hover) li:not(:hover) {
-        opacity: 0.5;
-    } */
 
     .user_nav img {
         width: 1.5rem;
@@ -362,6 +347,7 @@ const data = await response.json();
     .burgermenu {
         transform: translateY(0.24rem) translateX(0.18rem);
         cursor: pointer;
+        width: 2rem;
     }
 
     .search {
@@ -376,6 +362,9 @@ const data = await response.json();
 
     @media screen and (min-width: 1200px) {
        
+        a {
+            color: var(--white);
+        }
         .scrolling_banner li {
             font-size: 16px;
         }
@@ -386,6 +375,24 @@ const data = await response.json();
 
         .main_nav {
             display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            border-radius: 0;
+            border: none;
+            transform: none;
+            position: relative;
+            align-items: center;
+            padding: 0;
+            max-height: 5rem;
+            overflow: visible;
+            position: initial;
+            origin: initial;
+            opacity: 1;
+            pointer-events: all;
+            box-shadow: none;
+            scale: 1;  
         }
 
         .fantask_logo img {
@@ -400,20 +407,10 @@ const data = await response.json();
         .top_banner {
             top: 5rem;
         }
-
-
-        /* @keyframes fade {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-        } */
-
         li:hover .submenu {
             opacity: 1;
             pointer-events: all;
+            color: var(--black);
         }
 
         .submenu {
@@ -480,44 +477,6 @@ const data = await response.json();
             display: flex;
             gap: 3rem;
         }
-
-
-
-        .searchbar_container {  
-            display: none;
-            align-items: center;
-            width: 0%;
-            overflow: hidden;
-            opacity: 0;
-            transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            transform: translateY(-0.3rem);
-        }
-
-        .searchbar_visible {
-            display: flex;
-            opacity: 1;
-            width: 100%;
-        }
-
-        .searchbar_input {
-            height: 2rem;
-            border: none;
-            border-bottom: 1px solid var(--white);
-            background: none;
-            padding-inline: 0.4rem;
-            font-size: 16px;
-            font-weight: 300;
-            color: var(--white);
-        }
-
-        .searchbar_input:focus {
-            outline: none;
-        }
-
     }
 
 </style>

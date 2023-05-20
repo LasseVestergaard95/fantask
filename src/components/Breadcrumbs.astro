@@ -28,12 +28,13 @@ const breadcrumbs = [type, genre, serie, titel];
 <style>
     .breadcrumbs {
         list-style: none;
-        width: 1020px;
+        width: 100%;
         margin: 0 auto;
         padding-inline: 2rem;
         margin-bottom: 4rem;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: flex-start;
     }
 
@@ -50,7 +51,7 @@ const breadcrumbs = [type, genre, serie, titel];
     }
 
     .breadcrumbs li::after {
-        content: ">";
+        content: "/";
         margin-inline: 0.5rem;
         color: #999;
     }
@@ -63,10 +64,16 @@ const breadcrumbs = [type, genre, serie, titel];
         content: "";
     }
 
-    @media screen and (max-width: 1020px) {
+    @media screen and (min-width: 1020px) {
         .breadcrumbs {
-            width: 100%;
-            padding-inline: 2rem
+            width: 1020px;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
         }
+
+        .breadcrumbs li::after {
+        content: ">";
+    }
     }
 </style>
