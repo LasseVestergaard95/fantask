@@ -31,8 +31,13 @@ const {titel, beskrivelse, img} = Astro.props;
         z-index: 0;
     }
 
-    /* .guide .cover:hover {
-        transform: scale(1.03);
-    } */
+    .guide .cover {
+        filter: brightness(0.8);
+        transition: filter 0.2s ease;
+    }
+
+    .guide:hover .cover {
+        filter: brightness(1)
+    }
 
 </style>
