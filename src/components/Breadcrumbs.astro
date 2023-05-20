@@ -1,23 +1,27 @@
 ---
+const {type, genre, serie, titel} = Astro.props;
 
+const breadcrumbs = [type, genre, serie, titel];
 ---
 
 <!-- breadcrumbs html -->
 
 <div>
     <ul class="breadcrumbs">
-        <li><a href="/">Forside</a></li>
-        <li>&gt;</li>
-        <li><a href={Astro.props.type}>{Astro.props.type}</a></li>
-        <li>&gt;</li>
+        <li>
+            <a href="/">Forside</a>
+        </li>
         {
-            Astro.props.genre !== "" ? <li><a href={Astro.props.type}>{Astro.props.genre}</a></li> : null
+            breadcrumbs.map((item, index) => {
+                if (item) {
+                    return (
+                        <li >
+                            <a href={type === "Tegneserie" ? "/tegneserier" : "/bøger"}>{item}</a>
+                        </li>
+                    )
+                }
+            })
         }
-        {
-            Astro.props.genre !== "" ? <li>&gt;</li> : null
-
-        }
-        <li class="active">{Astro.props.side}</li>
     </ul>
 </div>
 
@@ -35,7 +39,6 @@
 
     .breadcrumbs li {
         display: inline-block;
-        margin-right: 10px;
         text-transform: capitalize;
         cursor: default;
     }
@@ -46,16 +49,17 @@
         cursor: pointer;
     }
 
-    .breadcrumbs li.active {
+    .breadcrumbs li::after {
+        content: ">";
+        margin-inline: 0.5rem;
         color: #999;
     }
 
-    .breadcrumbs li.active::after {
-        content: ">";
-        margin-left: 10px;
+    .breadcrumbs li:last-child a{
+        color: #999;
+        cursor: default;
     }
-
-    .breadcrumbs li:last-child.active::after {
+    .breadcrumbs li:last-child::after {
         content: "";
     }
 

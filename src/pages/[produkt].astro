@@ -43,7 +43,8 @@ const volume = [product.serie, product.nr]
         <Breadcrumbs 
             type={product.type === "Tegneserie" ? "tegneserier" : "bøger"}
             genre={product.genre}
-            side={product.titel}
+            titel={product.titel}
+            serie={product.serie}
         />
 
         <div class="produkt">
@@ -59,7 +60,6 @@ const volume = [product.serie, product.nr]
 
                         <h1 class="titel">
                             <!-- Vis serie og volumen for Manga, titel for alt andet -->
-                            {product.genre === "Manga" ?<span class="volume">{volume[0]}, Vol. {volume[1]}</span>: null}
                             {product.titel}
                         </h1>
 
