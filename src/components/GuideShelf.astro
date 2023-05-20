@@ -25,12 +25,14 @@ const data = await response.json();
         <div class="flex_row_container">
             <div class="flex_row">
                 {
-                    data.map((guide) => (
-                        <GuideCard 
+                    data.map((guide, index) => {
+                        if (index < 4) {
+                            return <GuideCard 
                             titel={guide.titel} 
                             img={guide.img}
                         />
-                    ))
+                        }
+                    })
                 }
             </div>
         </div>
