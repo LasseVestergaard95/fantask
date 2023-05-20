@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-const tags = [product.format, product.genre, product.sprog];
+const tags = [product.genre, product.format, product.sprog];
 const volume = [product.serie, product.nr]
 
 ---
