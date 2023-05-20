@@ -5,6 +5,7 @@ import GuideShelf from "../components/GuideShelf.astro";
 import NewsletterBanner from "../components/NewsletterBanner.astro";
 import ProductShelf from "../components/ProductShelf.astro";
 import SamlemaerkeBanner from "../components/SamlemaerkeBanner.astro";
+import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/forside?";
@@ -30,12 +31,12 @@ const restOfShelves = activeData.slice(1);
 <MainLayout titel="Fantask">
     <ForsideHero />
     <BackgroundPages />
-    <div class="indhold">
+    <Indhold>
         <ProductShelf
-            titel={firstShelf.titel}
-            beskrivelse={firstShelf.beskrivelse}
-            produkter={firstShelf.produkter}
-            kategori={firstShelf.kategori}
+        titel={firstShelf.titel}
+        beskrivelse={firstShelf.beskrivelse}
+        produkter={firstShelf.produkter}
+        kategori={firstShelf.kategori}
         />
         <SamlemaerkeBanner />
         <GuideShelf />
@@ -48,6 +49,6 @@ const restOfShelves = activeData.slice(1);
             />
         ))}
         <NewsletterBanner />
-    </div>
-
+    </Indhold>
 </MainLayout>
+```

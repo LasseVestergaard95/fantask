@@ -1,12 +1,13 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
 import ProductGrid from "../components/ProductGrid.astro";
+import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout titel="Bøger - Fantask">
     <BackgroundPages/>
-    <div class="indhold">
+    <Indhold>
         <div class="head">
             <h1>Bøger</h1>
             <div class="filtrer">
@@ -49,7 +50,7 @@ import MainLayout from "../layouts/MainLayout.astro";
         </div>
 
         <ProductGrid type="Bog"/>
-    </div>
+    </Indhold>
 </MainLayout>
 
 <style>

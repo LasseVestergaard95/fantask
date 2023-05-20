@@ -3,6 +3,7 @@ import BackgroundPages from "../components/BackgroundPages.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Button from "../components/Button.astro";
 import Tag from "../components/Tag.astro";
+import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 // Funktionen henter statiske stier baseret på data fra en API
@@ -42,7 +43,7 @@ const volume = [product.serie, product.nr]
 
 <MainLayout titel={product.titel}>
     <BackgroundPages />
-    <div class="indhold">
+    <Indhold>
         <Breadcrumbs 
             type={product.type === "Tegneserie" ? "tegneserier" : "bøger"}
             genre={product.genre}
@@ -114,7 +115,7 @@ const volume = [product.serie, product.nr]
                 </div>
             </div>
         </div>
-    </div>
+    </Indhold>
 </MainLayout>
 
 

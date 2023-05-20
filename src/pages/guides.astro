@@ -1,6 +1,7 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
 import GuideCard from "../components/GuideCard.astro";
+import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/guides?";
@@ -19,7 +20,7 @@ const data = await response.json();
 
 <MainLayout titel="Fantask Guides">
     <BackgroundPages />
-    <div class="indhold">
+    <Indhold>
         <section>
             <div class="text">
                 <h1>Fantask Guides</h1>
@@ -71,7 +72,7 @@ const data = await response.json();
                     }
             </div>
         </section>
-    </div>
+    </Indhold>
 </MainLayout>
 
 <style>

@@ -1,12 +1,13 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
 import ProductGrid from "../components/ProductGrid.astro";
+import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout titel="Tegneserier - Fantask">
     <BackgroundPages/>
-    <div class="indhold">
+    <Indhold>
         <div class="head">
             <h1>Tegneserier</h1>
             <div class="filtrer">
@@ -49,7 +50,7 @@ import MainLayout from "../layouts/MainLayout.astro";
         </div>
 
         <ProductGrid type="Tegneserie"/>
-    </div>
+    </Indhold>
 </MainLayout>
 
 <style>

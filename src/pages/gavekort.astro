@@ -1,12 +1,13 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
+import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 ---
 
 <MainLayout titel="Fantask Gavekort">
     <BackgroundPages />
-    <div class="indhold">
+    <Indhold>
         <div class="produkt">
             <img src="/imgs/gavekort.jpg" alt="" class="cover">
             <div class="info">
@@ -53,9 +54,7 @@ import MainLayout from "../layouts/MainLayout.astro";
                 </div>
             </div>
         </div>
-        <div>
-        </div>
-    </div>
+    </Indhold>
 
 </MainLayout>
 
