@@ -30,7 +30,6 @@ const breadcrumbs = [type, genre, serie, titel];
         list-style: none;
         width: 100%;
         margin: 0 auto;
-        padding-inline: 2rem;
         margin-bottom: 4rem;
         display: flex;
         flex-direction: column;
@@ -66,14 +65,9 @@ const breadcrumbs = [type, genre, serie, titel];
 
     @media screen and (min-width: 1020px) {
         .breadcrumbs {
-            width: 1020px;
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
         }
-
-        .breadcrumbs li::after {
-        content: "/";
-    }
     }
 </style>
