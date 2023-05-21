@@ -14,9 +14,8 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { produkter } = Astro.props;
+const { produkter, titel, beskrivelse, kategori } = Astro.props;
 
-// if produkter isnt empty, filter data
 const filteredData = data.filter((item) => produkter.includes(item.id.toString()));
 
 ---
@@ -24,8 +23,8 @@ const filteredData = data.filter((item) => produkter.includes(item.id.toString()
 <section>
   <div class="shelf">
     <div class="text">
-      <h1>{Astro.props.titel}</h1>
-      <p>{Astro.props.beskrivelse}</p>
+      <h1>{titel}</h1>
+      <p>{beskrivelse}</p>
     </div>
     <div class="flex_row_container">
       <div class="flex_row">
@@ -40,7 +39,7 @@ const filteredData = data.filter((item) => produkter.includes(item.id.toString()
     </div>
   </div>
   <div class="button_frame">
-    <Button type="primary" link="tegneserier">Se alt i {Astro.props.kategori}</Button>
+    <Button link="/">Se alt i {kategori}</Button>
   </div>
 </section>
 

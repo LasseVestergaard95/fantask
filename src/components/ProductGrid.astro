@@ -14,7 +14,7 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { type } = Astro.props;
+const { titel, beskrivelse, type } = Astro.props;
 
 const filteredData = data.filter(item => type.includes(item.type.toString()));
 
@@ -22,8 +22,8 @@ const filteredData = data.filter(item => type.includes(item.type.toString()));
 <section>
     <div class="product_grid">
         <div class="text">
-            <h1>{Astro.props.titel}</h1>
-            <p>{Astro.props.beskrivelse}</p>
+            <h1>{titel}</h1>
+            <p>{beskrivelse}</p>
         </div>
             <div class="flex">
                 {

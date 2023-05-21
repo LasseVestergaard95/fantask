@@ -1,34 +1,21 @@
 ---
-
+const { link, type } = Astro.props;
 ---
 
-<a href=`${Astro.props.link}` class={Astro.props.type}>
+<a href=`${link}`>
     <slot />
 </a>
 
 <style>
     a {
-        background-color: none;
-        color: var(--black);
-        border: 1px solid var(--black);
+        background-color: var(--dark-blue);
+        color: var(--white);
+        border: none;
         padding: 0.15rem 0.5rem;
         border-radius: 5px;
         font-size: 16px;
         text-decoration: none;
-        color: var(--black);
         white-space: nowrap;
-    }
-
-    a.primary {
-        background-color: var(--dark-blue);
-        color: var(--white);
-        border: none;
-    }
-
-    a.secondary {
-        background-color: var(--white);
-        color: var(--black);
-        border: 1px solid var(--black);
     }
 
 </style>
