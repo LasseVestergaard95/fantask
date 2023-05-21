@@ -173,32 +173,46 @@ const data = await response.json();
 </div>
 
 
+<!-- Include Lottie player library -->
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 <script>
+    // Get the burger menu element
     const nav = document.querySelector('.burgermenu');
+    // Get the main navigation links element
     const navLinks = document.querySelector('.main_nav');
+    // Variable to track the clicked state
     let clicked = false;
+
+    // Add click event listener to the burger menu
     nav.addEventListener('click', () => {
-        if (clicked ) {
+        if (clicked) {
+            // Reverse the animation direction
             nav.setDirection(-1);
+            // Play the animation
             nav.play();
+            // Reset clicked state
             clicked = false;
+            // Animate the nav links to hide them
             navLinks.animate([
-                { opacity: 1, pointerEvents: 'all', scale: 1},
-                { opacity: 0, pointerEvents: 'none', scale: 0}
+                { opacity: 1, pointerEvents: 'all'},
+                { opacity: 0, pointerEvents: 'none'}
             ], {
                 duration: 300,
                 easing: 'ease-in-out',
                 fill: 'forwards'
             });
         } else {
+            // Set the animation direction to forward
             nav.setDirection(1);
+            // Play the animation
             nav.play();
+            // Set clicked state to true
             clicked = true;
+            // Animate the nav links to show them
             navLinks.animate([
-                { opacity: 0, pointerEvents: 'none', scale: 0},
-                { opacity: 1, pointerEvents: 'all', scale: 1}
+                { opacity: 0, pointerEvents: 'none'},
+                { opacity: 1, pointerEvents: 'all'}
             ], {
                 duration: 300,
                 easing: 'ease-in-out',
@@ -206,20 +220,25 @@ const data = await response.json();
             });
         }
     });
-    // if the screen width is more than 1200px, the navlinks will be visible
+
+    // Check for window resize event
     window.addEventListener('resize', () => {
+        // If the screen width is more than 1200px
         if (window.innerWidth > 1200) {
+            // Animate the nav links to make them visible
             navLinks.animate([
-                { opacity: 1, pointerEvents: 'all', scale: 1}
+                { opacity: 1, pointerEvents: 'all', scale: 1 }
             ], {
                 duration: 0,
                 easing: 'ease-in-out',
                 fill: 'forwards'
             });
         }
+        // If the screen width is less than or equal to 1200px
         else {
+            // Animate the nav links to hide them
             navLinks.animate([
-                { opacity: 0, pointerEvents: 'none', scale: 0}
+                { opacity: 0, pointerEvents: 'none', scale: 0 }
             ], {
                 duration: 0,
                 easing: 'ease-in-out',
@@ -227,23 +246,34 @@ const data = await response.json();
             });
         }
     });
-
-
 </script>
 
 
 
 <style>
 
+    /* Utility Classes */
+
     .hide {
         opacity: 0;
         pointer-events: none;
     }
 
+    /* Header Styles */
+
     header {
         position: sticky;
         top: 0;
         z-index: 9999;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--black);
+    }
+
+    li {
+        list-style: none;
     }
 
     .top_header {
@@ -255,17 +285,22 @@ const data = await response.json();
         padding-inline: 2rem;
     }
 
-    li {
-        list-style: none;
+    .fantask_logo img {
+        width: 8rem;
     }
 
-    a {
-        color: var(--black);
-        text-decoration: none;
+    .burgermenu {
+        transform: translateY(0.24rem) translateX(0.18rem);
+        cursor: pointer;
+        width: 2rem;
     }
+
+    /* Main Navigation Styles */
 
     .main_nav_container {
-
+        position: relative;
+        width: 100%;
+        height: 100%;
     }
 
     .main_nav {
@@ -273,24 +308,25 @@ const data = await response.json();
         flex-direction: column;
         align-items: flex-start;
         position: absolute;
-        right: 20%;
         top: 50%;
+        right: 0;
         height: fit-content;
         max-height: 90vh;
-        opacity: 0;
-        transform: scale(0);
         pointer-events: none;
-        overflow: scroll;
+        overflow: hidden;
         white-space: nowrap;
         background-color: var(--white);
         color: var(--black);
         border-radius: 15px;
         border-top-right-radius: 0;
         border: 1px solid var(--black);
-        transform: translateX(-50%);
+        transform: translateX(-0%);
         padding: 1rem;
         box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
-        transform-origin: top center;
+        /* no scrollbar */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        
     }
 
     .main_nav > li {
@@ -298,20 +334,79 @@ const data = await response.json();
         font-size: 16px;
         z-index: 1;
         padding: 1rem;
-        transition: text-shadow 0.3s ease-in-out, opacity 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
         position: relative;
         font-weight: medium;
         height: fit-content;
     }
 
-    .submenu {
-        display: none;
-    }
-    
     .main_nav:has(li:hover) > li:not(:hover) {
         opacity: 0.5;
     }
 
+    .submenu {
+        position: absolute;
+        width: fit-content;
+        opacity: 0;
+        border-radius: 15px;
+        background-color: var(--white);
+        padding: 3rem;
+        z-index: 1;
+        border: 1px solid var(--black);
+        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
+        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .bøger_li .submenu {
+        transform: translateX(-43.5%) translateY(7%);
+    }
+
+    .tegneserier_li .submenu {
+        transform: translateX(-38%) translateY(7%);
+    }
+
+    .submenu ul {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .submenu ul a {
+        font-weight: 400;
+        color: var(--black);
+    }
+
+    .submenu li {
+        font-size: 16px;
+        margin-top: 0.1rem;
+        opacity: 1;
+    }
+
+    .submenu li:first-of-type {
+        margin-top: 0.2rem;
+    }
+
+    .pointer {
+        width: 7rem;
+        height: 7rem;
+        position: absolute;
+        background-color: var(--white);
+        transform: translateX(-50%) translateY(-50%);
+        clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
+        inset: (0% 45% 0% 45% round 10px);
+        border-radius: 5px;
+        top: -0.5rem;
+        left: 50%;
+        z-index: -1;
+        padding-inline: 6rem;
+    }
+
+    .bubble {
+        display: flex;
+        gap: 3rem;
+    }
+
+    /* User Navigation Styles */
 
     .user_nav {
         display: flex;
@@ -327,9 +422,7 @@ const data = await response.json();
         width: 1.5rem;
     }
 
-    .fantask_logo img {
-        width: 8rem;
-    }
+    /* Top Banner Styles */
 
     .top_banner {
         background-color: var(--top-banner);
@@ -356,44 +449,47 @@ const data = await response.json();
         display: inline;
         margin-right: 10rem;
     }
+
     @keyframes scroll {
         0% {
             transform: translateX(0%);
         }
-        100% {
+         100% {
             transform: translateX(-50%);
         }
     }
 
-    .burgermenu {
-        transform: translateY(0.24rem) translateX(0.18rem);
-        cursor: pointer;
-        width: 2rem;
-    }
+    /* Search Styles */
 
     .search {
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-    .searchbar_container {
-        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
+
+    /* Media Query Styles */
 
     @media screen and (min-width: 1200px) {
        
         a {
             color: var(--white);
         }
+
         .scrolling_banner li {
             font-size: 16px;
         }
-       
+
         .burgermenu {
             display: none;
         }
 
+        .main_nav_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
         .main_nav {
             display: flex;
             justify-content: space-between;
@@ -431,77 +527,15 @@ const data = await response.json();
 
         .submenu {
             display: block;
+            color: var(--black);
         }
+
         li:hover .submenu {
             opacity: 1;
             pointer-events: all;
-            color: var(--black);
+
         }
 
-        .submenu {
-            position: absolute;
-            width: fit-content;
-            opacity: 0;
-            border-radius: 15px;
-            background-color: var(--white);
-            padding: 3rem;
-            z-index: 1;
-            border: 1px solid var(--black);
-            box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
-            pointer-events: none;
-            transition: opacity 0.2s ease-in-out;
-        }
-
-        .bøger_li .submenu {
-            transform: translateX(-43.5%) translateY(7%);
-        }
-
-        .tegneserier_li .submenu {
-            transform: translateX(-38%) translateY(7%);
-        }
-
-        .submenu:hover {
-            display: block;
-        }
-
-        .submenu ul {
-            font-weight: 600;
-            font-size: 20px;
-        }
-
-        .submenu ul a {
-            font-weight: 400;
-            color: var(--black);
-        }
-
-        .submenu li {
-            font-size: 16px;
-            margin-top: 0.1rem;
-            opacity: 1;
-        }
-
-        .submenu li:first-of-type {
-            margin-top: 0.2rem;
-        }
-
-        .pointer {
-            width: 7rem;
-            height: 7rem;
-            position: absolute;
-            background-color: var(--white);
-            transform: translateX(-50%) translateY(-50%);
-            clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
-            inset: (0% 45% 0% 45% round 10px);
-            border-radius: 5px;
-            top: -0.5rem;
-            left: 50%;
-            z-index: -1;
-            padding-inline: 6rem;
-        }
-        .bubble {
-            display: flex;
-            gap: 3rem;
-        }
     }
 
 </style>
