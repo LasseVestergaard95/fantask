@@ -180,7 +180,7 @@ const data = await response.json();
     const navLinks = document.querySelector('.main_nav');
     let clicked = false;
     nav.addEventListener('click', () => {
-        if (clicked) {
+        if (clicked ) {
             nav.setDirection(-1);
             nav.play();
             clicked = false;
@@ -188,7 +188,7 @@ const data = await response.json();
                 { opacity: 1, pointerEvents: 'all', scale: 1},
                 { opacity: 0, pointerEvents: 'none', scale: 0}
             ], {
-                duration: 500,
+                duration: 300,
                 easing: 'ease-in-out',
                 fill: 'forwards'
             });
@@ -200,7 +200,28 @@ const data = await response.json();
                 { opacity: 0, pointerEvents: 'none', scale: 0},
                 { opacity: 1, pointerEvents: 'all', scale: 1}
             ], {
-                duration: 500,
+                duration: 300,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            });
+        }
+    });
+    // if the screen width is more than 1200px, the navlinks will be visible
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1200) {
+            navLinks.animate([
+                { opacity: 1, pointerEvents: 'all', scale: 1}
+            ], {
+                duration: 0,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            });
+        }
+        else {
+            navLinks.animate([
+                { opacity: 0, pointerEvents: 'none', scale: 0}
+            ], {
+                duration: 0,
                 easing: 'ease-in-out',
                 fill: 'forwards'
             });
@@ -249,18 +270,18 @@ const data = await response.json();
 
     .main_nav {
         display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        right: 20%;
+        top: 50%;
+        height: fit-content;
+        max-height: 90vh;
         opacity: 0;
         transform: scale(0);
         pointer-events: none;
-        height: fit-content;
-        max-height: 90vh;
         overflow: scroll;
-        top: 50%;
-        right: 20%;
-        position: absolute;
         white-space: nowrap;
-        flex-direction: column;
-        align-items: flex-start;
         background-color: var(--white);
         color: var(--black);
         border-radius: 15px;
@@ -406,6 +427,10 @@ const data = await response.json();
 
         .top_banner {
             top: 5rem;
+        }
+
+        .submenu {
+            display: block;
         }
         li:hover .submenu {
             opacity: 1;
