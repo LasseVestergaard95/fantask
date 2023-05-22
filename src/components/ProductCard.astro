@@ -2,52 +2,69 @@
 import Button from "./Button.astro";
 import Tag from "./Tag.astro";
 
+// Destructure properties from Astro.props
 const {titel, forfatter, type, format, pris, img, sprog, genre, serie, nr} = Astro.props;
 
-// if nr is true make new variable
+// If the number of the product (nr) exists, prepend it with '#', otherwise leave it as null. 
 const nr2 = nr && `#${nr}`;
 
+// Create an array of tags from the product properties. 
 const tags = [nr2, format, sprog];
+
 
 ---
 
+<!-- Product card container -->
 <div class="product_card">
+    <!-- Link to the specific product page constructed from the product series, number and title -->
     <a href=`${serie + nr + titel}` class="cover_container" title={titel}>
+        <!-- Display the product cover image -->
         <img src={`/imgs/${img}.jpg`} class="cover">
+        <!-- Button for adding the product to favorites -->
         <button class="favorit">
             <img src="favoritter_sort_hjerte.svg" alt="">
         </button>
     </a>
 
+    <!-- Container for product info -->
     <div class="info">
+        <!-- Container for title and author info -->
         <div>
+            <!-- Display the product title as a link to its page -->
             <h2 class="titel">
                 <a href=`${serie + nr + titel}` title={titel}>
                     {titel}
                 </a>
             </h2>
             
-             <div class="forfatter">
+            <!-- Display the product author -->
+            <div class="forfatter">
                 <img src="forfatter.svg" alt="">
                 <a href={forfatter}>{forfatter}</a>
             </div >
         </div>
 
+        <!-- Container for tags, display type and genre if it exists -->
         <div class="tags">
-            <Button type="primary" link={type}>{type}</Button>
+            <Button link={type}>{type}</Button>
             <!-- if genre is true add genre Button -->
             {genre && <Button link={genre}>{genre}</Button>}
 
+            <!-- Iterate over tags array and display each tag -->
             {tags.map(tag => {
                 if (tag) {
                     return <Tag>{tag}</Tag>
                 }
             })}
         </div>
+
+        <!-- Container for price and purchase button -->
         <div>
+            <!-- Display the product price -->
             <div class="pris">
                 <h2><span>{pris}</span>,00 kr.</h2>
             </div>
+            <!-- Button for adding the product to the cart -->
             <button class="køb">
                 <img src="shoppingcart.svg" alt="">
                 Læg i Kurv
@@ -55,6 +72,7 @@ const tags = [nr2, format, sprog];
         </div>       
     </div>
 </div>
+
 
 <style>
 
