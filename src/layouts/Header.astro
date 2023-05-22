@@ -325,7 +325,7 @@ const data = await response.json();
         /* no scrollbar */
         scrollbar-width: none;
         -ms-overflow-style: none;
-        z-index: 99999999;
+        z-index: 999999;
     }
 
     .main_nav > li {
@@ -350,6 +350,7 @@ const data = await response.json();
         border-radius: 15px;
         background-color: var(--white);
         padding: 3rem;
+        z-index: 1;
         border: 1px solid var(--black);
         box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
         pointer-events: none;
@@ -428,7 +429,7 @@ const data = await response.json();
         white-space: nowrap;
         width: 100%;
         box-shadow: 0px 5px 14px 0px #275ec424;
-        z-index: 2;
+        z-index: 0;
         position: sticky;
         top: 0;
     }
