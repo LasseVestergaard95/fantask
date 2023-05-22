@@ -4,7 +4,10 @@ import Tag from "./Tag.astro";
 
 const {titel, forfatter, type, format, pris, img, sprog, genre, serie, nr} = Astro.props;
 
-const tags = [format, sprog];
+// if nr is true make new variable
+const nr2 = nr && `#${nr}`;
+
+const tags = [nr2, format, sprog];
 
 ---
 
