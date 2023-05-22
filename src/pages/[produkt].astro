@@ -32,7 +32,7 @@ const { product, product:nr } = Astro.props;
 
 const nr2 = nr && `#${product.nr}`;
 
-const tags = [nr2, product.format, product.sprog];
+const tags = [product.format, product.sprog];
 const volume = [product.serie, product.nr];
 
 ---
@@ -86,8 +86,8 @@ const volume = [product.serie, product.nr];
         <div class="tags">
             <Button type="primary" link={product.type}>{product.type}</Button>
             <!-- if genre is true add genre Button -->
-            {product.genre && <Button link={product.genre}>{product.genre}</Button>}
 
+            {product.genre && <Button link={product.genre}>{product.genre}</Button>}
             {tags.map(tag => {
                 if (tag) {
                     return <Tag>{tag}</Tag>
