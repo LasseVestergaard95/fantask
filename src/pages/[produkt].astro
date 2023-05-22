@@ -6,35 +6,44 @@ import Tag from "../components/Tag.astro";
 import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
+// The getStaticPaths function fetches product data from an API and returns an array of objects that define dynamic routes for the application
 export async function getStaticPaths() {
 
-    const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
-    const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+// Define the endpoint and API key
+const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
+const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
 
-    const options = {
-        headers: {
-            apikey: apikey
-        }
+// Set up fetch options
+const options = {
+    headers: {
+        apikey: apikey
     }
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-
-    const paths = data.map((product) => ({
-        params: { produkt: product.serie + product.nr + product.titel },
-        props: { product },
-    }));
-
-    return paths;
 }
 
-const { product, product:nr } = Astro.props;
+// Fetch product data from the API
+const response = await fetch(url, options);
+const data = await response.json();
 
-// if nr is true make new variable
+// Map each product to a route definition
+const paths = data.map((product) => ({
+    // Concatenate product series, number, and title to form the route path
+    params: { produkt: product.serie + product.nr + product.titel },
+    // Include the entire product object as a route prop
+    props: { product },
+}));
+
+// Return all paths to be statically generated
+return paths;
+}
+
+// Destructure the product object from Astro.props
+const { product } = Astro.props;
+
+// If the product number exists, prepend it with '#', otherwise leave it as is
 const nr2 = product.nr && `#${product.nr}`;
 
+// Create an array of tags from the product properties
 const tags = [nr2, product.format, product.sprog];
-const volume = [product.serie, product.nr];
 
 ---
 
@@ -59,14 +68,13 @@ const volume = [product.serie, product.nr];
                     <!-- Vis produktets serie og nr, hvis det ikke er en Manga -->
                     {product.serie && product.genre !== "Manga" ? 
                     <a href={product.serie}>
-                        <h2 class="volume">{product.serie}</h2> 
+                        <h2>{product.serie}</h2> 
                     </a>
                     : null}
 
                     <div class="titel_favorit_container">
 
                         <h1 class="titel">
-                            <!-- Vis serie og volumen for Manga, titel for alt andet -->
                             {product.titel}
                         </h1>
 
@@ -74,14 +82,6 @@ const volume = [product.serie, product.nr];
                             <img src="favoritter_sort_hjerte.svg" alt="">
                         </button>
                     </div>
-                    <!-- {
-                        // if serie add serie link
-                        product.serie && 
-                        <div class="alle_titler">
-                            <img src="alle_titler.svg" alt="">
-                            <a href={product.serie}>Se alle titler i samme serie</a>
-                        </div>
-                    } -->
                     <div class="forfatter">
                         <img src="forfatter.svg" alt="">
                         <a href={product.forfatter}>{product.forfatter}</a>
