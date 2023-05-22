@@ -56,8 +56,6 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-console.log(data);
-
 const unikkeGenre = data
     // Map over the 'data' array, returning an object with 'genre' and 'type' for each item.
     .map(item => ({ genre: item.genre, type: item.type }))
@@ -73,8 +71,8 @@ const unikkeGenre = data
         []
     );
 
-// Log the result (the array of unique genre-type objects without null values) to the console.
-console.log(unikkeGenre);
+// // Log the result (the array of unique genre-type objects without null values) to the console.
+// console.log(unikkeGenre);
 
 const { genre } = Astro.props;
 
