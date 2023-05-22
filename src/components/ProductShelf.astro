@@ -2,37 +2,56 @@
 import Button from "./Button.astro";
 import ProductCard from "./ProductCard.astro";
 
+// Define the URL of the API endpoint to fetch data from
 const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
+
+// API key for the endpoint, used for authentication and authorization
 const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
 
+// Options for fetch request, including headers that contain the api key
 const options = {
     headers: {
         apikey: apikey
     }
 }
 
+// Fetch data from the URL and store the response
 const response = await fetch(url, options);
+
+// Convert response data to JSON format
 const data = await response.json();
 
+// Destructuring assignment to extract properties from Astro.props
 const { produkter, titel, beskrivelse, kategori, serie, id, genre, type} = Astro.props;
 
+// Filter the fetched data based on various conditions
 let filteredData = data
   .filter(product => 
+    // If 'produkter' exists, filter for products whose 'id' is included in 'produkter'
     produkter ? produkter.includes(product.id.toString()) : 
+    // Else if 'serie' exists, filter for products whose 'serie' matches 'serie'
     serie ? product.serie === serie : 
+    // Else if 'genre' exists, filter for products whose 'genre' matches 'genre'
     genre ? product.genre === genre :
+    // Else if 'type' exists, filter for products whose 'type' matches 'type'
     type ? product.type === type :
+    // If none of the above conditions are met, return false
     false)
+  // Sort the filtered data based on the 'nr' property
   .sort((a, b) => a.nr - b.nr)
+  // Filter out the product whose 'id' matches 'id'
   .filter(product => product.id !== id);
 
-// Ensure there are always at least 4 items
+// Ensure that the filteredData always contains at least 4 items
 let additionalItems = data.filter(product => product.genre === genre && product.id !== id);
+// Loop through the 'additionalItems' and push them into 'filteredData' until its length is 4
 for(let i = 0; filteredData.length < 4 && i < additionalItems.length; i++) {
+  // Only push the item if it's not already included in 'filteredData'
   if (!filteredData.includes(additionalItems[i])) {
     filteredData.push(additionalItems[i]);
   }
 }
+
 
 
 ---
@@ -85,8 +104,9 @@ for(let i = 0; filteredData.length < 4 && i < additionalItems.length; i++) {
     position: relative;
   }
 
-  h1 {
-    white-space: 
+  .text h1 {
+    white-space: break-spaces;
+
   }
 
   .text {
