@@ -54,7 +54,7 @@ const volume = [product.serie, product.nr];
             <div class="info">
                 <div>
                     <!-- Vis produktets serie og nr, hvis det ikke er en Manga -->
-                    {volume[0] && product.genre !== "Manga" ? <h2 class="volume">{volume[0]}, nr. {volume[1]}</h2> : null}
+                    {volume[0] && product.genre !== "Manga" ? <h2 class="volume">{volume[0]} {volume[1]}</h2> : null}
 
                     <div class="titel_favorit_container">
 
@@ -154,11 +154,16 @@ const volume = [product.serie, product.nr];
 
     /* Styling for produktets coverbillede */
     .cover {
-        width: 300px;
+        width: 35%;
         height: 100%;
         object-fit: cover;
         place-self: flex-start;
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
+        margin-bottom: 6rem;
+        // position: sticky;
+        // top: 14rem;
+        // margin-bottom: 5rem;
+        
     }
 
     /* Styling for produktets information */
@@ -316,6 +321,12 @@ const volume = [product.serie, product.nr];
         /* Fjern venstremargin på infokolonnen */
         .info {
             padding-left: 0;
+        }
+        .cover {
+
+            position: relative;
+            top: 0;
+            margin-bottom: 3em;
         }
     }
 

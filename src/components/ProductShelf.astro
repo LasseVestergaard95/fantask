@@ -14,13 +14,14 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { produkter, titel, beskrivelse, kategori, serie, id, genre} = Astro.props;
+const { produkter, titel, beskrivelse, kategori, serie, id, genre, type} = Astro.props;
 
 let filteredData = data
   .filter(product => 
     produkter ? produkter.includes(product.id.toString()) : 
     serie ? product.serie === serie : 
-    genre ? product.genre === genre : 
+    genre ? product.genre === genre :
+    type ? product.type === type :
     false)
   .sort((a, b) => a.nr - b.nr)
   .filter(product => product.id !== id);
