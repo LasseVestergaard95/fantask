@@ -1,5 +1,4 @@
 ---
-import BackgroundPages from "../components/BackgroundPages.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Button from "../components/Button.astro";
 import ProductShelf from "../components/ProductShelf.astro";
@@ -32,7 +31,7 @@ export async function getStaticPaths() {
 const { product } = Astro.props;
 
 const tags = [product.format, product.sprog];
-const volume = [product.serie, product.nr]
+const volume = [product.serie, product.nr];
 
 ---
 
@@ -112,6 +111,16 @@ const volume = [product.serie, product.nr]
 
             </div>
         </div>
+        <div>
+            <ProductShelf
+                titel="Relaterede produkter"
+                serie={product.serie}
+                id={product.id}
+                genre={product.genre}
+                forfatter={product.forfatter}
+                type={product.type}
+            />
+        </div>
 
         </section>
        
@@ -121,7 +130,7 @@ const volume = [product.serie, product.nr]
 <style>
 
     section {
-        max-width: 1020px;
+        max-width: 1100px;
         margin: 0 auto;
         padding-inline: 2rem;
         margin-top: 3rem;

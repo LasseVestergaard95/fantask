@@ -16,9 +16,8 @@ const data = await response.json();
 
 const { titel, beskrivelse, type, genre, serie, forfatter } = Astro.props;
 
-
 // filter data by type and genre
-const filteredData = data.filter((product) => {
+let filteredData = data.filter((product) => {
     if (type && genre) {
         return product.type === type && product.genre === genre;
     } else if (type) {
@@ -32,6 +31,10 @@ const filteredData = data.filter((product) => {
     } else {
         return product;
     }
+});
+
+filteredData.sort((a, b) => {
+    return a.nr - b.nr;
 });
 
 

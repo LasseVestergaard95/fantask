@@ -14,9 +14,25 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { produkter, titel, beskrivelse, kategori } = Astro.props;
+const { produkter, titel, beskrivelse, kategori, serie, id, genre} = Astro.props;
 
-const filteredData = data.filter((item) => produkter.includes(item.id.toString()));
+let filteredData = data
+  .filter(product => 
+    produkter ? produkter.includes(product.id.toString()) : 
+    serie ? product.serie === serie : 
+    genre ? product.genre === genre : 
+    false)
+  .sort((a, b) => a.nr - b.nr)
+  .filter(product => product.id !== id);
+
+// Ensure there are always at least 4 items
+let additionalItems = data.filter(product => product.genre === genre && product.id !== id);
+for(let i = 0; filteredData.length < 4 && i < additionalItems.length; i++) {
+  if (!filteredData.includes(additionalItems[i])) {
+    filteredData.push(additionalItems[i]);
+  }
+}
+
 
 ---
 
@@ -29,18 +45,32 @@ const filteredData = data.filter((item) => produkter.includes(item.id.toString()
     <div class="flex_row_container">
       <div class="flex_row">
         {
-          filteredData.map((product) => {
-            return (
-              <ProductCard titel={product.titel} forfatter={product.forfatter} img={product.img} pris={product.pris} type={product.type} format={product.format} sprog={product.sprog} genre={product.genre} serie={product.serie} nr={product.nr} />
-            );
+          filteredData.slice(0, 4).map((product) => {
+            return <ProductCard 
+              titel={product.titel} 
+              forfatter={product.forfatter}
+              img={product.img} 
+              pris={product.pris} 
+              type={product.type} 
+              format={product.format} 
+              sprog={product.sprog} 
+              genre={product.genre} 
+              serie={product.serie} 
+              nr={product.nr} 
+            />
           })
         }
       </div>
     </div>
   </div>
-  <div class="button_frame">
-    <Button link={kategori}>Se alt i {kategori}</Button>
-  </div>
+  {
+    kategori ?  
+    <div class="button_frame">
+      <Button link={kategori}>Se alt i {kategori}</Button>
+    </div> 
+    : null
+  }
+ 
 </section>
 
 <style>
