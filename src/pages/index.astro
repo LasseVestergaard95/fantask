@@ -19,10 +19,15 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
+// Filter the data array to only include shelves that are marked as 'active' (aktiv property is true)
 const activeData = data.filter((shelf) => shelf.aktiv === true);
 
+// Get the first item from the array of active shelves
 const firstShelf = activeData[0];
+
+// Get the remaining items of the active shelves array (all items except for the first one)
 const restOfShelves = activeData.slice(1);
+
 
 
 ---
@@ -56,4 +61,5 @@ const restOfShelves = activeData.slice(1);
     body {
         background: var(--blue);
     }
+    
 </style>

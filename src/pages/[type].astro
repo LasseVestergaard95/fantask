@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
     console.log(data);
 
-    const unikkeGenre = data
+    const unikData = data
         // Map over the 'data' array, returning an object with 'genre' and 'type' for each item.
         .map(item => ({ genre: item.genre, type: item.type }))
         // Filter out any items where 'genre' or 'type' is null or falsy.
@@ -35,9 +35,9 @@ export async function getStaticPaths() {
         );
 
     // Log the result (the array of unique genre-type objects without null values) to the console.
-    console.log(unikkeGenre);
+    console.log(unikData);
 
-    const paths = unikkeGenre.map((genre) => ({
+    const paths = unikData.map((genre) => ({
         params: { type: genre.type},
         props: { genre },
         }));
