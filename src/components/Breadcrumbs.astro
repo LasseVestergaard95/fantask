@@ -16,7 +16,10 @@ const breadcrumbs = [type, genre, serie, titel];
                 if (item) {
                     return (
                         <li >
-                            <a href={type === "Tegneserie" ? "/tegneserier" : "/bøger"}>{item}</a>
+                            <a href={
+                                // type links to type, if genre is set, links to genre, if serie is set, links to serie, if titel is set, links to titel
+                                index === 0 ? `/${item}` : index === 1 ? `/${item}` : index === 2 ? `/${genre}` : `/`
+                            }>{item}</a>
                         </li>
                     )
                 }
