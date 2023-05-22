@@ -14,7 +14,7 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const { titel, beskrivelse, type, genre } = Astro.props;
+const { titel, beskrivelse, type, genre, serie } = Astro.props;
 
 
 // filter data by type and genre
@@ -25,6 +25,8 @@ const filteredData = data.filter((product) => {
         return product.type === type;
     } else if (genre) {
         return product.genre === genre;
+    } else if (serie) {
+        return product.serie === serie;
     } else {
         return product;
     }
