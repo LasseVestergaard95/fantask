@@ -51,6 +51,11 @@ const filteredData = data.filter((item) => produkter.includes(item.id.toString()
   .shelf {
     margin: 0 auto;
     width: 1020px;
+    position: relative;
+  }
+
+  h1 {
+    white-space: 
   }
 
   .text {
@@ -78,8 +83,19 @@ const filteredData = data.filter((item) => produkter.includes(item.id.toString()
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 1.5rem;
     /* margin-inline: auto; */
   }
+
+  /* .shelf::after {
+    content: ">";
+    display: block;
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 200;
+    position: absolute;
+    top: 50%;
+  } */
 
   @media screen and (min-width: 1200px) {
     .text {

@@ -25,41 +25,41 @@ const data = await response.json();
                     <a href="/">Nyheder</a>
                 </li>
                 <li class="tegneserier_li">
-                    <a href="/tegneserier">Tegneserier</a>
+                    <a href="/Tegneserie">Tegneserier</a>
                     <div class="submenu">
                         <div class="bubble">
                             <ul>Browse
                                 <li>
-                                    <a href="/tegneserier">Titler A-Z</a>
+                                    <a href="/Tegneserie">Titler A-Z</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Forfattere</a>
+                                    <a href="/Tegneserie">Forfattere</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Serier</a>
+                                    <a href="/Tegneserie">Serier</a>
                                 </li>
                             </ul>
                             <ul>Genrer
                                 <li>
-                                    <a href="/tegneserier">Amerikanske blade</a>
+                                    <a href="/Tegneserie">Amerikanske blade</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Manga</a>
+                                    <a href="/Manga">Manga</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Danske album</a>
+                                    <a href="/Tegneserie">Danske album</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Danske blade</a>
+                                    <a href="/Tegneserie">Danske blade</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Hardcover</a>
+                                    <a href="/Tegneserie">Hardcover</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Trade paperbacks</a>
+                                    <a href="/Tegneserie">Trade paperbacks</a>
                                 </li>
                                 <li>
-                                    <a href="/tegneserier">Hentai</a>
+                                    <a href="/Tegneserie">Hentai</a>
                                 </li>
                             </ul>
                         </div>
@@ -67,41 +67,41 @@ const data = await response.json();
                     </div>
                 </li>
                 <li class="bøger_li">
-                    <a href="/bøger">Bøger</a>
+                    <a href="/Bog">Bøger</a>
                     <div class="submenu">
                         <div class="bubble">
                             <ul>Browse
                                 <li>
-                                    <a href="/bøger">Titler A-Z</a>
+                                    <a href="/Bog">Titler A-Z</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Forfattere</a>
+                                    <a href="/Bog">Forfattere</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Serier</a>
+                                    <a href="/Bog">Serier</a>
                                 </li>
                             </ul>
                             <ul>Genrer
                                 <li>
-                                    <a href="/bøger">Adventure</a>
+                                    <a href="/Bog">Adventure</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Fantasy</a>
+                                    <a href="/Fantasy">Fantasy</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Horror</a>
+                                    <a href="/Horror">Horror</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Science Fiction</a>
+                                    <a href="/Sci-Fi">Science Fiction</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Krimi</a>
+                                    <a href="/Bog">Krimi</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Young Adult</a>
+                                    <a href="/Bog">Young Adult</a>
                                 </li>
                                 <li>
-                                    <a href="/bøger">Non-fiction</a>
+                                    <a href="/Bog">Non-fiction</a>
                                 </li>
                             </ul>
                         </div>
@@ -265,6 +265,7 @@ const data = await response.json();
         position: sticky;
         top: 0;
         z-index: 9999;
+
     }
 
     a {
@@ -429,9 +430,8 @@ const data = await response.json();
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
-        opacity: 0.9;
         box-shadow: 0px 5px 14px 0px #275ec424;
-        z-index: -9999;
+        z-index: 2;
         position: sticky;
         top: 4rem;
     }
@@ -439,16 +439,17 @@ const data = await response.json();
     .scrolling_banner {
         display: inline-block;
         padding-block: 0.6rem;
-        animation: scroll 40s linear infinite;
+        animation: scroll 70s linear infinite;
         width: fit-content;
     }
 
     .scrolling_banner li {
         color: var(--white);
-        font-size: 14px;
+        font-size: 16px;
         display: inline;
         margin-right: 10rem;
     }
+
 
     @keyframes scroll {
         0% {
