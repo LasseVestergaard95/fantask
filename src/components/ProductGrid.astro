@@ -11,32 +11,59 @@ const options = {
     }
 }
 
+// Fetch data from the URL and store the response
 const response = await fetch(url, options);
+
+// Convert response data to JSON format
 const data = await response.json();
 
+// Destructuring assignment to extract properties from Astro.props
 const { titel, beskrivelse, type, genre, serie, forfatter } = Astro.props;
 
-// filter data by type and genre
+// Filter the fetched data based on multiple conditions
 let filteredData = data.filter((product) => {
+    // If 'type' and 'genre' exist, return products that match both
     if (type && genre) {
         return product.type === type && product.genre === genre;
+    // If only 'type' exists, return products that match 'type'
     } else if (type) {
         return product.type === type;
+    // If only 'genre' exists, return products that match 'genre'
     } else if (genre) {
         return product.genre === genre;
+    // If 'serie' exists, return products that match 'serie'
     } else if (serie) {
         return product.serie === serie;
+    // If 'forfatter' exists, return products that match 'forfatter'
     } else if (forfatter) {
         return product.forfatter === forfatter;
+    // If none of the above conditions are met, return the product as is
     } else {
         return product;
     }
 });
 
-// sort by nr
+// Sort the filtered data. If 'serie' exists for both products, sort by 'serie'. 
+// If 'serie' is null for one product, sort that product to the end. 
+// If 'serie' is null for both products, sort by 'nr'.
 filteredData.sort((a, b) => {
-    return a.nr - b.nr;
+  // If both products have a 'serie', sort by 'serie', and if they're the same, by 'nr'
+  if (a.serie && b.serie) { 
+    return a.serie.localeCompare(b.serie) || a.nr - b.nr; 
+  // If 'a' doesn't have a 'serie' but 'b' does, sort 'a' to the end
+  } else if (!a.serie && b.serie) {
+    return 1;
+  // If 'b' doesn't have a 'serie' but 'a' does, sort 'b' to the end
+  } else if (a.serie && !b.serie) {
+    return -1;
+  // If neither product has a 'serie', sort by 'nr'
+  } else {
+    return a.nr - b.nr; 
+  }
 });
+
+
+
 
 
 ---
