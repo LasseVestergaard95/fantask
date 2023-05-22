@@ -68,12 +68,14 @@ const volume = [product.serie, product.nr]
                             <img src="favoritter_sort_hjerte.svg" alt="">
                         </button>
                     </div>
-
-                    <div class="alle_titler">
-                        <img src="alle_titler.svg" alt="">
-                        <a href={product.serie}>Se alle titler i samme serie</a>
-                    </div>
-    
+                    {
+                        // if serie add serie link
+                        product.serie && 
+                        <div class="alle_titler">
+                            <img src="alle_titler.svg" alt="">
+                            <a href={product.serie}>Se alle titler i samme serie</a>
+                        </div>
+                    }
                     <div class="forfatter">
                         <img src="forfatter.svg" alt="">
                         <a href={product.forfatter}>{product.forfatter}</a>
