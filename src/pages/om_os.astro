@@ -1,10 +1,12 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+import Om_os from "../components/Om_os.astro";
 ---
 
 <MainLayout>
-  <BackgroundPages />
+  <!-- <BackgroundPages /> -->
+
   <div class="indhold">
     <section>
       <div class="intro">
@@ -13,21 +15,39 @@ import MainLayout from "../layouts/MainLayout.astro";
         <p>Fantask blev grundlagt den 22. oktober 1971 af tegneserieenthusiasterne Niels Søren Pedersen og Rolf Bülow og er den nulevænde ældste tegneseriebutik i hele verden.</p>
         <p>Tilbage i 1971 var det ikke muligt at købe tegneserier i Danmark så grundlæggerne, Niels og Rolf, kørte til England og fyldte en varevogn med tegneserier.</p>
       </div>
-      
+      <div class="about_card">
+        <Om_os img="1" text="Søren og Rolf med folkevognen som de hentede de første blade i tilbage i 1971." />
+        <Om_os img="2" text="Søren og Rolf i nedgangen til butikken. Nedgangen kan stadig ses udefra men er blevet lukket af." />
+        <Om_os img="3" text="Her står Søren og Rolf i den første butik som nu er bogafdelingen." />
+        <Om_os img="4" text="Før internettets fremkomst havde vi et fysisk katalog. Disse blev tegnet af forskellige danske tegnere. Dette omslag er lavet af Henning Kure." />
+        <Om_os img="5" text="Det ældste billede af hjørnet til Fantasks indgang. Dette billede er taget i 70’erne." />
+        <Om_os img="6" text="Lidt nyere, dette er den sidste generation ovale facadeskilte. Vi måtte ikke bruge dem efter at ejendommen blev renoveret." />
+        <Om_os img="7" text="Hjørnet til Fantask i 2006 med den genkendelige blå facade vi har i dag. Her ses de nye ens firkantede skilte mellem vinduerne med vores drage." />
+        <Om_os img="8" text="Vi har haft den fornøjelse at have tegne-serie legender på besøg i butikken. Her ses Michael Nielsen sammen med Stan “The Man” Lee i 1992." />
+        <Om_os img="9" text="I 2008 overtager Marit Fantask fra Søren og Rolf, som mente at det nu var tid til ungt blod, efter at have haft butikken i 37 år. Marit er stadig den nuværende ejer af Fantask. " />
+      </div>
     </section>
   </div>
-</MainLayout>
 
-<style>
-  .intro {
-    padding-inline: 3rem;
-  }
-  .intro img {
-    margin-block: 0.8rem 1rem;
-  }
-  h2 {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-  }
-</style>
+  <style>
+    .intro,
+    .about_card {
+      padding-inline: 3rem;
+      
+    }
+    .intro img {
+      margin-block: 0.8rem 1rem;
+    }
+    h2 {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .about_card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-block: 2rem;
+    }
+  </style>
+</MainLayout>

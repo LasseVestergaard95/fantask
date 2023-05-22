@@ -1,7 +1,33 @@
 ---
-
+const { img, text } = Astro.props;
 ---
 
-    <div class="about_card">
-    <img src="" alt="">
+<div class="about_card">
+  <img src={`imgs/om_os${img}.jpg`} .jpg alt="om os" />
+  <div class="tekstfelt"><p>{text}</p></div>
 </div>
+
+<style>
+  img {
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .about_card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  p {
+    color: var(--white);
+    max-width: 45ch;
+  }
+  .tekstfelt {
+    background: rgba(0, 0, 0, 0.6);
+    padding-inline: 1rem;
+    position: absolute;
+    bottom: 20px;
+    width: fit-content;
+    margin-inline: 2rem;
+  }
+</style>
