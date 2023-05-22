@@ -31,10 +31,8 @@ let filteredData = data
     produkter ? produkter.includes(product.id.toString()) : 
     // Else if 'serie' exists, filter for products whose 'serie' matches 'serie'
     serie ? product.serie === serie : 
-    // Else if 'genre' exists, filter for products whose 'genre' matches 'genre'
-    genre ? product.genre === genre :
-    // Else if 'type' exists, filter for products whose 'type' matches 'type'
-    type ? product.type === type :
+    // Else if 'genre' exists, filter for products whose 'genre' matches 'genre' and and show from the same type if there are less than 4
+    genre ? product.genre === genre && product.type === type :
     // If none of the above conditions are met, return false
     false)
   // Sort the filtered data based on the 'nr' property

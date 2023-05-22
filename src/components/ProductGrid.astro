@@ -33,6 +33,7 @@ let filteredData = data.filter((product) => {
     }
 });
 
+// sort by nr
 filteredData.sort((a, b) => {
     return a.nr - b.nr;
 });
@@ -71,6 +72,7 @@ filteredData.sort((a, b) => {
         padding-inline: 2rem;
         margin: 0 auto;
         max-width: 1100px;
+        margin-bottom: 3rem;
     }
 
     .flex {

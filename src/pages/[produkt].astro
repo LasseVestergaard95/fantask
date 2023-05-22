@@ -30,9 +30,10 @@ export async function getStaticPaths() {
 
 const { product, product:nr } = Astro.props;
 
-const nr2 = nr && `#${product.nr}`;
+// if nr is true make new variable
+const nr2 = product.nr && `#${product.nr}`;
 
-const tags = [product.format, product.sprog];
+const tags = [nr2, product.format, product.sprog];
 const volume = [product.serie, product.nr];
 
 ---
@@ -56,7 +57,11 @@ const volume = [product.serie, product.nr];
             <div class="info">
                 <div>
                     <!-- Vis produktets serie og nr, hvis det ikke er en Manga -->
-                    {product.serie && product.genre !== "Manga" ? <h2 class="volume">{product.serie}</h2> : null}
+                    {product.serie && product.genre !== "Manga" ? 
+                    <a href={product.serie}>
+                        <h2 class="volume">{product.serie}</h2> 
+                    </a>
+                    : null}
 
                     <div class="titel_favorit_container">
 
@@ -69,14 +74,14 @@ const volume = [product.serie, product.nr];
                             <img src="favoritter_sort_hjerte.svg" alt="">
                         </button>
                     </div>
-                    {
+                    <!-- {
                         // if serie add serie link
                         product.serie && 
                         <div class="alle_titler">
                             <img src="alle_titler.svg" alt="">
                             <a href={product.serie}>Se alle titler i samme serie</a>
                         </div>
-                    }
+                    } -->
                     <div class="forfatter">
                         <img src="forfatter.svg" alt="">
                         <a href={product.forfatter}>{product.forfatter}</a>
@@ -241,7 +246,7 @@ const volume = [product.serie, product.nr];
     /* Styling for ikonet til forfatter */
     .forfatter img {
         aspect-ratio: 1/1;
-        width: 1.3rem;
+        width: 1.4rem;
         margin-right: 0.25rem;
         margin-left: -0.1rem;
     }
