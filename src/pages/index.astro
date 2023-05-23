@@ -34,6 +34,7 @@ const restOfShelves = activeData.slice(1);
 
 
     <MainLayout titel="Fantask">
+        <div class="bg">
             <ForsideHero />
             <BackgroundPages />
             <Indhold>
@@ -55,10 +56,13 @@ const restOfShelves = activeData.slice(1);
                 ))}
                 <NewsletterBanner />
             </Indhold>
+        </div>
+
     </MainLayout>
 
 <style>
-    body {
+
+    .bg {
         background-color: var(--blue);
     }
     
