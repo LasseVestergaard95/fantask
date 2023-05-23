@@ -33,33 +33,36 @@ const restOfShelves = activeData.slice(1);
 ---
 
 
-<MainLayout titel="Fantask">
-    <ForsideHero />
-    <BackgroundPages />
-    <Indhold>
-        <ProductShelf
-            titel={firstShelf.titel}
-            beskrivelse={firstShelf.beskrivelse}
-            produkter={firstShelf.produkter}
-            kategori={firstShelf.kategori}
-        />
-        <SamlemaerkeBanner />
-        <GuideShelf />
-        {restOfShelves.length > 0 && restOfShelves.map((shelf) => (
-            <ProductShelf
-                titel={shelf.titel}
-                beskrivelse={shelf.beskrivelse}
-                produkter={shelf.produkter}
-                kategori={shelf.kategori}
-            />
-        ))}
-        <NewsletterBanner />
-    </Indhold>
-</MainLayout>
+    <MainLayout titel="Fantask">
+        <div class="index">
+            <ForsideHero />
+            <BackgroundPages />
+            <Indhold>
+                <ProductShelf
+                    titel={firstShelf.titel}
+                    beskrivelse={firstShelf.beskrivelse}
+                    produkter={firstShelf.produkter}
+                    kategori={firstShelf.kategori}
+                />
+                <SamlemaerkeBanner />
+                <GuideShelf />
+                {restOfShelves.length > 0 && restOfShelves.map((shelf) => (
+                    <ProductShelf
+                        titel={shelf.titel}
+                        beskrivelse={shelf.beskrivelse}
+                        produkter={shelf.produkter}
+                        kategori={shelf.kategori}
+                    />
+                ))}
+                <NewsletterBanner />
+            </Indhold>
+        </div>
+    </MainLayout>
 
 <style>
-    body {
-        background: var(--blue);
+    .index {
+        background-color: var(--blue);
+        z-index: 1;
     }
     
 </style>
