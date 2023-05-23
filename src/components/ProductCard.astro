@@ -17,7 +17,7 @@ const tags = [nr2, format, sprog];
 <!-- Product card container -->
 <div class="product_card">
     <!-- Link to the specific product page constructed from the product series, number and title -->
-    <a href=`${serie + nr + titel}` class="cover_container" title={titel}>
+    <a href=`/${serie + nr + titel}` class="cover_container" title={titel}>
         <!-- Display the product cover image -->
         <img src={`/imgs/${img}.jpg`} class="cover">
         <!-- Button for adding the product to favorites -->
@@ -32,7 +32,7 @@ const tags = [nr2, format, sprog];
         <div>
             <!-- Display the product title as a link to its page -->
             <h2 class="titel">
-                <a href=`${serie + nr + titel}` title={titel}>
+                <a href=`/${serie + nr + titel}` title={titel}>
                     {titel}
                 </a>
             </h2>
@@ -46,7 +46,7 @@ const tags = [nr2, format, sprog];
 
         <!-- Container for tags, display type and genre if it exists -->
         <div class="tags">
-            <Button link={type}>{type}</Button>
+            <Button link=`/${type}`>{type}</Button>
             <!-- if genre is true add genre Button -->
             {genre && <Button link={genre}>{genre}</Button>}
 
