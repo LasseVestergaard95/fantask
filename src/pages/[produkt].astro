@@ -40,7 +40,7 @@ export async function getStaticPaths() {
 const { product } = Astro.props;
 
 // If the product number exists, prepend it with '#', otherwise leave it as is
-const nr2 = product.nr && `nr. ${product.nr}`;
+const nr2 = product.nr && `Nr. ${product.nr}`;
 
 // Create an array of tags from the product properties
 const tags = [nr2, product.format, product.sprog];
