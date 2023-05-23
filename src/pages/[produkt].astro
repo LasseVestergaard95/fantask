@@ -79,19 +79,19 @@ const tags = [nr2, product.format, product.sprog];
 
                         <!-- Favorite button for the product -->
                         <button class="favorit">
-                            <img src="favoritter_sort_hjerte.svg" alt=""/>
+                            <img src="/favoritter_sort_hjerte.svg" alt=""/>
                         </button>
                     </div>
 
                     <!-- Displaying the author's name with an icon -->
                     <div class="forfatter">
-                        <img src="forfatter.svg" alt=""/>
-                        <a href={product.forfatter}>{product.forfatter}</a>
+                        <img src="/forfatter.svg" alt=""/>
+                        <a href=`/${product.forfatter}`>{product.forfatter}</a>
                     </div>
 
                     <!-- Displays tags for the product -->
                     <div class="tags">
-                        <Button link={product.type}>{product.type}</Button>
+                        <Button link=`/${product.type}`>{product.type}</Button>
                         {product.genre && <Button link={product.genre}>{product.genre}</Button>}
                         {tags.map(tag => {
                             if (tag) {
