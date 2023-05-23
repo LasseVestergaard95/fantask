@@ -68,7 +68,7 @@ const tags = [nr2, product.format, product.sprog];
     
                         <!-- Checks if the product belongs to a series and isn't of genre "Manga", then creates a link with the series name -->
                         {product.serie && product.genre !== "Manga" ? 
-                            <a href={product.serie}>
+                            <a href={"/" + product.serie}>
                                 <h2>{product.serie}</h2> 
                             </a>
                             : null
