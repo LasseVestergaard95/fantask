@@ -92,7 +92,7 @@ const tags = [nr2, product.format, product.sprog];
                     <!-- Displays tags for the product -->
                     <div class="tags">
                         <Button link=`/${product.type}`>{product.type}</Button>
-                        {product.genre && <Button link={product.genre}>{product.genre}</Button>}
+                        {product.genre && <Button link={"/" + product.genre}>{product.genre}</Button>}
                         {tags.map(tag => {
                             if (tag) {
                                 return <Tag>{tag}</Tag>

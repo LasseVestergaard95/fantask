@@ -46,7 +46,7 @@ const tags = [nr2, format, sprog];
 
         <!-- Container for tags, display type and genre if it exists -->
         <div class="tags">
-            <Button link=`/${type}`>{type}</Button>
+            <Button link={"/" + type}>{type}</Button>
             <!-- if genre is true add genre Button -->
             {genre && <Button link={genre}>{genre}</Button>}
 
