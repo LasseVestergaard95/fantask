@@ -51,74 +51,76 @@ const tags = [nr2, product.format, product.sprog];
 <MainLayout titel={product.titel}>
     <Indhold>
         <section>
+
             <Breadcrumbs 
-                type={product.type}
-                genre={product.genre}
-                titel={product.titel}
-                serie={product.serie}
-            />
+            type={product.type}
+            genre={product.genre}
+            titel={product.titel}
+            serie={product.serie}
+        />
+            <div class="produkt_container">
+                <div class="produkt">
 
-            <!-- The main container for the product details -->
-            <div class="produkt">
-
-                <!-- Displaying the product's image -->
-                <img src={`/imgs/${product.img}.jpg`} alt={product.img} class="cover">
-
-                <div class="info">
-
-                    <!-- Checks if the product belongs to a series and isn't of genre "Manga", then creates a link with the series name -->
-                    {product.serie && product.genre !== "Manga" ? 
-                        <a href={product.serie}>
-                            <h2>{product.serie}</h2> 
-                        </a>
-                        : null
-                    }
-
-                    <div class="titel_favorit_container">
-                        <h1 class="titel">{product.titel}</h1>
-
-                        <!-- Favorite button for the product -->
-                        <button class="favorit">
-                            <img src="/favoritter_sort_hjerte.svg" alt=""/>
-                        </button>
-                    </div>
-
-                    <!-- Displaying the author's name with an icon -->
-                    <div class="forfatter">
-                        <img src="/forfatter.svg" alt=""/>
-                        <a href=`/${product.forfatter}`>{product.forfatter}</a>
-                    </div>
-
-                    <!-- Displays tags for the product -->
-                    <div class="tags">
-                        <Button link={product.type}>{product.type}</Button>
-                        {product.genre && <Button link={"/" + product.genre}>{product.genre}</Button>}
-                        {tags.map(tag => {
-                            if (tag) {
-                                return <Tag>{tag}</Tag>
-                            }
-                        })}
-                    </div>
-
-                    <!-- Product's price and 'add to cart' button -->
-                    <div class="salg">
-                        <div class="pris">
-                            <h2><span>{product.pris}</span>,00 kr.</h2>
+                    <!-- Displaying the product's image -->
+                    <img src={`/imgs/${product.img}.jpg`} alt={product.img} class="cover">
+    
+                    <div class="info">
+    
+                        <!-- Checks if the product belongs to a series and isn't of genre "Manga", then creates a link with the series name -->
+                        {product.serie && product.genre !== "Manga" ? 
+                            <a href={product.serie}>
+                                <h2>{product.serie}</h2> 
+                            </a>
+                            : null
+                        }
+    
+                        <div class="titel_favorit_container">
+                            <h1 class="titel">{product.titel}</h1>
+    
+                            <!-- Favorite button for the product -->
+                            <button class="favorit">
+                                <img src="/favoritter_sort_hjerte.svg" alt=""/>
+                            </button>
                         </div>
-                        <button class="køb">
-                            <img src="/shoppingcart.svg" alt=""/>
-                            Læg i Kurv
-                        </button>
-                    </div>
-
-                    <!-- Description of the product -->
-                    <div class="beskrivelse">
-                        <h2>Beskrivelse</h2>
-                        <p>{product.beskrivelse}</p>
-                        <p>Udgivet af {product.udgiver}, {product.udgivelsesår}</p>
+    
+                        <!-- Displaying the author's name with an icon -->
+                        <div class="forfatter">
+                            <img src="/forfatter.svg" alt=""/>
+                            <a href=`/${product.forfatter}`>{product.forfatter}</a>
+                        </div>
+    
+                        <!-- Displays tags for the product -->
+                        <div class="tags">
+                            <Button link={product.type}>{product.type}</Button>
+                            {product.genre && <Button link={"/" + product.genre}>{product.genre}</Button>}
+                            {tags.map(tag => {
+                                if (tag) {
+                                    return <Tag>{tag}</Tag>
+                                }
+                            })}
+                        </div>
+    
+                        <!-- Product's price and 'add to cart' button -->
+                        <div class="salg">
+                            <div class="pris">
+                                <h2><span>{product.pris}</span>,00 kr.</h2>
+                            </div>
+                            <button class="køb">
+                                <img src="/shoppingcart.svg" alt=""/>
+                                Læg i Kurv
+                            </button>
+                        </div>
+    
+                        <!-- Description of the product -->
+                        <div class="beskrivelse">
+                            <h2>Beskrivelse</h2>
+                            <p>{product.beskrivelse}</p>
+                            <p>Udgivet af {product.udgiver}, {product.udgivelsesår}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- Displays related products -->
             <div>
@@ -140,8 +142,7 @@ const tags = [nr2, product.format, product.sprog];
 <style>
 
     section {
-        max-width: 1100px;
-        margin-top: 3rem;
+        margin-top: 1rem;
     }
 
     a {
@@ -149,13 +150,18 @@ const tags = [nr2, product.format, product.sprog];
         color: inherit;
     }
 
+    .produkt_container {
+        margin: 0 auto;
+        padding-inline: 2rem;
+        max-width: 1100px;
+    }
+
     .produkt {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        margin: 0 auto;
-        padding-inline: 2rem;
+
     }
 
     .cover {
@@ -291,9 +297,15 @@ const tags = [nr2, product.format, product.sprog];
     }
 
     @media screen and (max-width: 768px) {
+
+        section {
+            margin-top: 0rem;
+        }
         .produkt {
             flex-direction: column;
             align-items: center;
+            margin: 0 auto;
+            padding-inline: 2rem;
         }
 
         .cover {
@@ -307,7 +319,6 @@ const tags = [nr2, product.format, product.sprog];
             padding-left: 0;
         }
         .cover {
-
             position: relative;
             top: 0;
             margin-bottom: 3em;
