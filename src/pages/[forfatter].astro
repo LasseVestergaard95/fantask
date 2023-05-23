@@ -17,8 +17,6 @@ export async function getStaticPaths() {
     const response = await fetch(url, options);
 const data = await response.json();
 
-console.log(data);
-
 const unikkeForfattere = data
     // Map over the 'data' array, returning an object with 'forfatter' for each item.
     .map(item => ({ forfatter: item.forfatter }))
@@ -33,9 +31,6 @@ const unikkeForfattere = data
         : [...unique, item],
         []
     );
-
-    // Log the result (the array of unique forfatter objects without null values) to the console.
-    console.log(unikkeForfattere);
 
     const paths = unikkeForfattere.map((forfatter) => ({
         params: { forfatter: forfatter.forfatter },
