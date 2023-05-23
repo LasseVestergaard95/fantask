@@ -6,7 +6,7 @@ import Tag from "./Tag.astro";
 const {titel, forfatter, type, format, pris, img, sprog, genre, serie, nr} = Astro.props;
 
 // If the number of the product (nr) exists, prepend it with '#', otherwise leave it as null. 
-const nr2 = nr && `#${nr}`;
+const nr2 = nr && `nr. ${nr}`;
 
 // Create an array of tags from the product properties. 
 const tags = [nr2, format, sprog];

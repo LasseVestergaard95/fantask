@@ -9,38 +9,38 @@ import MainLayout from "../layouts/MainLayout.astro";
 // The getStaticPaths function fetches product data from an API and returns an array of objects that define dynamic routes for the application
 export async function getStaticPaths() {
 
-// Define the endpoint and API key
-const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
-const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
+    // Define the endpoint and API key
+    const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?";
+    const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
 
-// Set up fetch options
-const options = {
-    headers: {
-        apikey: apikey
+    // Set up fetch options
+    const options = {
+        headers: {
+            apikey: apikey
+        }
     }
-}
 
-// Fetch product data from the API
-const response = await fetch(url, options);
-const data = await response.json();
+    // Fetch product data from the API
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-// Map each product to a route definition
-const paths = data.map((product) => ({
-    // Concatenate product series, number, and title to form the route path
-    params: { produkt: product.serie + product.nr + product.titel },
-    // Include the entire product object as a route prop
-    props: { product },
-}));
+    // Map each product to a route definition
+    const paths = data.map((product) => ({
+        // Concatenate product series, number, and title to form the route path
+        params: { produkt: product.serie + product.nr + product.titel },
+        // Include the entire product object as a route prop
+        props: { product },
+    }));
 
-// Return all paths to be statically generated
-return paths;
+    // Return all paths to be statically generated
+    return paths;
 }
 
 // Destructure the product object from Astro.props
 const { product } = Astro.props;
 
 // If the product number exists, prepend it with '#', otherwise leave it as is
-const nr2 = product.nr && `#${product.nr}`;
+const nr2 = product.nr && `nr. ${product.nr}`;
 
 // Create an array of tags from the product properties
 const tags = [nr2, product.format, product.sprog];

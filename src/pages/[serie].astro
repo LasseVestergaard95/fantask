@@ -20,7 +20,7 @@ export async function getStaticPaths() {
     const unikkeSerier = data
         // Map over the 'data' array, returning an object with 'series' for each item.
         .map(item => ({ serie: item.serie }))
-        // Filter out any items where 'series' is null or falsy.
+        // Filter out any items where 'series' is null or false.
         .filter(item => item.serie)
         // Use the reduce function to eliminate duplicates.
         .reduce((unique, item) => 
@@ -54,9 +54,7 @@ const { series } = Astro.props;
                 Serie
             </h2>
             <h1>
-                {
-                    series.serie
-                }
+                {series.serie}
             </h1>
             <Filter />
         </div>
