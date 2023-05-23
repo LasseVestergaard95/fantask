@@ -34,52 +34,20 @@ const unikkeForfattere = data
         []
     );
 
-// Log the result (the array of unique forfatter objects without null values) to the console.
-console.log(unikkeForfattere);
+    // Log the result (the array of unique forfatter objects without null values) to the console.
+    console.log(unikkeForfattere);
 
-const paths = unikkeForfattere.map((forfatter) => ({
-    params: { forfatter: forfatter.forfatter },
-    props: { forfatter },
-}));
+    const paths = unikkeForfattere.map((forfatter) => ({
+        params: { forfatter: forfatter.forfatter },
+        props: { forfatter },
+    }));
 
 return paths;
 
 
 }
 
-const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?select=serie";
-    const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
-
-    const options = {
-        headers: {
-            apikey: apikey
-        }
-    }
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-
-
-
-    const unikkeForfattere = data
-    // Map over the 'data' array, returning an object with 'forfatter' for each item.
-    .map(item => ({ forfatter: item.forfatter }))
-    // Filter out any items where 'forfatter' is null or falsy.
-    .filter(item => item.forfatter)
-    // Use the reduce function to eliminate duplicates.
-    .reduce((unique, item) => 
-        // If the current item (forfatter) already exists in the unique array, return the current unique array...
-        unique.some(obj => obj.forfatter === item.forfatter) 
-        ? unique 
-        // ...otherwise, append the new item (forfatter) to the unique array.
-        : [...unique, item],
-        []
-    );
-
-
 const { forfatter } = Astro.props;
-
-console.log(forfatter);
 
 ---
 

@@ -45,36 +45,6 @@ export async function getStaticPaths() {
     return paths;
 }
 
-const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?select=genre,type";
-const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
-
-const options = {
-    headers: {
-        apikey: apikey
-    }
-}
-
-const response = await fetch(url, options);
-const data = await response.json();
-
-const unikkeGenre = data
-    // Map over the 'data' array, returning an object with 'genre' and 'type' for each item.
-    .map(item => ({ genre: item.genre, type: item.type }))
-    // Filter out any items where 'genre' or 'type' is null or falsy.
-    .filter(item => item.genre && item.type)
-    // Use the reduce function to eliminate duplicates.
-    .reduce((unique, item) => 
-        // If the current item (genre and type) already exists in the unique array, return the current unique array...
-        unique.some(obj => obj.genre === item.genre && obj.type === item.type) 
-        ? unique 
-        // ...otherwise, append the new item (genre and type) to the unique array.
-        : [...unique, item],
-        []
-    );
-
-// // Log the result (the array of unique genre-type objects without null values) to the console.
-// console.log(unikkeGenre);
-
 const { genre } = Astro.props;
 
 ---

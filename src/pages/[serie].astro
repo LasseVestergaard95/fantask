@@ -33,7 +33,6 @@ export async function getStaticPaths() {
         );
 
     // Log the result (the array of unique series objects without null values) to the console.
-    console.log(unikkeSerier);
 
     const paths = unikkeSerier.map((series) => ({
         params: { serie: series.serie },
@@ -44,41 +43,7 @@ export async function getStaticPaths() {
 
 }
 
-const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?select=serie";
-    const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
-
-    const options = {
-        headers: {
-            apikey: apikey
-        }
-    }
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-
-
-
-    const unikkeSerier = data
-        // Map over the 'data' array, returning an object with 'series' for each item.
-        .map(item => ({ serie: item.serie }))
-        // Filter out any items where 'series' is null or falsy.
-        .filter(item => item.serie)
-        // Use the reduce function to eliminate duplicates.
-        .reduce((unique, item) => 
-            // If the current item (series) already exists in the unique array, return the current unique array...
-            unique.some(obj => obj.serie === item.serie) 
-            ? unique 
-            // ...otherwise, append the new item (series) to the unique array.
-            : [...unique, item],
-            []
-        );
-
-    // Log the result (the array of unique series objects without null values) to the console.
-    console.log(unikkeSerier);
-
 const { series } = Astro.props;
-
-console.log(series);
 
 ---
 
