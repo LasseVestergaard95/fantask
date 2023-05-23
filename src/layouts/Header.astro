@@ -13,10 +13,121 @@ const data = await response.json();
 ---
 
 <header>
+
+        <nav class="mobile_nav_container">
+            <ul class="mobile__nav">
+                <li>
+                    <a href="/">Nyheder</a>
+                </li>
+                <li class="tegneserier_li">
+                    <a href="/Tegneserie">Tegneserier</a>
+                    <div class="mobile_submenu">
+                        <div class="mobile_bubble">
+                            <!-- <ul>Browse
+                                <li>
+                                    <a href="/Tegneserie">Titler A-Z</a>
+                                </li>
+                                <li>
+                                    <a href="/Tegneserie">Forfattere</a>
+                                </li>
+                                <li>
+                                    <a href="/Tegneserie">Serier</a>
+                                </li>
+                            </ul> -->
+                            <ul>
+                                <!-- <li>
+                                    <a href="/Tegneserie">Amerikanske blade</a>
+                                </li> -->
+                                <li>
+                                    <a href="/Manga">Manga</a>
+                                </li>
+                                <li>
+                                    <a href="/Dansk album">Danske album</a>
+                                </li>
+                                <!-- <li>
+                                    <a href="/Tegneserie">Danske blade</a>
+                                </li>
+                                <li>
+                                    <a href="/Tegneserie">Hardcover</a>
+                                </li>
+                                <li>
+                                    <a href="/Tegneserie">Trade paperbacks</a>
+                                </li>
+                                <li>
+                                    <a href="/Tegneserie">Hentai</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="bøger_li">
+                    <a href="/Bog">Bøger</a>
+                    <div class="mobile_submenu">
+                        <div class="mobile_bubble">
+                            <!-- <ul>Browse
+                                <li>
+                                    <a href="/Bog">Titler A-Z</a>
+                                </li>
+                                <li>
+                                    <a href="/Bog">Forfattere</a>
+                                </li>
+                                <li>
+                                    <a href="/Bog">Serier</a>
+                                </li>
+                            </ul> -->
+                            <ul>
+                                <li>
+                                    <a href="/Adventure">Adventure</a>
+                                </li>
+                                <li>
+                                    <a href="/Fantasy">Fantasy</a>
+                                </li>
+                                <li>
+                                    <a href="/Horror">Horror</a>
+                                </li>
+                                <li>
+                                    <a href="/Sci-Fi">Science Fiction</a>
+                                </li>
+                                <li>
+                                    <a href="/Krimi">Krimi</a>
+                                </li>
+                                <li>
+                                    <a href="/Young adult">Young Adult</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </li>
+                <li>
+                    <a href="">Hobby</a>
+                </li>
+                <li>
+                    <a href="/gavekort">Gavekort</a>
+                </li>
+                <li>
+                    <a href="/guides">Guides</a>
+                </li>
+                <li>
+                    <a href="/om_os">Om os</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
     <div class="top_header">
+        <li>
+            <lottie-player class="burgermenu" src="/menuV2.json"  background="transparent"  speed="1.7"></lottie-player>
+        </li>
         <div class="fantask_logo">
             <a href="/">
                 <img src="/fantask_header_logo.svg" alt="">
+            </a>
+        </div>
+        <div class="fantask_logo_mobile">
+            <a href="/">
+                <img src="/fantask_logo_tekst.svg" alt="">
             </a>
         </div>
         <nav class="main_nav_container">
@@ -123,9 +234,6 @@ const data = await response.json();
         <nav>
             <ul class="user_nav">
                 <li>
-                    <lottie-player class="burgermenu" src="menuV2.json"  background="transparent"  speed="1.7"></lottie-player>
-                </li>
-                <li>
                     <button class="search">
                         <img src="/header_search.svg" alt="">
                     </button>
@@ -177,11 +285,10 @@ const data = await response.json();
     // Get the burger menu element
     const nav = document.querySelector('.burgermenu');
     // Get the main navigation links element
-    const navLinks = document.querySelector('.main_nav');
-    // Variable to track the clicked state
+    const mobile_nav = document.querySelector('.mobile_nav_container');
     let clicked = false;
 
-    // Add click event listener to the burger menu
+
     nav.addEventListener('click', () => {
         if (clicked) {
             // Reverse the animation direction
@@ -191,7 +298,7 @@ const data = await response.json();
             // Reset clicked state
             clicked = false;
             // Animate the nav links to hide them
-            navLinks.animate([
+            mobile_nav.animate([
                 { opacity: 1, pointerEvents: 'all'},
                 { opacity: 0, pointerEvents: 'none'}
             ], {
@@ -207,9 +314,9 @@ const data = await response.json();
             // Set clicked state to true
             clicked = true;
             // Animate the nav links to show them
-            navLinks.animate([
+            mobile_nav.animate([
                 { opacity: 0, pointerEvents: 'none'},
-                { opacity: 1, pointerEvents: 'all'}
+                { opacity: 0.95, pointerEvents: 'all',}
             ], {
                 duration: 300,
                 easing: 'ease-in-out',
@@ -218,31 +325,28 @@ const data = await response.json();
         }
     });
 
-    // Check for window resize event
-    window.addEventListener('resize', () => {
-        // If the screen width is more than 1200px
-        if (window.innerWidth > 1200) {
-            // Animate the nav links to make them visible
-            navLinks.animate([
-                { opacity: 1, pointerEvents: 'all'}
-            ], {
-                duration: 0,
-                easing: 'ease-in-out',
-                fill: 'forwards'
-            });
-        }
-        // If the screen width is less than or equal to 1200px
-        else {
+    // add screen click event listener to close menu
+    window.addEventListener('click', (e) => {
+        // if the menu is open and the click is outside the menu
+        if (clicked && !nav.contains(e.target)) {
+            // Reverse the animation direction
+            nav.setDirection(-1);
+            // Play the animation
+            nav.play();
+            // Reset clicked state
+            clicked = false;
             // Animate the nav links to hide them
-            navLinks.animate([
+            mobile_nav.animate([
+                { opacity: 1, pointerEvents: 'all'},
                 { opacity: 0, pointerEvents: 'none'}
             ], {
-                duration: 0,
+                duration: 300,
                 easing: 'ease-in-out',
                 fill: 'forwards'
             });
         }
     });
+
 </script>
 
 
@@ -259,7 +363,7 @@ const data = await response.json();
     /* Header Styles */
 
     header {
-        z-index: 9999;
+        z-index: 0;
 
     }
 
@@ -281,48 +385,74 @@ const data = await response.json();
         padding-inline: 2rem;
     }
 
+    .fantask_logo {
+        display: none;
+    }
     .fantask_logo img {
         width: 8rem;
     }
 
+    .fantask_logo_mobile {
+        display: block;
+    }
+
+    .fantask_logo_mobile img {
+        width: 8rem;
+    }
+
     .burgermenu {
-        transform: translateY(0.24rem) translateX(0.18rem);
         cursor: pointer;
         width: 2rem;
     }
 
     /* Main Navigation Styles */
 
-    .main_nav_container {
-        position: relative;
+    .mobile_nav_container {
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         height: 100%;
+        background-color: var(--dark-blue);
+        z-index: 2;
+        position: fixed;
+        color: var(--white);
+        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+        cursor:not-allowed;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
     }
 
-    .main_nav {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        height: fit-content;
-        max-height: 90vh;
-        pointer-events: none;
-        overflow: hidden;
-        white-space: nowrap;
-        background-color: var(--white);
-        color: var(--black);
-        border-radius: 15px;
-        border-top-right-radius: 0;
-        border: 1px solid var(--black);
-        transform: translateX(-0%);
-        padding: 1rem;
-        box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.314);
-        /* no scrollbar */
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        z-index: 999999;
+    .mobile_nav_container ul {
+        font-size: 32px;
+    }
+
+    .mobile_nav_container li {
+        color: var(--white);
+        font-size: 32px;
+        margin-bottom: 2rem;
+    }
+
+    .mobile_nav_container .mobile_submenu li{
+        font-size: 20px;
+        margin-bottom: 0rem;
+    }
+
+    .mobile_nav_container .mobile_submenu ul {
+        font-size: 16px;
+        margin-bottom: 0rem;
+    }
+
+    .mobile_nav_container a {
+        color: var(--white);
+    }
+
+    .main_nav_container {
+        display: none;
     }
 
     .main_nav > li {
@@ -425,7 +555,7 @@ const data = await response.json();
         white-space: nowrap;
         width: 100%;
         box-shadow: 0px 5px 14px 0px #275ec424;
-        z-index: 9999;
+        z-index: 1;
         position: sticky;
         top: 0;
     }
@@ -462,6 +592,7 @@ const data = await response.json();
         cursor: pointer;
     }
 
+
     /* Media Query Styles */
 
     @media screen and (min-width: 1200px) {
@@ -472,6 +603,14 @@ const data = await response.json();
 
         .scrolling_banner li {
             font-size: 16px;
+        }
+
+        .fantask_logo {
+            display: block;
+        }
+
+        .fantask_logo_mobile {
+            display: none;
         }
 
         .burgermenu {

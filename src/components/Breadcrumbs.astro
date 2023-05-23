@@ -13,13 +13,13 @@ const breadcrumbs = [type, genre, serie, titel];
         </li>
         {
             breadcrumbs.map((item) => {
-                if (item) {
-                    return (
-                        <li >
-                            <a href={item}>{item}</a>
-                        </li>
-                    )
-                }
+              if (item) {
+                return (
+                  <li>
+                    <a href={"/" + item}>{item}</a>
+                  </li>
+                );
+              }
             })
         }
     </ul>

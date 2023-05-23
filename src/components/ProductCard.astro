@@ -46,7 +46,7 @@ const tags = [nr2, format, sprog];
 
         <!-- Container for tags, display type and genre if it exists -->
         <div class="tags">
-            <Button link=`/${type}`>{type}</Button>
+            <Button link={type}>{type}</Button>
             <!-- if genre is true add genre Button -->
             {genre && <Button link={genre}>{genre}</Button>}
 
@@ -59,7 +59,7 @@ const tags = [nr2, format, sprog];
         </div>
 
         <!-- Container for price and purchase button -->
-        <div>
+        <div class="salg">
             <!-- Display the product price -->
             <div class="pris">
                 <h2><span>{pris}</span>,00 kr.</h2>
@@ -157,7 +157,6 @@ const tags = [nr2, format, sprog];
     }
 
     .info {
-        padding: 0.9rem;
         height: 21rem;
         display: flex;
         flex-direction: column;
@@ -166,7 +165,13 @@ const tags = [nr2, format, sprog];
         width: 100%;
     }
 
+    .titel {
+        padding-inline: 0.9rem;
+        padding-top: 0.9rem;
+    }
+
     .forfatter {
+        padding-inline: 0.9rem;
         display: flex;
         align-items: center;
         margin: 0.5rem 0;
@@ -179,18 +184,27 @@ const tags = [nr2, format, sprog];
     }
 
     .tags {
+        padding-inline: 0.9rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
     }
 
+    .salg {
+        width: 100%;
+        padding-inline: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
     .pris{
         font-weight: 500;
         font-size: 20px;
         margin-top: 0.5rem;
     }
 
+
     .køb {
+        width: 100%;
+        padding: 0.9rem;
         background-color: var(--dark-blue);
         color: var(--white);
         border: none;
@@ -203,7 +217,6 @@ const tags = [nr2, format, sprog];
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        width: 100%;
         cursor: pointer;
     }
 
@@ -219,7 +232,25 @@ const tags = [nr2, format, sprog];
 
         .info {
             height: 16rem;
-            padding: 0.45rem;
+        }
+
+        .titel {
+            padding-inline: 0.45rem;
+            padding-top: 0.45rem;
+        }
+
+        .forfatter {
+            padding-inline: 0.45rem;
+            margin: 0.25rem 0;
+        }
+
+        .tags {
+            padding-inline: 0.45rem;
+        }
+
+        .salg {
+            padding-inline: 0.45rem;
+            padding-bottom: 0.45rem;
         }
 
         .køb {
