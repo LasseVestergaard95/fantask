@@ -1,5 +1,6 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
+import Button from "../components/Button.astro";
 import ForsideHero from "../components/ForsideHero.astro";
 import GuideShelf from "../components/GuideShelf.astro";
 import NewsletterBanner from "../components/NewsletterBanner.astro";
@@ -32,7 +33,6 @@ const restOfShelves = activeData.slice(1);
 
 ---
 
-
     <MainLayout titel="Fantask">
         <div class="bg">
             <ForsideHero />
@@ -45,7 +45,20 @@ const restOfShelves = activeData.slice(1);
                     kategori={firstShelf.kategori}
                 />
                 <SamlemaerkeBanner />
-                <GuideShelf />
+                <div class="guide">
+                    <h1>
+                        Fantask Starter Guides
+                    </h1>
+                    <p>
+                        Er du også i tvivl om hvor du skal starte når det kommer til manga, tegneserier og figurer? <br>
+                    Bare rolig, vi har sammensat disse guides så du nemt kan få overblikket.
+                    </p>
+                    <GuideShelf sektion="Starter Guides"/>
+                    <div class="button_frame">
+                        <Button link="/guides">Se alle vores guides</Button>
+                    </div> 
+                </div>
+
                 {restOfShelves.length > 0 && restOfShelves.map((shelf) => (
                     <ProductShelf
                         titel={shelf.titel}
@@ -64,6 +77,32 @@ const restOfShelves = activeData.slice(1);
 
     .bg {
         background-color: var(--blue);
+    }
+
+    .guide {
+        padding-inline: 2rem;
+        margin-block: 3rem;
+        max-width: 1020px;
+    }
+
+    .guide p {
+        margin-bottom: 1rem;
+    }
+
+    .button_frame {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 1.5rem;
+        /* margin-inline: auto; */
+    }
+
+    @media (min-width: 1200px) {
+        .guide {
+            padding-inline: 0;
+            margin-inline: auto;
+        }
     }
     
 </style>

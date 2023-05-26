@@ -1,6 +1,7 @@
 ---
 import BackgroundPages from "../components/BackgroundPages.astro";
 import GuideCard from "../components/GuideCard.astro";
+import GuideShelf from "../components/GuideShelf.astro";
 import Indhold from "../layouts/Indhold.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
@@ -16,6 +17,23 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
+
+const unikkeSektioner = data
+        // Map over the 'data' array, returning an object with 'series' for each item.
+        .map(item => ({ sektion: item.sektion }))
+        // Filter out any items where 'series' is null or false.
+        .filter(item => item.sektion)
+        // Use the reduce function to eliminate duplicates.
+        .reduce((unique, item) => 
+            // If the current item (series) already exists in the unique array, return the current unique array...
+            unique.some(obj => obj.sektion === item.sektion) 
+            ? unique 
+            // ...otherwise, append the new item (series) to the unique array.
+            : [...unique, item],
+            []
+        );
+
+        console.log(unikkeSektioner);
 ---
 
 <MainLayout titel="Fantask Guides">
@@ -27,60 +45,39 @@ const data = await response.json();
                 <p>Er du også i tvivl om hvor du skal starte når det kommer til manga, tegneserier og figurer? <br>
                     Bare rolig, vi har sammensat disse guides så du nemt kan få overblikket.</p>
             </div>
-            <div class="flex">
-                    {
-                        data.map((guide) => (
-                            <div class="guide">
-                                <GuideCard 
-                                titel={guide.titel} 
-                                img={guide.img}
-                                />
-                                <div class="info">
-                                    <p>{guide.subtitle}</p>
-                                    <a href="">Læs Guiden</a>
-                                </div>
+
+            <!-- map sektioner -->
+            {
+                unikkeSektioner.map((sektion) => {
+                    return (
+                        <div class="sektion">
+                            <h2>{sektion.sektion}</h2>
+                            <div class="flex">
+                                {
+                                    <GuideShelf
+                                        sektion={sektion.sektion}
+                                        guides={data}
+                                    />
+                                }
                             </div>
-                        ))
-                    }
-                    {
-                        data.map((guide) => (
-                            <div class="guide">
-                                <GuideCard 
-                                titel={guide.titel} 
-                                img={guide.img}
-                                />
-                                <div class="info">
-                                    <p>{guide.subtitle}</p>
-                                    <a href="">Læs Guiden</a>
-                                </div>
-                            </div>
-                        ))
-                    }
-                    {
-                        data.map((guide) => (
-                            <div class="guide">
-                                <GuideCard 
-                                titel={guide.titel} 
-                                img={guide.img}
-                                />
-                                <div class="info">
-                                    <p>{guide.subtitle}</p>
-                                    <a href="">Læs Guiden</a>
-                                </div>
-                            </div>
-                        ))
-                    }
-            </div>
+                        </div>
+                    )
+                })
+            }
+
         </section>
     </Indhold>
 </MainLayout>
 
 <style>
     section {
-        padding-inline: 2rem;
-        margin-inline: auto;
+        margin-inline: 2rem;
         max-width: 1020px;
         margin-top: 3rem;
+    }
+
+    .sektion {
+        margin-block: 2rem;
     }
 
     .text {
@@ -90,15 +87,19 @@ const data = await response.json();
 
     .flex {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+
+        gap: 2rem;
+        justify-content: flex-start;
         margin-inline: auto;
-        gap: 4rem;
-        max-width: 1020px;
+        margin-bottom: 3rem;
     }
 
     .guide {
         width: 240px;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
     }
 
     .info {
@@ -108,7 +109,7 @@ const data = await response.json();
         justify-content: space-between;
         align-items: center;
         border: 1px solid rgba(3, 13, 50, 0.35);
-        width: fit-content;
+        width: 100%;
         padding: 1rem;
         gap: 1rem;
         border-end-end-radius: 5px;
@@ -116,6 +117,7 @@ const data = await response.json();
         transform: translateY(-5px);
         z-index: 99999999;
         height: 10rem;
+        text-align: center;
     }
 
     .info p {
@@ -129,16 +131,19 @@ const data = await response.json();
         width: 100%;
         text-align: center;
         border-radius: 5px;
+        place-self: flex-start;
     }
 
-    @media screen and (max-width: 1200px) {
+    .subtitle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
 
+    @media screen and (min-width: 1200px) {
         section {
-            padding-inline: 2rem;
-        }
-
-        .flex {
-            justify-content: center;
-        }
+        margin-inline: auto;
     }
+
 </style>

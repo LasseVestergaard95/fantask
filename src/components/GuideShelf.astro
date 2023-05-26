@@ -13,84 +13,60 @@ const options = {
 
 const response = await fetch(url, options);
 const data = await response.json();
----
 
-<section>
-    <div class="shelf">
-        <div class="text">
-            <h1>Fantask Starter Guides</h1>
-            <p>Er du også i tvivl om hvor du skal starte når det kommer til manga, tegneserier og figurer? <br>
-                Bare rolig, vi har sammensat disse guides så du nemt kan få overblikket.</p>
-        </div>
-        <div class="flex_row_container">
-            <div class="flex_row">
-                {
-                    data.map((guide, index) => {
-                        if (index < 4) {
-                            return <GuideCard 
-                            titel={guide.titel} 
-                            img={guide.img}
-                        />
-                        }
-                    })
-                }
-            </div>
+const {sektion} = Astro.props
+---
+<div class="shelf">
+    <div class="flex_row_container">
+        <div class="flex_row">
+            {
+                // only map guides where sektion is the same as sektion variable
+                data.map((guide) => {
+                    if (guide.sektion === sektion) {
+                        return <GuideCard titel={guide.titel} img={guide.img}subtitle={guide.subtitle}/>
+                    }
+                })
+            }
         </div>
     </div>
-    <div class="button_frame">
-        <Button type="primary" link="guides">Se alle vores guides</Button>
-    </div>
-</section>
+</div>
+
 
 <style>
-    section {
-        overflow: hidden;
-        margin-block: 3rem;
-    }
 
-    .shelf {
-        margin: 0 auto;
-        max-width: 1020px;
-    }
 
+.shelf {
+    margin: 0 auto;
+    max-width: 1020px;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+    .flex_row_container {
+    overflow: scroll;
+    padding-inline: 0rem;
+    width: 100vw;
+    max-width: fit-content;
+    scroll-behavior: smooth;
+  }
+
+  .flex_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: fit-content;
+  }
+    
+  @media screen and (min-width: 1200px) {
     .text {
-        padding-inline: 2rem;
+      padding-inline: 0rem;
     }
 
     .flex_row_container {
-        overflow: scroll;
-        padding-inline: 2rem;
-        width: 100vw;
-        scroll-behavior: smooth;
-        margin-block: 1rem;
+      padding-inline: 0rem;
     }
-
-    .flex_row {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 1rem;
-        width: fit-content; 
-
-    }
-    
-    .button_frame {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin-top: 2.5rem;
-    }
-
-
-    @media screen and (min-width: 1200px) {
-        .text {
-            padding-inline: 0rem;
-        }
-
-        .flex_row_container {
-            padding-inline: 0rem;
-        }
-    }
+  }
 
 </style>

@@ -24,12 +24,16 @@ import Om_os from "../components/Om_os.astro";
         <Om_os img="6" text="Lidt nyere, dette er den sidste generation ovale facadeskilte. Vi måtte ikke bruge dem efter at ejendommen blev renoveret." />
         <Om_os img="7" text="Hjørnet til Fantask i 2006 med den genkendelige blå facade vi har i dag. Her ses de nye ens firkantede skilte mellem vinduerne med vores drage." />
         <Om_os img="8" text="Vi har haft den fornøjelse at have tegne-serie legender på besøg i butikken. Her ses Michael Nielsen sammen med Stan “The Man” Lee i 1992." />
-        <Om_os img="9" text="I 2008 overtager Marit Fantask fra Søren og Rolf, som mente at det nu var tid til ungt blod, efter at have haft butikken i 37 år. Marit er stadig den nuværende ejer af Fantask. " />
+        <div class="last">
+          <Om_os img="9" text="I 2008 overtager Marit Fantask fra Søren og Rolf, som mente at det nu var tid til ungt blod, efter at have haft butikken i 37 år. Marit er stadig den nuværende ejer af Fantask. " />
+        </div>
+
       </div>
     </section>
   </div>
 
   <style>
+
     * {
       max-width: 1200px;
       margin-inline: auto;
@@ -56,6 +60,11 @@ import Om_os from "../components/Om_os.astro";
       gap: 1rem;
       margin-block: 2rem;
     }
+
+    .last {
+      width: 100%;
+      grid-column: 2 / span 2;
+    }
     @media (min-width: 768px) {
       .intro img {
         width: 25rem;
@@ -63,9 +72,8 @@ import Om_os from "../components/Om_os.astro";
       }
       .about_card {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
       
     }
-
   </style>
 </MainLayout>

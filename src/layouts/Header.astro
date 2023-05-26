@@ -297,7 +297,7 @@ const data = await response.json();
             clicked = false;
             // Animate the nav links to hide them
             mobile_nav.animate([
-                { opacity: 1, pointerEvents: 'all'},
+                { opacity: 0.95, pointerEvents: 'all'},
                 { opacity: 0, pointerEvents: 'none'}
             ], {
                 duration: 300,
@@ -335,7 +335,7 @@ const data = await response.json();
             clicked = false;
             // Animate the nav links to hide them
             mobile_nav.animate([
-                { opacity: 1, pointerEvents: 'all'},
+                { opacity: 0.95, pointerEvents: 'all'},
                 { opacity: 0, pointerEvents: 'none'}
             ], {
                 duration: 300,
@@ -417,7 +417,6 @@ const data = await response.json();
         position: fixed;
         color: var(--white);
         pointer-events: none;
-        transition: opacity 0.2s ease-in-out;
         cursor:not-allowed;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
@@ -426,17 +425,17 @@ const data = await response.json();
 
     .mobile_nav_container ul {
         font-size: 32px;
+        font-weight: 500;
     }
 
     .mobile_nav_container li {
-        color: var(--white);
-        font-size: 32px;
         margin-bottom: 2rem;
     }
 
     .mobile_nav_container .mobile_submenu li{
         font-size: 20px;
         margin-bottom: 0rem;
+        font-weight: 400;
     }
 
     .mobile_nav_container .mobile_submenu ul {
