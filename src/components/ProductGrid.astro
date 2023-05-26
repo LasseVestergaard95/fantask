@@ -112,7 +112,27 @@ filteredData.sort((a, b) => {
     @media screen and (max-width: 1200px) {
 
         section {
-            padding-inline: 0.1rem;
+            padding-inline: 2rem;
+        }
+        .flex {
+            justify-content: flex-start;
+        }
+    }
+
+    /* max width medium phone */
+    @media screen and (max-width: 768px) {
+        section {
+            padding-inline: 0.2rem;
+        }
+        .flex {
+            justify-content: center;
+        }
+    }
+    
+    /* max width small phone */
+    @media screen and (max-width: 480px) {
+        section {
+            padding-inline: 0rem;
         }
         .flex {
             justify-content: center;
