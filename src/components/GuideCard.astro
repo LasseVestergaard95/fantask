@@ -4,7 +4,7 @@ const {titel, beskrivelse, img, subtitle} = Astro.props;
 
 <div class="guide">
     <img src="/fantask_guide_top_banner.svg" alt="" class="banner">
-    <a href="">
+    <a href="/guides">
         <img src={`/${img}.webp`} alt={titel} class="cover">
     </a>
     <div class="info">
@@ -12,7 +12,7 @@ const {titel, beskrivelse, img, subtitle} = Astro.props;
             <p>{subtitle}</p>
         </div>
     
-        <a href="">Læs Guiden</a>
+        <a href="/guides">Læs Guiden</a>
     </div>
 </div>
 
