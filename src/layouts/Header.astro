@@ -15,6 +15,7 @@ const data = await response.json();
 <header>
 
         <nav class="mobile_nav_container">
+            
             <ul class="mobile__nav">
                 <li>
                     <a href="/">Nyheder</a>
@@ -120,12 +121,12 @@ const data = await response.json();
         </li>
         <div class="fantask_logo">
             <a href="/">
-                <img src="/fantask_header_logo.svg" alt="">
+                <img src="/fantask_header_logo.svg" alt="Fantask Logo">
             </a>
         </div>
         <div class="fantask_logo_mobile">
             <a href="/">
-                <img src="/fantask_logo_tekst.svg" alt="">
+                <img src="/fantask_logo_tekst.svg" alt="Fantask Logo Mobile">
             </a>
         </div>
         <nav class="main_nav_container">
@@ -233,18 +234,18 @@ const data = await response.json();
             <ul class="user_nav">
                 <li>
                     <div class="search">
-                        <img src="/header_search.svg" alt="">
+                        <img src="/header_search.svg" alt="Søg">
                     </div>
                 </li>
 
                 <li>
                     <a href="">
-                        <img src="/header_favoritter_hvidt_hjerte.svg" alt="">
+                        <img src="/header_favoritter_hvidt_hjerte.svg" alt="Dine favoritter">
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="/header_shopping_cart.svg" alt="">
+                        <img src="/header_shopping_cart.svg" alt="Din kurv">
                     </a>
                 </li>
             </ul>
@@ -400,6 +401,7 @@ const data = await response.json();
     .burgermenu {
         cursor: pointer;
         width: 2rem;
+        z-index: 99999999;
     }
 
     /* Main Navigation Styles */
@@ -413,7 +415,6 @@ const data = await response.json();
         width: 100%;
         height: 100%;
         background-color: var(--dark-blue);
-        z-index: 2;
         position: fixed;
         color: var(--white);
         pointer-events: none;
@@ -555,6 +556,10 @@ const data = await response.json();
         position: sticky;
         top: 0;
         z-index: 2;
+        height: 2.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .scrolling_banner {
@@ -588,6 +593,10 @@ const data = await response.json();
        
         a {
             color: var(--white);
+        }
+
+        .top_banner {
+            height: fit-content;
         }
 
         .scrolling_banner li {
