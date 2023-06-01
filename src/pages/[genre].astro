@@ -51,7 +51,6 @@ const options = {
 }
 
 
-
 const response = await fetch(url, options);
 const data = await response.json();
 
@@ -59,6 +58,10 @@ console.log(data);
 
 const { genre } = Astro.props;
 
+let beskrivelse = data.filter(item => item.navn == genre.genre);
+
+// make beskrivelse a string
+beskrivelse = beskrivelse[0].beskrivelse;
 
 
 ---
@@ -72,6 +75,10 @@ const { genre } = Astro.props;
                 }
             </h2>
             <h1>{genre.genre}</h1>
+            <p class="beskrivelse">{
+                // if beskrivelse is not null, show it
+                beskrivelse ? beskrivelse : ""
+                }</p>
             <Filter />
         </div>
 
@@ -90,5 +97,9 @@ const { genre } = Astro.props;
     
     .head h1 {
         margin-bottom: 1rem;
+    }
+
+    .beskrivelse {
+        margin-bottom: 2rem;
     }
 </style>
