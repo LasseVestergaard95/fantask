@@ -40,7 +40,8 @@ export async function getStaticPaths() {
     return paths;
 }
 
-const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/produkter?select=genre,type";
+
+const url = "https://awccwteuyfoulnztrlsc.supabase.co/rest/v1/beskrivelser?";
 const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3Y2N3dGV1eWZvdWxuenRybHNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMzUzNzAsImV4cCI6MTk5OTgxMTM3MH0.j55yJxX0YRq2JVBAyJGzGEdMi5qoOAeM0vZNgy-y7nE"
 
 const options = {
@@ -49,7 +50,16 @@ const options = {
     }
 }
 
+
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+console.log(data);
+
 const { genre } = Astro.props;
+
+
 
 ---
 
